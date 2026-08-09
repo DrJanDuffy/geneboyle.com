@@ -318,15 +318,24 @@ jobs:
               try {
                 const content = fs.readFileSync(file.filename, 'utf8');
                 
-                // Check for metadata export
-                if (!content.includes('export const metadata') && !content.includes('generateMetadata')) {
+                // Check for metadata export (root pages may inherit from app/layout.tsx)
+                const hasOwnMeta =
+                  content.includes('export const metadata') || content.includes('generateMetadata');
+                const layoutPath = 'app/layout.tsx';
+                const layoutHasMeta =
+                  fs.existsSync(layoutPath) &&
+                  (fs.readFileSync(layoutPath, 'utf8').includes('generateMetadata') ||
+                    fs.readFileSync(layoutPath, 'utf8').includes('export const metadata'));
+                if (!hasOwnMeta && !(file.filename === 'app/page.tsx' && layoutHasMeta)) {
                   issues.push(`❌ **${file.filename}**: Missing metadata export (SEO)`);
                 }
                 
-                // Check for proper phone numbers
-                if (content.includes('702-222-1964') || content.includes('7022221964') || 
-                    content.includes('702-500-1955') || content.includes('7025001955')) {
-                  issues.push(`❌ **${file.filename}**: Contains old phone number (should be (702) 500-1942)`);
+                // Client-facing CTA must be (702) 222-1964 (not the FUB/professional line).
+                if (content.includes('702-500-1955') || content.includes('7025001955')) {
+                  issues.push(`❌ **${file.filename}**: Contains retired phone number (use (702) 222-1964)`);
+                }
+                if (content.includes('702-500-1942') || content.includes('7025001942')) {
+                  warnings.push(`⚠️ **${file.filename}**: Uses FUB/professional line (702) 500-1942 — client CTAs should be (702) 222-1964`);
                 }
                 
                 // Check for JSON-LD schema
@@ -484,7 +493,7 @@ jobs:
             - [ ] Code follows project conventions
             - [ ] Tests pass with adequate coverage (80%+)
             - [ ] SEO metadata is present and optimized
-            - [ ] Phone numbers are correct: (702) 500-1942
+            - [ ] Phone numbers are correct: (702) 222-1964 for client CTAs
             - [ ] Berkshire Hathaway branding is consistent
             - [ ] Mobile responsive design verified
             - [ ] No console errors
