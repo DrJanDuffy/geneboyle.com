@@ -12,7 +12,7 @@ export type GlobalHeroConfig = {
 };
 
 export const GLOBAL_HERO: GlobalHeroConfig = {
-  // Compressed JPEG; next/image serves AVIF/WebP variants.
+  // Compressed JPEG (~259KB); next/image serves AVIF/WebP variants.
   src: "/images/global-hero/heyberkshire.jpg",
   alt: "Las Vegas Valley desert skyline and residential rooftops at dusk — Irvine to Las Vegas relocation with Dr. Gene Boyle",
   tagline: "geneboyle.com — Irvine to Las Vegas Relocation by Dr. Gene Boyle",
