@@ -41,6 +41,14 @@ jobs:
           corepack prepare pnpm@9.15.9 --activate
           pnpm --version
 
+      # vercel build (used by @cloudflare/next-on-pages) packages the Flask API
+      # and now requires Astral's uv on PATH (https://vercel.link/python-version).
+      - name: Install uv (Vercel Python runtime)
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          uv --version
+
       - name: Cache Next.js build
         uses: actions/cache@v4
         with:
