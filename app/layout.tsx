@@ -22,7 +22,10 @@ export function generateMetadata(): Metadata {
   const config = getDomainConfig(domain);
   const isGeneBoyle =
     config.domain === "geneboyle.com" ||
-    domain.replace(/^www\./, "").toLowerCase().includes("geneboyle.com");
+    domain
+      .replace(/^www\./, "")
+      .toLowerCase()
+      .includes("geneboyle.com");
   const title = isGeneBoyle
     ? `${config.neighborhood} | Dr. Gene Boyle | BHHS Nevada partner`
     : `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`;
@@ -40,7 +43,11 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={GeistSans.className}>
       <body>

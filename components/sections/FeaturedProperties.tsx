@@ -43,7 +43,9 @@ const PropertyCard = ({ property }: { property: Property }) => (
         </div>
         <div className="flex items-center gap-1">
           <Square className="h-4 w-4 text-blue-600" />
-          <span className="text-sm">{property.squareFeet.toLocaleString()} sq ft</span>
+          <span className="text-sm">
+            {property.squareFeet.toLocaleString()} sq ft
+          </span>
         </div>
       </div>
       <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
@@ -106,7 +108,13 @@ export default function FeaturedProperties() {
             variant="outline"
             className="mt-4 md:mt-0 border-slate-300 text-slate-900 hover:bg-slate-100 hover:text-slate-900"
           >
-            <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer">View All Properties</a>
+            <a
+              href="http://drjanduffy.realscout.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View All Properties
+            </a>
           </Button>
         </div>
 
