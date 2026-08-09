@@ -84,8 +84,16 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      - name: Check Prettier formatting
-        run: npx prettier --check "**/*.{ts,tsx,js,jsx,json,md,css}"
+      - name: Check Prettier formatting (changed files)
+        run: |
+          # Full-repo prettier debt is pre-existing; gate only PR diffs.
+          mapfile -t files < <(git diff --name-only --diff-filter=ACMR origin/${{ github.base_ref }}...HEAD -- \
+            '*.ts' '*.tsx' '*.js' '*.jsx' '*.json' '*.md' '*.css' || true)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No Prettier-eligible changed files"
+            exit 0
+          fi
+          npx prettier --check "${files[@]}"
 
   # ============================================
   # Test Suite
