@@ -1,46 +1,59 @@
-// Site Configuration - HeyBerkshire.com
-// Berkshire Hathaway HomeServices Nevada Properties
+// Site Configuration - geneboyle.com
+// Dr. Gene Boyle — Irvine to Las Vegas relocation (with Dr. Jan Duffy / BHHS Nevada)
 
 export const siteConfig = {
-  name: "HeyBerkshire",
-  fullName: "Berkshire Hathaway HomeServices Nevada Properties",
-  tagline: "Private Client Real Estate Advisory",
-  /** Full brand line for titles and OG: Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory */
+  name: "Gene Boyle",
+  fullName: "Dr. Gene Boyle",
+  tagline: "Irvine to Las Vegas Relocation",
   brandLine:
-    "Berkshire Hathaway HomeServices Nevada Properties | Private Client Real Estate Advisory",
-  brandName: "Berkshire Hathaway HomeServices",
-  shortName: "BHHS",
-  url: "https://www.heyberkshire.com",
+    "Dr. Gene Boyle | Irvine to Las Vegas Relocation | BHHS Nevada Properties partner",
+  brandName: "Berkshire Hathaway HomeServices Nevada Properties",
+  shortName: "Gene Boyle",
+  url: "https://www.geneboyle.com",
   description:
-    "Expert real estate services in Las Vegas and Henderson, NV. Buy, sell, or invest with Dr. Jan Duffy, your trusted Berkshire Hathaway HomeServices Nevada Properties agent.",
+    "Dr. Gene Boyle (California DRE #02282581) helps clients move from Irvine, California to Las Vegas. Relocation planning with local Las Vegas support from Dr. Jan Duffy, BHHS Nevada Properties.",
 };
 
 export const agentInfo = {
-  name: "Dr. Jan Duffy",
-  title: "REALTOR®",
-  license: "S.0197614.LLC",
-  phone: "(702) 500-1942",
-  phoneFormatted: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
-  email: "homes@heyberkshire.com",
-  brokerage: "Berkshire Hathaway HomeServices Nevada Properties",
+  name: "Dr. Gene Boyle",
+  title: "California DRE Salesperson — Irvine relocation planning",
+  license: "02282581",
+  licenseLabel: "California DRE #02282581",
+  phone: "(702) 222-1964",
+  phoneFormatted: "(702) 222-1964",
+  phoneTel: "tel:+17022221964",
+  email: "Gene@CallDrBoyle.com",
+  brokerage: "Berkshire Hathaway HomeServices Nevada Properties (Las Vegas partner)",
+  partnerAgent: {
+    name: "Dr. Jan Duffy",
+    license: "S.0197614.LLC",
+    phone: "(702) 222-1964",
+  },
 };
 
 export const officeInfo = {
-  name: "Berkshire Hathaway HomeServices Nevada Properties",
+  name: "Dr. Gene Boyle — Irvine Relocation Planning",
   address: {
+    street: "320 Junco",
+    city: "Irvine",
+    state: "CA",
+    zip: "92618",
+    full: "320 Junco, Irvine, CA 92618",
+  },
+  coordinates: {
+    lat: 33.6846,
+    lng: -117.8265,
+  },
+  lasVegasOffice: {
+    name: "Berkshire Hathaway HomeServices Nevada Properties",
     street: "9406 W Lake Mead Blvd, Suite 100",
     city: "Las Vegas",
     state: "NV",
     zip: "89134",
     full: "9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
   },
-  coordinates: {
-    lat: 36.1893,
-    lng: -115.2821,
-  },
-  phone: "(702) 500-1942",
-  phoneTel: "tel:+17025001942",
+  phone: "(702) 222-1964",
+  phoneTel: "tel:+17022221964",
 };
 
 // Market Statistics (Updated January 2026)
@@ -79,7 +92,6 @@ export const marketStats = {
   },
 };
 
-// Agent Stats
 export const agentStats = {
   servingSince: 2008,
   transactionsClosed: 500,
