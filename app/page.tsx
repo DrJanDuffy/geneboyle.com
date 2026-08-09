@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/layouts/Navbar";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
@@ -57,15 +58,21 @@ export default async function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
-    url: `https://${config.domain !== "default" ? config.domain : "heyberkshire.com"}`,
+    name:
+      config.domain === "geneboyle.com"
+        ? `Dr. Gene Boyle - ${config.neighborhood}`
+        : `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
+    url: `https://www.${config.domain !== "default" ? config.domain : "geneboyle.com"}`,
     telephone: "+17022221964",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality: "Las Vegas",
-      addressRegion: "NV",
-      postalCode: "89134",
+      streetAddress:
+        config.domain === "geneboyle.com"
+          ? "320 Junco"
+          : "9406 W Lake Mead Blvd, Suite 100",
+      addressLocality: config.domain === "geneboyle.com" ? "Irvine" : "Las Vegas",
+      addressRegion: config.domain === "geneboyle.com" ? "CA" : "NV",
+      postalCode: config.domain === "geneboyle.com" ? "92618" : "89134",
     },
     aggregateRating: {
       "@type": "AggregateRating",
@@ -100,11 +107,17 @@ export default async function Home() {
       />
       <Navbar />
       <main>
-        {/* Domain-Aware Hero */}
+        {/* Domain-Aware Hero — next/image LCP (not CSS background) */}
         <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-30"
-            style={{ backgroundImage: "url('/Image/hero_bg_1.jpg')" }}
+          <Image
+            src="/Image/hero_bg_1.jpg"
+            alt={`${config.neighborhood} relocation and Las Vegas homes with Dr. Gene Boyle`}
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={65}
+            className="object-cover object-center opacity-30"
           />
           <div className="relative z-10 container mx-auto px-4 text-center">
             {config.ctaBadge && (
@@ -151,10 +164,14 @@ export default async function Home() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Why Work With Dr. Jan Duffy?
+                {config.domain === "geneboyle.com"
+                  ? "Why Work With Dr. Gene Boyle?"
+                  : "Why Work With Dr. Jan Duffy?"}
               </h2>
               <p className="text-lg text-slate-600">
-                Berkshire Hathaway HomeServices Nevada Properties — the most trusted name in Las Vegas real estate.
+                {config.domain === "geneboyle.com"
+                  ? "California-side relocation planning from Irvine, paired with Dr. Jan Duffy and BHHS Nevada Properties on the Las Vegas side."
+                  : "Berkshire Hathaway HomeServices Nevada Properties — the most trusted name in Las Vegas real estate."}
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">

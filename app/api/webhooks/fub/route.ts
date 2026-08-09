@@ -18,6 +18,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { FollowUpBossClient } from '@/lib/fub/client';
 import { ClaudeClient } from '@/lib/claude/client';
 import { propertySearchTemplate } from '@/lib/claude/prompt-templates';
+import { getAnthropicApiKey, getFubApiKey } from '@/lib/env';
 
 export async function POST(request: NextRequest) {
   try {
@@ -75,7 +76,7 @@ async function handlePersonCreated(data: any) {
   console.log(`[FUB] New person created: ${data.name || data.id}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFubApiKey(),
   });
 
   try {
@@ -83,7 +84,7 @@ async function handlePersonCreated(data: any) {
     const person = await fub.getPerson(data.id);
 
     // Auto-qualify lead with Claude AI
-    if (process.env.ANTHROPIC_API_KEY) {
+    if (getAnthropicApiKey()) {
       await qualifyLeadWithAI(person, fub);
     }
 
@@ -138,7 +139,7 @@ async function handleStageUpdated(data: any) {
   console.log(`[FUB] Stage updated for ${data.name || data.id}: ${data.stage}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFubApiKey(),
   });
 
   try {
@@ -185,7 +186,7 @@ async function handleTagsCreated(data: any) {
   console.log(`[FUB] Tags added to ${data.name || data.id}: ${data.tags?.join(', ')}`);
 
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFubApiKey(),
   });
 
   // Trigger actions based on specific tags
@@ -236,7 +237,7 @@ async function handlePersonDeleted(data: any) {
 async function qualifyLeadWithAI(person: any, fub: FollowUpBossClient) {
   try {
     const claude = new ClaudeClient({
-      apiKey: process.env.ANTHROPIC_API_KEY!,
+      apiKey: getAnthropicApiKey(),
     });
 
     // Build context about the lead
@@ -281,7 +282,7 @@ Based on this information, provide a brief lead qualification summary and recomm
  */
 async function checkForDuplicates(personId: number) {
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFubApiKey(),
   });
 
   try {
@@ -330,7 +331,7 @@ async function checkForDuplicates(personId: number) {
  */
 async function triggerPropertySearch(personId: number, neighborhood?: string) {
   const fub = new FollowUpBossClient({
-    apiKey: process.env.FUB_API_KEY || '',
+    apiKey: getFubApiKey(),
   });
 
   try {

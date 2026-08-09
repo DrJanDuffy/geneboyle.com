@@ -1,28 +1,33 @@
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { GLOBAL_HERO } from "@/lib/global-hero";
 
 /**
- * Compact full-width hero band in the root layout (every page).
- * Intentionally shorter than PageHero so it does not collide with
- * page-level full-bleed heroes on the homepage.
+ * Compact full-width hero band in the root layout.
+ * Skipped on the homepage so the page-level LCP hero is the only above-fold image.
  */
 export default function GlobalHeroBanner() {
+  const pathname = usePathname();
   const { src, alt, tagline, phoneDisplay, phoneTel } = GLOBAL_HERO;
+
+  if (pathname === "/") {
+    return null;
+  }
 
   return (
     <aside
       className="relative w-full overflow-hidden border-b border-slate-800/40"
       aria-label={tagline}
     >
-      <div className="relative h-[200px] sm:h-[240px] md:h-[280px] w-full">
+      <div className="relative h-[160px] sm:h-[200px] md:h-[240px] w-full">
         <Image
           src={src}
           alt={alt}
           fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          quality={75}
+          sizes="(max-width: 768px) 100vw, 1200px"
+          quality={65}
           className="object-cover object-center"
         />
         <div

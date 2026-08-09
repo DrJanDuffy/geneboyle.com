@@ -1,5 +1,5 @@
 {
-  "name": "heyberkshire-com",
+  "name": "geneboyle-com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -30,7 +30,8 @@
     "cloudflare:deploy": "wrangler deploy",
     "cloudflare:pages": "npx @cloudflare/next-on-pages",
     "cloudflare:build": "npm run cloudflare:pages",
-    "build:cloudflare": "npx @cloudflare/next-on-pages"
+    "build:cloudflare": "npx @cloudflare/next-on-pages",
+    "prebuild": "node scripts/decode-hero-assets.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
