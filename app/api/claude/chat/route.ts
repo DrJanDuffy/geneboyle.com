@@ -20,11 +20,12 @@ import {
   customerSupportTemplate,
   createCachedPrompt,
 } from '@/lib/claude/prompt-templates';
+import { getAnthropicApiKey, usesAiGateway } from '@/lib/env';
 
 // Initialize Claude client
 const claude = new ClaudeClient({
-  apiKey: process.env.AI_GATEWAY_API_KEY || process.env.ANTHROPIC_API_KEY || '',
-  baseURL: process.env.AI_GATEWAY_API_KEY ? 'https://ai-gateway.vercel.sh' : undefined,
+  apiKey: getAnthropicApiKey(),
+  baseURL: usesAiGateway() ? 'https://ai-gateway.vercel.sh' : undefined,
   enableCaching: true,
   enableCostTracking: true,
 });
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!process.env.AI_GATEWAY_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+    if (!getAnthropicApiKey()) {
       return NextResponse.json(
         { error: 'Claude API key not configured' },
         { status: 500 }
