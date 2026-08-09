@@ -63,6 +63,7 @@ jobs:
           echo "Deployed to: $url"
 
       - name: Comment PR with Preview URL
+        if: steps.token.outputs.skip != 'true' && steps.deploy.outputs.url != ''
         uses: actions/github-script@v7
         with:
           script: |
