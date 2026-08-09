@@ -22,9 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     # Vercel is the primary host. @cloudflare/next-on-pages requires
     # `export const runtime = 'edge'` on every dynamic route, which conflicts
-    # with the Flask `/api` app and Node-oriented API handlers. Keep this job
-    # visible but non-blocking until a dedicated Edge/OpenNext migration.
-    continue-on-error: true
+    # with the Flask `/api` app and Node-oriented API handlers. Treat CF Pages
+    # build failures as soft until a dedicated Edge/OpenNext migration.
+    outputs:
+      pages_ok: ${{ steps.status.outputs.ok }}
     permissions:
       contents: read
       deployments: write
@@ -68,20 +69,36 @@ jobs:
         run: npm ci
 
       - name: Build for Cloudflare Pages
+        id: build
+        continue-on-error: true
         run: npm run build:cloudflare
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           NEXT_PUBLIC_REALSCOUT_AGENT_ID: ${{ secrets.NEXT_PUBLIC_REALSCOUT_AGENT_ID }}
 
       - name: Deploy to Cloudflare Pages
+        id: pages
+        if: steps.build.outcome == 'success'
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy .vercel/output/static --project-name=heyberkshire-com --branch=${{ github.ref_name }}
 
+      - name: Record Pages deploy status
+        id: status
+        run: |
+          if [ "${{ steps.build.outcome }}" = "success" ] && [ "${{ steps.pages.outcome }}" = "success" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare Pages deploy succeeded."
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Cloudflare Pages build/deploy failed (expected until Edge/OpenNext migration). Vercel remains primary."
+          fi
+
       - name: Comment PR with deployment URL
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && steps.status.outputs.ok == 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -110,7 +127,7 @@ jobs:
   deploy-workers:
     name: Deploy Cloudflare Workers
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && needs.deploy.outputs.pages_ok == 'true'
     needs: deploy
     permissions:
       contents: read
@@ -139,9 +156,9 @@ jobs:
     name: Cloudflare Performance Audit
     runs-on: ubuntu-latest
     needs: deploy
-    # Only audit when Pages deploy actually succeeded (deploy is continue-on-error).
-    if: github.event_name == 'pull_request' && needs.deploy.result == 'success'
-    continue-on-error: true
+    # Gate on real Pages success output (not job result — soft build failures
+    # still mark the deploy job successful so the PR check stays green).
+    if: github.event_name == 'pull_request' && needs.deploy.outputs.pages_ok == 'true'
 
     steps:
       - name: Checkout code
@@ -163,8 +180,6 @@ jobs:
         if: always()
         with:
           script: |
-            const fs = require('fs');
-
             let comment = `## 📊 Cloudflare Pages Performance Report\n\n`;
             comment += `Lighthouse audit completed for Cloudflare deployment.\n\n`;
             comment += `View detailed results in Actions artifacts.`;
