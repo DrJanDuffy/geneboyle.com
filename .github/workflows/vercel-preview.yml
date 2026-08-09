@@ -16,28 +16,46 @@ jobs:
   deploy-preview:
     name: Deploy to Vercel Preview
     runs-on: ubuntu-latest
+    # Native Vercel Git integration already deploys previews. This workflow
+    # needs repo secrets (VERCEL_TOKEN); keep it non-blocking when unset.
+    continue-on-error: true
     outputs:
       preview-url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Require VERCEL_TOKEN
+        id: token
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "VERCEL_TOKEN is not configured; skipping GHA Vercel deploy (native Vercel preview still runs)."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Node.js
+        if: steps.token.outputs.skip != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
       - name: Install Vercel CLI
+        if: steps.token.outputs.skip != 'true'
         run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Information
+        if: steps.token.outputs.skip != 'true'
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
+        if: steps.token.outputs.skip != 'true'
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
+        if: steps.token.outputs.skip != 'true'
         id: deploy
         run: |
           url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})

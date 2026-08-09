@@ -20,6 +20,11 @@ jobs:
   deploy:
     name: Deploy to Cloudflare Pages
     runs-on: ubuntu-latest
+    # Vercel is the primary host. @cloudflare/next-on-pages requires
+    # `export const runtime = 'edge'` on every dynamic route, which conflicts
+    # with the Flask `/api` app and Node-oriented API handlers. Keep this job
+    # visible but non-blocking until a dedicated Edge/OpenNext migration.
+    continue-on-error: true
     permissions:
       contents: read
       deployments: write
