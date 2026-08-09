@@ -10,7 +10,7 @@ export default function CTASection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Ready to Find Your Dream Home?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             Let's start your real estate journey today. Get expert guidance, personalized service,
             and results that exceed your expectations.
           </p>
@@ -39,8 +39,8 @@ export default function CTASection() {
               variant="outline"
               className="border-white text-white hover:bg-white/10"
             >
-              <Link href="tel:+17025001942" className="flex items-center gap-2">
-                <Phone className="h-5 w-5" />
+              <Link href="tel:+17022221964" className="flex items-center gap-2" aria-label="Call Dr. Gene Boyle at 702-222-1964">
+                <Phone className="h-5 w-5" aria-hidden="true" />
                 Call Now
               </Link>
             </Button>

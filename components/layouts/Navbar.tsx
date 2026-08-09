@@ -121,10 +121,10 @@ export default function Navbar() {
               )}
             </div>
 
-            <Button asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span className="hidden xl:inline">(702) 500-1942</span>
+            <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Link href="tel:+17022221964" className="flex items-center gap-2" aria-label="Call Dr. Gene Boyle at 702-222-1964">
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                <span className="hidden xl:inline">(702) 222-1964</span>
                 <span className="xl:hidden">Call</span>
               </Link>
             </Button>
@@ -132,9 +132,12 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
-            <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
-              <Link href="tel:+17025001942">
-                <Phone className="h-4 w-4" />
+            <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Link
+                href="tel:+17022221964"
+                aria-label="Call Dr. Gene Boyle at 702-222-1964"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
             <button
@@ -194,13 +197,14 @@ export default function Navbar() {
               </div>
 
               <div className="pt-4">
-                <Button asChild className="bg-blue-600 hover:bg-blue-700 w-full">
+                <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full">
                   <Link
-                    href="tel:+17025001942"
+                    href="tel:+17022221964"
                     className="flex items-center justify-center gap-2"
+                    aria-label="Call Dr. Gene Boyle at 702-222-1964"
                   >
-                    <Phone className="h-4 w-4" />
-                    Call Dr. Jan: (702) 500-1942
+                    <Phone className="h-4 w-4" aria-hidden="true" />
+                    Call: (702) 222-1964
                   </Link>
                 </Button>
               </div>

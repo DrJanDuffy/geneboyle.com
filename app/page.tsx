@@ -41,8 +41,11 @@ const FAQ_SECTION_COPY: Record<
   },
 };
 
-export default async function Home() {
-  const config = await getPageDomainConfig();
+// Static/ISR homepage — avoids headers()-forced dynamic rendering (no-store TTFB hit).
+export const revalidate = 3600;
+
+export default function Home() {
+  const config = getPageDomainConfig();
 
   // ── Domain-aware FAQs ────────────────────────────────────────────────────
   const faqs = getFaqsForDomain(config.pageType, config.domain);
@@ -115,8 +118,8 @@ export default async function Home() {
             fill
             priority
             fetchPriority="high"
-            sizes="100vw"
-            quality={65}
+            sizes="(max-width: 768px) 100vw, 100vw"
+            quality={55}
             className="object-cover object-center opacity-30"
           />
           <div className="relative z-10 container mx-auto px-4 text-center">
@@ -241,7 +244,7 @@ export default async function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {config.ctaHeadline}
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
               {config.ctaSubheadline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

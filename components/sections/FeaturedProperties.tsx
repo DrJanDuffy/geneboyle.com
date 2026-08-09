@@ -101,7 +101,11 @@ export default function FeaturedProperties() {
               Discover exceptional homes in Las Vegas and Henderson
             </p>
           </div>
-          <Button asChild variant="outline" className="mt-4 md:mt-0">
+          <Button
+            asChild
+            variant="outline"
+            className="mt-4 md:mt-0 border-slate-300 text-slate-900 hover:bg-slate-100 hover:text-slate-900"
+          >
             <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer">View All Properties</a>
           </Button>
         </div>
