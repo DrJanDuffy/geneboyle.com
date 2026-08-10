@@ -15,11 +15,12 @@ import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst, valleyAugust6 } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "FAQ | Irvine to Las Vegas Relocation | Dr. Gene Boyle",
+  title: "Irvine-to-Las Vegas Relocation Questions Answered | Dr. Gene Boyle",
   description:
-    "Frequently asked questions about Irvine to Las Vegas relocation, buying and selling, and working with Dr. Gene Boyle and partner Dr. Jan Duffy, BHHS Nevada Properties.",
+    "FAQ for Irvine to Las Vegas relocation: prices, sell-first vs buy-first, timelines, and neighborhood comparison with Dr. Gene Boyle and Dr. Jan Duffy.",
   keywords: [
     "Irvine to Las Vegas FAQ",
     "Las Vegas real estate questions",
@@ -73,7 +74,7 @@ const faqCategories = [
       },
       {
         q: "Is now a good time to buy in Las Vegas?",
-        a: "January 2026 context: roughly 2.1 months of inventory and ~28 average days on market. Well-priced homes still move; you have more selection than the 2021–2022 peak.",
+        a: `August 6, 2026 Valley report: about ${valleyAugust6.monthsSupply} months of single-family supply, ${valleyAugust6.medianDom} median days on market, and ${valleyAugust6.medianSf} SF median. More selection than the peak years — strategy still depends on the competing set for your shortlist.`,
       },
     ],
   },
@@ -86,7 +87,7 @@ const faqCategories = [
       },
       {
         q: "How long will it take to sell?",
-        a: "Well-priced Valley homes recently averaged about 28 days on market. Pricing strategy matters more than waiting for a perfect month.",
+        a: `August 6, 2026 Valley report: about ${valleyAugust6.medianDom} median days on market; ${valleyAugust6.closedBelowAskingPct} of completed sales closed below asking. Pricing strategy matters more than waiting for a perfect month.`,
       },
       {
         q: "How do you market a listing?",
@@ -158,11 +159,11 @@ export default function FAQPage() {
         <EditorialVisualHero
           image={getMarketingImage("faq")}
           kicker={siteConfig.fullName}
-          title="FAQ —"
-          accent="straight answers"
-          lede="Irvine-to-Las Vegas relocation, buying, selling, and how we work with Berkshire Hathaway HomeServices Nevada Properties."
+          title="Irvine-to-Las Vegas —"
+          accent="questions answered"
+          lede={answerFirst.faq}
           ctas={[
-            { href: "/contact#schedule", label: "Book a consult", variant: "primary" },
+            { href: "/contact", label: "Ask a relocation question", variant: "primary" },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,

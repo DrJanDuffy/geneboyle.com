@@ -5,8 +5,9 @@ import { marketingGuides } from "@/lib/guides/marketing-pages";
 const guide = marketingGuides["market-report"];
 
 export const metadata: Metadata = {
-  title: 'Las Vegas Market Report | Dr. Gene Boyle',
-  description: 'Las Vegas and Henderson market context for relocators. Call (702) 222-1964.',
+  title: 'Las Vegas Housing Market Report: August 2026 | Dr. Gene Boyle',
+  description:
+    'August 2026 Las Vegas Valley market report: median prices, inventory, months of supply, and submarket panels. Call (702) 222-1964.',
 };
 
 export default function Page() {

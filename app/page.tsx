@@ -5,63 +5,55 @@ import Footer from "@/components/layouts/Footer";
 import { getHeroImage } from "@/lib/guides/media";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import { answerFirst, marketAsOf, valleyAugust6 } from "@/lib/market/august-2026";
 
 export const revalidate = 3600;
 
 /**
- * Homepage is a short brand hub for SEO / GEO / AEO:
- * entity declaration + one answer + topic-cluster links.
- * Long-form content lives on dedicated topical pages.
+ * Homepage = brand hub for SEO / GEO / AEO.
+ * Brand stays the H1; section H2s are question-style with answer-first blurbs.
+ * Deep content lives on topical child pages.
  */
-const topicHub = [
+const sections = [
   {
+    id: "involve",
+    h2: "What does an Irvine-to-Las Vegas move involve?",
+    body: answerFirst.home,
     href: "/relocation",
-    label: "Relocation",
-    answer:
-      "Plan an Irvine or Orange County sale alongside a Las Vegas Valley purchase with one California planner and one Nevada partner team.",
+    cta: "Open relocation plan →",
   },
   {
+    id: "coordinate",
+    h2: "How do Gene Boyle and Jan Duffy coordinate your move?",
+    body: answerFirst.howWeWork,
     href: "/how-we-work",
-    label: "How we work",
-    answer:
-      "Use RealScout MLS search, Calendly booking, valuation intake, and market pages — without rebuilding native CRM sync.",
+    cta: "See how we work →",
   },
   {
+    id: "areas",
+    h2: "Which Las Vegas homes and areas fit your brief?",
+    body: answerFirst.neighborhoods,
     href: "/neighborhoods",
-    label: "Areas",
-    answer:
-      "Compare Summerlin, Henderson, Green Valley, The Ridges, and other Valley communities before you tour.",
+    cta: "Compare areas →",
   },
   {
-    href: "/listings",
-    label: "Homes",
-    answer:
-      "Search live Las Vegas Valley MLS inventory with RealScout on the listings page.",
+    id: "next",
+    h2: "What should you do next?",
+    body: answerFirst.contact,
+    href: "/contact#schedule",
+    cta: "Book a cross-state planning call →",
   },
-  {
-    href: "/buyers",
-    label: "Buyers",
-    answer:
-      "Buyer paths for California relocators, first-time buyers, and luxury purchasers.",
-  },
-  {
-    href: "/sellers",
-    label: "Sellers",
-    answer:
-      "Seller paths for relocation sales, downsizing, move-up, and sensitive timelines.",
-  },
-  {
-    href: "/faq",
-    label: "FAQ",
-    answer:
-      "Direct answers to buying, selling, and Irvine-to-Las Vegas relocation questions.",
-  },
-  {
-    href: "/about",
-    label: "About",
-    answer:
-      "Meet Dr. Gene Boyle, California DRE credentials, and Las Vegas partner Dr. Jan Duffy.",
-  },
+] as const;
+
+const topicHub = [
+  { href: "/relocation", label: "Relocation" },
+  { href: "/buyers", label: "Buyers" },
+  { href: "/sellers", label: "Sellers" },
+  { href: "/listings", label: "Homes" },
+  { href: "/neighborhoods", label: "Areas" },
+  { href: "/market-report", label: "Market report" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "About" },
 ] as const;
 
 export default function Home() {
@@ -136,7 +128,7 @@ export default function Home() {
 
           <div className="relative z-10 site-wrap pb-16 pt-32 md:pb-20 md:pt-40">
             <p className="kicker text-paper/70 animate-fade-in">
-              Continuous relocation planning
+              Move from Irvine to Las Vegas with a local plan
             </p>
             <h1 className="mt-4 font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight text-paper animate-fade-up">
               Dr. Gene
@@ -149,10 +141,10 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center animate-fade-up reveal-delay-2">
               <Link
-                href="/listings"
+                href="/contact#schedule"
                 className="inline-flex justify-center bg-paper text-ink font-sans text-sm font-medium px-5 py-3 hover:bg-accent-faint transition-colors"
               >
-                Search Las Vegas homes
+                Book a planning call
               </Link>
               <a
                 href={agentInfo.phoneTel}
@@ -164,54 +156,54 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 md:py-20">
-          <div className="site-wrap max-w-3xl">
-            <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight">
-              One loop for a cross-state move.
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed">
-              Selling in Orange County and buying in the Las Vegas Valley should
-              not run as disconnected handoffs. {agentInfo.name} (
-              {agentInfo.licenseLabel}) plans the California side from{" "}
-              {officeInfo.address.city}; {agentInfo.partnerAgent.name} (
-              {agentInfo.partnerAgent.license}) covers Valley tours and closing
-              with Berkshire Hathaway HomeServices Nevada Properties.
+        <section className="py-12 md:py-14 border-b border-[var(--line-soft)]">
+          <div className="site-wrap">
+            <p className="index-tag mb-4">
+              <b>{marketAsOf}</b> — Valley benchmark
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {[
+                { value: valleyAugust6.medianSf, label: "SF median" },
+                { value: valleyAugust6.monthsSupply, label: "Months supply" },
+                { value: valleyAugust6.medianDom, label: "Median DOM" },
+                { value: valleyAugust6.activeSfListings, label: "Active SF listings" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-2xl md:text-3xl text-ink">
+                    {stat.value}
+                  </p>
+                  <p className="font-sans text-xs text-ink-muted mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 font-sans text-xs text-ink-muted max-w-3xl">
+              {valleyAugust6.sourceNote} Not evergreen — verify before offers.
             </p>
           </div>
         </section>
 
-        <section className="pb-16 md:pb-24" aria-labelledby="topic-hub-heading">
+        <section className="py-16 md:py-20" aria-labelledby="answers-heading">
           <div className="site-wrap">
-            <p className="index-tag mb-4">
-              <b>Explore</b> — Topic pages
-            </p>
             <h2
-              id="topic-hub-heading"
-              className="font-display text-3xl md:text-4xl text-ink mb-3 max-w-2xl"
+              id="answers-heading"
+              className="sr-only"
             >
-              Shorter pages, clearer answers.
+              Irvine to Las Vegas relocation answers
             </h2>
-            <p className="max-w-prose text-lg mb-10">
-              Deep content lives on dedicated routes for search, answer engines,
-              and AI citations — open the page that matches your question.
-            </p>
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-10 border-t border-[var(--line-soft)] pt-12">
-              {topicHub.map((topic) => (
-                <article key={topic.href}>
-                  <h3 className="font-sans text-base font-semibold text-ink mb-2">
-                    <Link
-                      href={topic.href}
-                      className="hover:text-accent underline-offset-4 hover:underline"
-                    >
-                      {topic.label}
-                    </Link>
-                  </h3>
-                  <p className="leading-relaxed text-ink-soft">{topic.answer}</p>
+            <div className="space-y-14 md:space-y-16 max-w-3xl">
+              {sections.map((section) => (
+                <article key={section.id} id={section.id}>
+                  <h2 className="font-display text-2xl md:text-3xl text-ink leading-tight">
+                    {section.h2}
+                  </h2>
+                  <p className="mt-4 text-lg leading-relaxed">{section.body}</p>
                   <Link
-                    href={topic.href}
-                    className="inline-flex mt-3 font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
+                    href={section.href}
+                    className="inline-flex mt-4 font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
                   >
-                    Open {topic.label.toLowerCase()} →
+                    {section.cta}
                   </Link>
                 </article>
               ))}
@@ -219,10 +211,33 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="pb-16 md:pb-20" aria-labelledby="topic-hub-heading">
+          <div className="site-wrap">
+            <h2
+              id="topic-hub-heading"
+              className="font-display text-2xl md:text-3xl text-ink mb-6"
+            >
+              Explore topic pages
+            </h2>
+            <ul className="flex flex-wrap gap-x-6 gap-y-3 font-sans text-sm">
+              {topicHub.map((topic) => (
+                <li key={topic.href}>
+                  <Link
+                    href={topic.href}
+                    className="text-ink-soft hover:text-accent underline-offset-4 hover:underline"
+                  >
+                    {topic.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section className="bg-ink text-paper py-16 md:py-20">
           <div className="site-wrap max-w-3xl">
             <h2 className="font-display text-3xl md:text-4xl leading-tight mb-4">
-              Book the first conversation.
+              Book a cross-state planning call
             </h2>
             <p className="text-lg text-paper/75 mb-8 max-w-prose">
               Schedule on Calendly or call {agentInfo.phoneFormatted}. We map
@@ -237,10 +252,10 @@ export default function Home() {
                 Schedule on Calendly
               </Link>
               <Link
-                href="/faq"
+                href="/market-report"
                 className="inline-flex justify-center border border-paper/30 text-paper font-sans text-sm font-medium px-5 py-3 hover:bg-paper/10 transition-colors"
               >
-                Read the FAQ
+                Read {marketAsOf} market report
               </Link>
             </div>
             <p className="font-sans text-sm text-paper/60">

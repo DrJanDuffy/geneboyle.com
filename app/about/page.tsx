@@ -8,11 +8,12 @@ import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "About Dr. Gene Boyle | Irvine to Las Vegas Relocation",
+  title: "Meet Dr. Gene Boyle and Dr. Jan Duffy | Irvine to Las Vegas",
   description:
-    "Meet Dr. Gene Boyle (California DRE #02282581) — Irvine to Las Vegas relocation planning with Las Vegas partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "Meet Dr. Gene Boyle (California DRE #02282581) and Las Vegas partner Dr. Jan Duffy (S.0197614.LLC), BHHS Nevada Properties. Call (702) 222-1964.",
   keywords: [
     "Dr Gene Boyle",
     "Irvine to Las Vegas relocation",
@@ -83,11 +84,15 @@ export default function AboutPage() {
         <EditorialVisualHero
           image={getMarketingImage("about")}
           kicker={siteConfig.brandName}
-          title={`${agentInfo.name} —`}
-          accent="continuous relocation planning"
-          lede={`${agentInfo.licenseLabel}. Based at ${officeInfo.address.full}. Las Vegas partner ${agentInfo.partnerAgent.name} at ${officeInfo.lasVegasOffice.full}.`}
+          title="Meet Dr. Gene Boyle —"
+          accent="and Dr. Jan Duffy"
+          lede={answerFirst.about}
           ctas={[
-            { href: "/contact#schedule", label: "Schedule a consult", variant: "primary" },
+            {
+              href: "/contact#schedule",
+              label: "Meet the team and start a conversation",
+              variant: "primary",
+            },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,
@@ -100,21 +105,34 @@ export default function AboutPage() {
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">
-            <b>01</b> — Mission
+            <b>01</b> — Who
           </p>
-          <p className="font-display text-2xl md:text-4xl leading-snug text-ink max-w-4xl">
-            Help Irvine and Orange County households relocate to Las Vegas with
-            fewer handoffs, clearer timelines, and a single phone number.
+          <h2 className="font-display text-3xl md:text-4xl text-ink mb-4">
+            Who is Dr. Gene Boyle?
+          </h2>
+          <p className="text-lg leading-relaxed max-w-3xl mb-10">
+            {agentInfo.name} ({agentInfo.licenseLabel}) plans Irvine and Orange
+            County exits from {officeInfo.address.full} — sell timing, equity
+            math, and move logistics before you buy in Nevada.
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl text-ink mb-4">
+            Who is Dr. Jan Duffy?
+          </h2>
+          <p className="text-lg leading-relaxed max-w-3xl">
+            {agentInfo.partnerAgent.name} ({agentInfo.partnerAgent.license})
+            covers Las Vegas Valley tours, offers, and closing with Berkshire
+            Hathaway HomeServices Nevada Properties at{" "}
+            {officeInfo.lasVegasOffice.full}.
           </p>
         </section>
 
         <section className="bg-paper-2 py-16 mb-20">
           <div className="site-wrap">
             <p className="index-tag mb-4">
-              <b>02</b> — How we work
+              <b>02</b> — Partnership
             </p>
             <h2 className="font-display text-3xl text-ink mb-10">
-              The relocation loop
+              How does the partnership support a relocation?
             </h2>
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-10 border-t border-[var(--line-soft)] pt-12">
               {focus.map((item) => (
@@ -139,7 +157,7 @@ export default function AboutPage() {
           <p className="index-tag mb-4">
             <b>03</b> — NAP
           </p>
-          <h2 className="font-display text-3xl text-ink mb-6">Visit or call</h2>
+          <h2 className="font-display text-3xl text-ink mb-6">Where do we work?</h2>
           <div className="grid md:grid-cols-2 gap-10 max-w-4xl">
             <div>
               <h3 className="font-sans text-sm font-semibold text-ink mb-2">

@@ -9,6 +9,7 @@ import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
   title: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
@@ -88,11 +89,11 @@ export default function ContactPage() {
         <EditorialVisualHero
           image={getMarketingImage("contact")}
           kicker={siteConfig.fullName}
-          title="Contact —"
-          accent="start the relocation loop"
-          lede={`Planning an Irvine to Las Vegas move? Schedule on Calendly or call ${agentInfo.phoneFormatted}. Las Vegas partner support from ${agentInfo.partnerAgent.name}, BHHS Nevada Properties.`}
+          title="Plan Your Irvine-to-Las Vegas —"
+          accent="move"
+          lede={answerFirst.contact}
           ctas={[
-            { href: "#schedule", label: "Book a time", variant: "primary" },
+            { href: "#schedule", label: "Book a call", variant: "primary" },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,
@@ -108,17 +109,18 @@ export default function ContactPage() {
             <div className="lg:col-span-5 space-y-8">
               <div>
                 <p className="index-tag mb-3">
-                  <b>01</b> — Reach us
+                  <b>01</b> — Intake
                 </p>
                 <h2 className="font-display text-2xl text-ink mb-4">
-                  Get in touch
+                  What should I include in my first message?
                 </h2>
                 <p className="leading-relaxed mb-6">
-                  Whether you are buying, selling before you relocate, or
-                  exploring investment inventory, {agentInfo.name} (
-                  {agentInfo.licenseLabel}) coordinates California-side planning
-                  with Las Vegas partner {agentInfo.partnerAgent.name} (
-                  {agentInfo.partnerAgent.license}).
+                  Buying, selling, relocating, or second home; current city;
+                  target area; price band; approximate square feet; timing; and
+                  preferred call method. {agentInfo.name} (
+                  {agentInfo.licenseLabel}) coordinates with Las Vegas partner{" "}
+                  {agentInfo.partnerAgent.name} ({agentInfo.partnerAgent.license}
+                  ).
                 </p>
               </div>
 

@@ -103,36 +103,57 @@ export const marketingGuides = {
 
   relocation: {
     kicker: siteConfig.fullName,
-    title: "Irvine to Las Vegas —",
-    accent: "relocation without the scramble",
-    lede: `Plan the California sale and Nevada purchase as one sequence. ${agentInfo.name} + ${partnerLine}`,
+    title: "Irvine to Las Vegas Relocation —",
+    accent: "planned around your timeline",
+    lede: `California-to-Nevada relocation starts with a decision map: sell first, buy first, or coordinate both. ${agentInfo.name} + ${partnerLine}`,
     breadcrumbs: crumbs({ label: "Relocation" }),
-    ctas: [phoneCta, { href: "/buyers/california-relocator", label: "CA relocator guide", variant: "secondary" }],
-    statsTitle: "Why relocators look here",
+    ctas: [
+      phoneCta,
+      { href: "/contact#schedule", label: "Build my move plan", variant: "secondary" },
+    ],
+    statsTitle: "August 2026 Valley context",
     stats: [
-      { value: "$450K", label: "LV median" },
-      { value: "28", label: "Avg DOM" },
+      { value: "$480K", label: "SF median (Aug 6)" },
+      { value: "4.0", label: "Months supply" },
+      { value: "31", label: "Median DOM" },
       { value: "0%", label: "NV state income tax" },
-      { value: "2.1", label: "Months inventory" },
     ],
     sections: [
       {
         kind: "prose",
-        label: "The dual-market problem",
-        title: "Sell, buy, and land with one plan",
+        label: "01 — Answer",
+        title: "How do I move from California to Nevada?",
         paragraphs: [
-          `Moving from Orange County to the Las Vegas Valley means two contracts, two inspection windows, and often two sets of lenders. ${agentInfo.name} keeps the Irvine-side timeline honest while ${agentInfo.partnerAgent.name} runs Valley tours and offers.`,
-          "We filter by square footage, HOA amenity level, commute to Harry Reid Airport or the Strip, and named campuses you care about — not vague lifestyle claims.",
+          "Document the target price band, square-footage needs, commute, preferred amenities, financing, and travel schedule, then connect Irvine planning with Las Vegas tours.",
+          `Local articles describe California as a major origin market into Clark County — use migration as context, not a guaranteed lead volume. Call ${agentInfo.phoneFormatted} to map your sequence.`,
+        ],
+      },
+      {
+        kind: "prose",
+        label: "02 — Dual contracts",
+        title: "Can I sell in Irvine and buy in Las Vegas?",
+        paragraphs: [
+          `Yes — with a clear order of operations. ${agentInfo.name} keeps the California exit timeline honest while ${agentInfo.partnerAgent.name} runs Valley tours and offers so inspection windows and funding do not collide.`,
+          "Bridge financing, HELOC, or cash can support buy-first strategies; we model cash-flow risk before you write an offer.",
+        ],
+      },
+      {
+        kind: "prose",
+        label: "03 — Budget",
+        title: "What should I budget for a Las Vegas home?",
+        paragraphs: [
+          "August 6, 2026 Valley report: about $480,000 single-family median and $290,000 condo/townhome median, with 4.0 months of supply and 31 median days on market.",
+          "Submarkets diverge — Summerlin, Henderson, and Green Valley medians differ by period and definition — so we price your shortlist with live comps, not a valley-wide slogan.",
         ],
       },
       {
         kind: "steps",
-        label: "Process",
-        title: "Relocation in four moves",
+        label: "04 — Handoff",
+        title: "How does the local handoff work?",
         steps: [
           {
-            title: "Scope",
-            body: "Budget, preferred villages (Summerlin, Henderson, northwest corridors), and whether you need temporary housing.",
+            title: "Discovery",
+            body: "Budget, villages (Summerlin, Henderson, northwest corridors), and temporary housing needs.",
           },
           {
             title: "California exit",
@@ -148,16 +169,6 @@ export const marketingGuides = {
           },
         ],
       },
-      {
-        kind: "cards",
-        label: "Common paths",
-        title: "Where relocators usually start",
-        items: [
-          { title: "Summerlin", body: "Master-planned west Valley; Red Rock access; wide inventory band.", href: "/neighborhoods/summerlin" },
-          { title: "Henderson", body: "Green Valley, Anthem, Inspirada — often stronger square-footage value.", href: "/neighborhoods/henderson" },
-          { title: "55+ options", body: "Sun City, Trilogy, and other age-qualified communities when that is the brief.", href: "/55-plus-communities" },
-        ],
-      },
     ],
     faqs: [
       {
@@ -170,7 +181,7 @@ export const marketingGuides = {
         answer: `Most relocators need one or two focused days with ${agentInfo.partnerAgent.name}. Call ${agentInfo.phoneFormatted} to schedule.`,
       },
     ],
-    ctaTitle: "Build your relocation timeline",
+    ctaTitle: "Build my move plan",
     ctaBody: `Call ${agentInfo.phoneFormatted}. We will sequence California and Nevada so neither side drifts.`,
     ctaHref: "/contact",
     ctaLabel: "Start relocation plan",
@@ -178,60 +189,84 @@ export const marketingGuides = {
 
   "market-report": {
     kicker: siteConfig.fullName,
-    title: "Las Vegas market report —",
-    accent: "January 2026 snapshot",
-    lede: `Medians, inventory, and days on market for offer strategy. Planning with ${agentInfo.name}; ${partnerLine}`,
+    title: "Las Vegas Housing Market Report —",
+    accent: "August 2026",
+    lede: `Dated Valley snapshot for offer and list strategy — not an evergreen paragraph. Planning with ${agentInfo.name}; ${partnerLine}`,
     breadcrumbs: crumbs({ label: "Market report" }),
-    ctas: [phoneCta, { href: "/market-update", label: "Latest update", variant: "secondary" }],
-    statsTitle: "Valley at a glance",
+    ctas: [
+      phoneCta,
+      { href: "/contact", label: "Request an interpretation", variant: "secondary" },
+    ],
+    statsTitle: "Valley at a glance | Aug 6, 2026 report",
     stats: [
-      { value: "$450K", label: "Las Vegas median" },
-      { value: "+4.2%", label: "YoY price" },
-      { value: "28", label: "Avg DOM" },
-      { value: "2.1", label: "Months supply" },
+      { value: "$480K", label: "SF median" },
+      { value: "$290K", label: "Condo/TH median" },
+      { value: "7,442", label: "Active SF listings" },
+      { value: "4.0", label: "Months supply" },
     ],
     sections: [
       {
         kind: "prose",
-        label: "Context",
-        title: "What the numbers mean for your offer",
+        label: "01 — Prices",
+        title: "What happened to Las Vegas prices in August 2026?",
         paragraphs: [
-          "January 2026 data shows a market that rewards accurate pricing and clean terms more than frantic multiple-offer theater. Buyers have more room to negotiate inspection and closing credits when inventory sits past two weeks.",
-          "Henderson median ~$485K (about +5.1% YoY, ~24 DOM). Summerlin median ~$625K (about +6.8% YoY, ~22 DOM). Luxury product still averages longer days on market — price per square foot and condition matter more than list date.",
+          "The August 6, 2026 local report states a $480,000 single-family median, $290,000 condo/townhome median, 31 median days on market, 2,150 pending sales, and 2,587 closed sales.",
+          "Treat these as a dated headline benchmark. Sold price and list price are different series — we confirm definition before you act on a number.",
+        ],
+      },
+      {
+        kind: "prose",
+        label: "02 — Inventory",
+        title: "How much inventory and supply are available?",
+        paragraphs: [
+          "Same August 6 report: 7,442 active single-family listings and about 4.0 months of supply. A separate August MLS scan counted 11,878 listings across single-family, condominium, and townhome inventory — label property type when you cite either figure.",
+          "More selection does not mean every seller must discount; well-presented, accurately priced homes still move.",
+        ],
+      },
+      {
+        kind: "prose",
+        label: "03 — Negotiation",
+        title: "Do buyers have negotiating leverage?",
+        paragraphs: [
+          "An August 9 analysis of July results reported about 3.6 months of supply at July month-end, 43.4% of active listings with price cuts, and a median reduction of $18,900.",
+          "The August 6 report also notes 57.5% of completed sales closed below asking. Use that for careful comparison — not a blanket assumption every listing will cut price.",
         ],
       },
       {
         kind: "cards",
-        label: "Segments",
-        title: "Read the market by price band",
+        label: "04 — Submarkets",
+        title: "What changed in Henderson, Summerlin, and Green Valley?",
         items: [
           {
-            title: "Entry to mid",
-            body: "Competition softens when comps show stale listings; use DOM and price cuts in your strategy.",
+            title: "Summerlin",
+            body: "June snapshot: ~$537,500 median sold, ~1,465 active SF, ~4.5 months supply, 35 median days. August village panel is a separate list-price series (~$686K median list).",
+            href: "/neighborhoods/summerlin",
           },
           {
-            title: "Summerlin / Henderson",
-            body: "Master-planned stock moves faster when priced to recent closed sales, not aspirational list history.",
+            title: "Henderson",
+            body: "Local 2026 report: ~$540,000 SF median, ~2.3 months supply, 35 days. Redfin trailing period ending May 2026: ~$490,000 and 57 days — label both if shown together.",
+            href: "/neighborhoods/henderson",
           },
           {
-            title: "Luxury ($1M+)",
-            body: "Median near $1.2M; ~45 DOM typical. Discretion, staging, and realistic $/sq ft win over vanity pricing.",
+            title: "Green Valley",
+            body: "July 2026 SF report: ~$596,000 median sold (+3.2% YoY), 28 median DOM, 61 homes sold. Source did not state active inventory — do not invent it.",
+            href: "/neighborhoods/green-valley",
           },
         ],
       },
     ],
     faqs: [
       {
-        question: "Is it a buyer’s or seller’s market?",
+        question: "Is it a buyer’s or seller’s market in August 2026?",
         answer:
-          "Mixed. Well-priced homes under ~30 DOM still attract traffic; overpriced listings linger. We pull live comps before every offer or list.",
+          "More balanced than the peak years: roughly 4 months of supply and widespread price reductions on active inventory, while clean, well-priced homes still sell. Strategy depends on the competing set for your address.",
       },
       {
         question: "How often is this updated?",
-        answer: `We refresh the public snapshot periodically and pull live MLS for your address. Call ${agentInfo.phoneFormatted} for a property-specific read.`,
+        answer: `We refresh the public snapshot monthly and pull live MLS for your address. Call ${agentInfo.phoneFormatted} for a property-specific read.`,
       },
     ],
-    ctaTitle: "Get a property-level brief",
+    ctaTitle: "Get the next report or request an interpretation",
     ctaBody: `Call ${agentInfo.phoneFormatted} — we will pull comps for your buy or sell target.`,
     ctaHref: "/contact",
     ctaLabel: "Request analysis",

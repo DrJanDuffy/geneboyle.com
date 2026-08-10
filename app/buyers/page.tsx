@@ -8,11 +8,12 @@ import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst, buyerLeverageJuly } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "Home Buying Guide Las Vegas | Irvine Relocation | Dr. Gene Boyle",
+  title: "Buy a Las Vegas Home with a Clear Plan | Dr. Gene Boyle",
   description:
-    "Buy a home in Las Vegas with Irvine-to-Las Vegas relocation planning from Dr. Gene Boyle and Las Vegas partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "August 2026 Las Vegas buyer guide: negotiating room, price bands, and Irvine-to-Las Vegas relocation planning with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
   keywords: [
     "buy home Las Vegas",
     "Las Vegas home buyer",
@@ -89,12 +90,12 @@ export default function BuyersPage() {
         <EditorialVisualHero
           image={getMarketingImage("buyers")}
           kicker={siteConfig.fullName}
-          title="Buy in Las Vegas —"
-          accent="with a relocation plan"
-          lede={`Irvine-side planning with ${agentInfo.name}; local tours and offers with partner ${agentInfo.partnerAgent.name}. Call ${agentInfo.phoneFormatted}.`}
+          title="Buy a Las Vegas Home —"
+          accent="with a clear plan"
+          lede={answerFirst.buyers}
           ctas={[
-            { href: "/listings", label: "Search homes", variant: "primary" },
-            { href: "/contact#schedule", label: "Book a consult", variant: "secondary" },
+            { href: "/contact", label: "Send my home criteria", variant: "primary" },
+            { href: "/listings", label: "Search homes", variant: "secondary" },
           ]}
         />
 
@@ -102,10 +103,31 @@ export default function BuyersPage() {
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">
-            <b>01</b> — The process
+            <b>01</b> — August 2026
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl text-ink mb-4 max-w-2xl">
+            How much do Las Vegas homes cost in August 2026?
+          </h2>
+          <p className="max-w-prose text-lg mb-10 leading-relaxed">
+            Valley single-family median near $480,000 (Aug 6 report) with about
+            4.0 months of supply. Submarkets differ — Summerlin, Henderson, and
+            Green Valley each need their own dated panel before you write.
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl text-ink mb-4 max-w-2xl">
+            Where do buyers have negotiating room?
+          </h2>
+          <p className="max-w-prose text-lg mb-10 leading-relaxed">
+            July/August scan: {buyerLeverageJuly.monthsSupplyJuly} months supply
+            at July month-end, {buyerLeverageJuly.priceCutShare} of active
+            listings with price cuts, median reduction{" "}
+            {buyerLeverageJuly.medianReduction}. Match homes by price, square
+            feet, commute, amenities, HOA, and condition.
+          </p>
+          <p className="index-tag mb-4">
+            <b>02</b> — Process
           </p>
           <h2 className="font-display text-3xl md:text-4xl text-ink mb-10 max-w-2xl">
-            Five steps from search to keys
+            What happens after an offer?
           </h2>
           <div className="max-w-3xl border-t border-[var(--line)]">
             {buyingSteps.map((step, i) => (
@@ -131,7 +153,7 @@ export default function BuyersPage() {
               <b>02</b> — Paths
             </p>
             <h2 className="font-display text-3xl text-ink mb-10">
-              Choose your entry point
+              How do I compare homes by size, price, and commute?
             </h2>
             <div className="grid md:grid-cols-3 gap-10 border-t border-[var(--line-soft)] pt-12">
               {paths.map((path) => (

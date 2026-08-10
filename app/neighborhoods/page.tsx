@@ -10,11 +10,12 @@ import EditorialCta from "@/components/editorial/EditorialCta";
 import { neighborhoodGuideList } from "@/lib/guides/neighborhoods";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "Las Vegas Neighborhoods | Irvine Relocation | Dr. Gene Boyle",
+  title: "Compare Las Vegas Areas by Amenities, Commute, and Home Type | Dr. Gene Boyle",
   description:
-    "Explore Las Vegas and Henderson neighborhoods for Irvine-to-Las Vegas relocation with Dr. Gene Boyle and partner Dr. Jan Duffy. Call (702) 222-1964.",
+    "Compare Summerlin, Henderson, Green Valley, and more by commute, amenities, square footage, and dated price bands. Call (702) 222-1964.",
   keywords: [
     "Las Vegas neighborhoods",
     "Henderson communities",
@@ -31,11 +32,11 @@ export default function NeighborhoodsIndexPage() {
         <EditorialVisualHero
           image={getMarketingImage("neighborhoods")}
           kicker={siteConfig.fullName}
-          title="Neighborhoods —"
-          accent="where relocators look first"
-          lede={`Summerlin, Henderson, Green Valley, The Ridges, and more. Filter by square footage, commute, amenities, and price — not protected-class proxies. Call ${agentInfo.phoneFormatted}.`}
+          title="Compare Las Vegas Areas —"
+          accent="by amenities, commute, and home type"
+          lede={answerFirst.neighborhoods}
           ctas={[
-            { href: "/listings", label: "Search homes", variant: "primary" },
+            { href: "/neighborhoods/summerlin", label: "Compare three areas", variant: "primary" },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,
@@ -46,7 +47,11 @@ export default function NeighborhoodsIndexPage() {
 
         <EditorialMediaBand image={getSectionImage("areas")} />
 
-        <EditorialSection index="01" label="Areas" title="Valley shortlist">
+        <EditorialSection
+          index="01"
+          label="Areas"
+          title="Which Las Vegas area fits my budget and commute?"
+        >
           <div className="border-t border-[var(--line)]">
             {neighborhoodGuideList.map((n, i) => (
               <Link
@@ -73,8 +78,21 @@ export default function NeighborhoodsIndexPage() {
           </div>
         </EditorialSection>
 
+        <EditorialSection
+          index="02"
+          label="Method"
+          title="How can I compare areas without subjective labels?"
+          tone="muted"
+        >
+          <p className="max-w-prose text-lg leading-relaxed">
+            Use commute times, amenities, home format, square footage, HOA
+            context, and source-dated price bands. Skip “best” or lifestyle
+            slogans — those do not help you choose a street.
+          </p>
+        </EditorialSection>
+
         <EditorialCta
-          title="Pick two areas, then tour"
+          title="Compare three areas, then tour"
           body="We sequence Irvine sell timing with Las Vegas showings — one phone number for the loop."
         />
 

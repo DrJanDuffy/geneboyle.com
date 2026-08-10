@@ -8,6 +8,7 @@ import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
   title:
@@ -136,16 +137,16 @@ export default function HomeValuationPage() {
         <EditorialVisualHero
           image={getMarketingImage("home-valuation")}
           kicker={siteConfig.fullName}
-          title="What's the home worth —"
-          accent="before you relocate"
-          lede={`Free valuation conversation for a home you may sell on the way from Irvine to Las Vegas. Call ${agentInfo.phoneFormatted}. Las Vegas partner support from ${agentInfo.partnerAgent.name}.`}
+          title="What Is Your Las Vegas Home Worth —"
+          accent="in August 2026?"
+          lede={answerFirst.valuation}
           breadcrumbs={[
             { label: "Home", href: "/" },
             { label: "Sellers", href: "/sellers" },
             { label: "Home valuation" },
           ]}
           ctas={[
-            { href: "#schedule", label: "Schedule valuation", variant: "primary" },
+            { href: "#schedule", label: "Request my valuation", variant: "primary" },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,
@@ -163,7 +164,7 @@ export default function HomeValuationPage() {
                 <b>01</b> — Calendly
               </p>
               <h2 className="font-display text-2xl md:text-3xl text-ink mb-3">
-                Schedule your free valuation
+                What information do you need for a valuation?
               </h2>
               <p className="mb-8 max-w-prose">
                 No obligation. Confirmations come from Calendly.

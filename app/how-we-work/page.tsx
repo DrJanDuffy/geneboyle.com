@@ -18,11 +18,12 @@ import {
   Bot,
   Shield,
 } from "lucide-react";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "How We Work | Tools for Irvine to Las Vegas Relocation | Dr. Gene Boyle",
+  title: "A Two-Market Real Estate Process | Irvine to Las Vegas | Dr. Gene Boyle",
   description:
-    "Use RealScout MLS search, Calendly scheduling, AI relocation chat, home valuation, market reports, and Google Business details on geneboyle.com. Call (702) 222-1964.",
+    "Cross-state workflow from first call to closing: Irvine planning, Las Vegas tours, offers, and settlement with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
   keywords: [
     "Irvine to Las Vegas relocation tools",
     "RealScout Las Vegas",
@@ -123,12 +124,12 @@ export default function HowWeWorkPage() {
         <EditorialVisualHero
           image={getMarketingImage("how-we-work")}
           kicker={siteConfig.fullName}
-          title="How we work —"
-          accent="tools on this site"
-          lede={`MLS search, Calendly, AI answers, valuation, market data, and Google Business details for Irvine-to-Las Vegas relocation. Call ${agentInfo.phoneFormatted}.`}
+          title="A Two-Market Process —"
+          accent="for California-to-Nevada moves"
+          lede={answerFirst.howWeWork}
           ctas={[
-            { href: "/listings", label: "Search homes", variant: "primary" },
-            { href: "#schedule", label: "Book a time", variant: "secondary" },
+            { href: "#schedule", label: "See the process and book a call", variant: "primary" },
+            { href: "/listings", label: "Search homes", variant: "secondary" },
           ]}
         />
 
@@ -136,30 +137,33 @@ export default function HowWeWorkPage() {
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">
-            <b>00</b> — The approach
+            <b>00</b> — Workflow
           </p>
           <h2 className="font-display text-3xl md:text-4xl text-ink mb-4 max-w-2xl">
-            Automating the relocation loop.
+            What happens from the first call to closing?
           </h2>
           <p className="max-w-prose text-lg mb-10">
-            {agentInfo.name} ({agentInfo.licenseLabel}) runs California-side
-            planning from {officeInfo.address.full}. {agentInfo.partnerAgent.name}{" "}
-            ({agentInfo.partnerAgent.license}) and BHHS Nevada Properties cover
-            Las Vegas showings, offers, and closing logistics.
+            Discovery call → Irvine-side timing and sale planning → Las Vegas
+            area and home search → tours → offer strategy → inspections →
+            appraisal → closing coordination. Each stage has an owner, next
+            step, and deliverable.
           </p>
+          <h2 className="font-display text-2xl md:text-3xl text-ink mb-6 max-w-2xl">
+            How do Irvine and Las Vegas partners coordinate?
+          </h2>
           <div className="grid md:grid-cols-3 gap-10 border-t border-[var(--line-soft)] pt-12">
             {[
               {
-                title: "Start with the search",
-                body: "RealScout listings and saved searches keep inventory in one loop.",
+                title: "California owner",
+                body: `${agentInfo.name} (${agentInfo.licenseLabel}) from ${officeInfo.address.full}.`,
               },
               {
-                title: "Act as your first customer",
-                body: "We use the same Calendly + CRM path we recommend to clients.",
+                title: "Nevada owner",
+                body: `${agentInfo.partnerAgent.name} (${agentInfo.partnerAgent.license}) — tours, offers, settlement.`,
               },
               {
-                title: "Close the loop in Nevada",
-                body: "Local partner coverage for tours, negotiations, and settlement.",
+                title: "Shared timeline",
+                body: "One phone number and one checklist so sell/buy dates do not drift.",
               },
             ].map((step) => (
               <div key={step.title}>

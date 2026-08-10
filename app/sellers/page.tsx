@@ -8,11 +8,12 @@ import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import { answerFirst, valleyAugust6 } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "Sell Your Home | Irvine to Las Vegas Relocation | Dr. Gene Boyle",
+  title: "Sell Your Las Vegas Home with Evidence | Dr. Gene Boyle",
   description:
-    "Sell before you relocate from Irvine to Las Vegas. Free valuation, listing strategy, and partner coverage with Dr. Gene Boyle and Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "August 2026 seller guide: comps, days on market, and listing strategy for Irvine-to-Las Vegas moves with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
   keywords: [
     "sell home Las Vegas",
     "sell home Irvine before relocation",
@@ -108,11 +109,11 @@ export default function SellersPage() {
         <EditorialVisualHero
           image={getMarketingImage("sellers")}
           kicker={siteConfig.fullName}
-          title="Sell with a plan —"
-          accent="then relocate"
-          lede={`Free valuation and listing strategy for sellers relocating from Irvine to Las Vegas. Call ${agentInfo.phoneFormatted}.`}
+          title="Sell Your Las Vegas Home —"
+          accent="with evidence, not guesswork"
+          lede={answerFirst.sellers}
           ctas={[
-            { href: "/home-valuation", label: "Start valuation", variant: "primary" },
+            { href: "/home-valuation", label: "Request a pricing review", variant: "primary" },
             { href: "/contact#schedule", label: "Book a consult", variant: "secondary" },
           ]}
         />
@@ -121,11 +122,27 @@ export default function SellersPage() {
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">
-            <b>01</b> — Why this path
+            <b>01</b> — Pricing
           </p>
-          <h2 className="font-display text-3xl md:text-4xl text-ink mb-10 max-w-2xl">
-            Seller support that closes the relocation loop
+          <h2 className="font-display text-3xl md:text-4xl text-ink mb-4 max-w-2xl">
+            What is my home worth in today&apos;s market?
           </h2>
+          <p className="max-w-prose text-lg mb-10 leading-relaxed">
+            Start with the competing set: recent closed sales, active
+            competition, and condition. Valley single-family median{" "}
+            {valleyAugust6.medianSf} (Aug 6 report);{" "}
+            {valleyAugust6.closedBelowAskingPct} of completed sales closed below
+            asking — your net-proceeds range should reflect that reality.
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl text-ink mb-4 max-w-2xl">
+            How long may a well-priced home take to sell?
+          </h2>
+          <p className="max-w-prose text-lg mb-10 leading-relaxed">
+            Valley median days on market sit near {valleyAugust6.medianDom} in
+            the August 6 report — your address still depends on price, condition,
+            and competition. Well-priced homes move; overpriced listings absorb
+            the longer DOM.
+          </p>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-10 border-t border-[var(--line-soft)] pt-12">
             {benefits.map((b) => (
               <article key={b.title}>
@@ -144,7 +161,7 @@ export default function SellersPage() {
               <b>02</b> — Paths
             </p>
             <h2 className="font-display text-3xl text-ink mb-10">
-              Choose how to start
+              Which improvements matter before listing?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-t border-[var(--line-soft)] pt-12">
               {paths.map((path) => (

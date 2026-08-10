@@ -7,12 +7,20 @@ import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
+import {
+  answerFirst,
+  buyerLeverageJuly,
+  greenValleySnapshot,
+  hendersonSnapshot,
+  summerlinSnapshot,
+  valleyAugust6,
+} from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
   title:
-    "Las Vegas Homes for Sale | MLS Property Search | Dr. Gene Boyle",
+    "Las Vegas Homes for Sale by Price, Size, and Area | Dr. Gene Boyle",
   description:
-    "Browse Las Vegas and Henderson homes for sale with live MLS listings. Search by neighborhood, price, and features. Irvine to Las Vegas relocation with Dr. Gene Boyle. Call (702) 222-1964.",
+    "Search Las Vegas MLS by price, square feet, and area. August 2026 inventory context with Dr. Gene Boyle. Call (702) 222-1964.",
   keywords: [
     "Las Vegas homes for sale",
     "Henderson real estate",
@@ -62,25 +70,25 @@ const neighborhoods = [
   {
     name: "Summerlin",
     description:
-      "Master-planned community with Red Rock views, 150+ parks, and a wide range of square footage options.",
-    medianPrice: "$625,000",
-    daysOnMarket: 22,
+      "Master-planned west Valley villages — compare price band, square feet, amenities, and commute.",
+    medianPrice: summerlinSnapshot.juneMedianSold,
+    daysOnMarket: Number(summerlinSnapshot.juneMedianDom),
     href: "/neighborhoods/summerlin",
   },
   {
     name: "Henderson",
     description:
-      "Nevada’s second-largest city with varied inventory, golf amenities, and shorter airport-area commute options.",
-    medianPrice: "$485,000",
-    daysOnMarket: 24,
+      "Green Valley, Inspirada, Anthem, and more — source-labeled medians differ by period.",
+    medianPrice: hendersonSnapshot.localMedianSf,
+    daysOnMarket: Number(hendersonSnapshot.localDom),
     href: "/neighborhoods/henderson",
   },
   {
     name: "Green Valley",
     description:
-      "Henderson community with mature landscaping, golf courses, and mid-size single-family stock.",
-    medianPrice: "$520,000",
-    daysOnMarket: 26,
+      "Mature Henderson streets; July 2026 SF median sold — inventory not stated in that source.",
+    medianPrice: greenValleySnapshot.julyMedianSold,
+    daysOnMarket: Number(greenValleySnapshot.medianDom),
     href: "/neighborhoods/green-valley",
   },
   {
@@ -134,8 +142,8 @@ const buyingSteps = [
 
 const faqs = [
   {
-    q: "How competitive is the Las Vegas housing market in 2026?",
-    a: "About 2.1 months of inventory — a slight seller’s market. Well-priced homes in Summerlin and Henderson often see multiple offers in the first week. Pre-approval and local representation help.",
+    q: "How competitive is the Las Vegas housing market in August 2026?",
+    a: `About ${valleyAugust6.monthsSupply} months of single-family supply and ${valleyAugust6.activeSfListings} active SF listings in the Aug 6 report — more balanced than peak years. ${buyerLeverageJuly.priceCutShare} of active listings showed price cuts in the July/August scan. Pre-approval and local representation still help on well-priced homes.`,
   },
   {
     q: "What’s the best time of year to buy a home in Las Vegas?",
@@ -163,11 +171,11 @@ export default function ListingsPage() {
         <EditorialVisualHero
           image={getMarketingImage("listings")}
           kicker={siteConfig.fullName}
-          title="Las Vegas homes —"
-          accent="live MLS search"
-          lede={`Search Las Vegas, Henderson, and Summerlin inventory updated through RealScout. Irvine-to-Las Vegas relocation planning with ${agentInfo.name}; Las Vegas partner ${agentInfo.partnerAgent.name}.`}
+          title="Las Vegas Homes for Sale —"
+          accent="by price, size, and area"
+          lede={answerFirst.listings}
           ctas={[
-            { href: "#mls", label: "Jump to listings", variant: "primary" },
+            { href: "#mls", label: "Save a search or request a tour", variant: "primary" },
             {
               href: agentInfo.phoneTel,
               label: `Call ${agentInfo.phoneFormatted}`,

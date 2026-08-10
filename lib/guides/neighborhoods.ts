@@ -15,22 +15,22 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
   summerlin: {
     slug: "summerlin",
     name: "Summerlin",
-    title: "Summerlin homes —",
-    accent: "master-planned Valley living",
-    lede: `Red Rock views, 150+ parks, and a wide inventory band for Irvine relocators. Planning with ${agentInfo.name}; ${partnerLine}`,
+    title: "Summerlin Homes —",
+    accent: "villages, amenities, and August 2026 data",
+    lede: `Compare village, price band, square feet, amenities, and commute — not subjective labels. Planning with ${agentInfo.name}; ${partnerLine}`,
     breadcrumbs: [...crumbs("Summerlin", "summerlin")],
-    statsTitle: "Summerlin market | January 2026",
+    statsTitle: "Summerlin market | June 2026 sold snapshot",
     stats: [
-      { value: "$625K", label: "Median price" },
-      { value: "22", label: "Avg DOM" },
-      { value: "342", label: "Active listings" },
-      { value: "+6.8%", label: "YoY" },
+      { value: "$537.5K", label: "Median sold (Jun)" },
+      { value: "35", label: "Median DOM" },
+      { value: "1,465", label: "Active SF" },
+      { value: "4.5", label: "Months supply" },
     ],
-    overviewTitle: "Why relocators shortlist Summerlin",
+    overviewTitle: "What does Summerlin cost right now?",
     overview: [
-      "Summerlin spans roughly 22,500 acres on the western rim of the Las Vegas Valley, developed by The Howard Hughes Corporation since 1990. Distinct villages offer condos through custom estates with Red Rock Canyon minutes away.",
-      "Expect 150+ parks, 150+ miles of trails, multiple golf courses, and Downtown Summerlin retail. Commute to the Strip is often 15–25 minutes outside peak traffic.",
-      "Median pricing sits above valley averages for similar square footage — still a common value comparison for Orange County movers facing California coastal prices and state income tax.",
+      "June 2026 Summerlin snapshot: about $537,500 median sold price, 1,465 active single-family listings, roughly 4.5 months of supply, 35 median days, and about $327 per square foot.",
+      "An August update for all five villages shows about 1,240 active listings at a $686,000 median list price — a separate list-price series, not the June sold median. Label period and definition before you decide.",
+      "Summerlin spans roughly 22,500 acres on the western rim with villages from condos through custom estates, 150+ parks, trail miles, golf, and Downtown Summerlin retail. Strip commute is often 15–25 minutes outside peak traffic.",
     ],
     highlights: [
       {
@@ -91,24 +91,24 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
       {
         question: "What is the current median home price in Summerlin?",
         answer:
-          "As of January 2026, about $625,000 median, with luxury product in The Ridges and other guard-gated villages often above $2M.",
+          "June 2026 sold snapshot: about $537,500 median. An August village panel shows a higher median list price (~$686,000) — sold and list are different series. Luxury product in The Ridges and other guard-gated villages often runs well above the median.",
       },
       {
-        question: "How long do homes stay on the market?",
+        question: "How much inventory is available in Summerlin?",
         answer:
-          "Recent averages near 22 days on market — faster than the broader Valley average near 28 days. Pricing strategy still drives outcomes.",
+          "June snapshot: about 1,465 active single-family listings and roughly 4.5 months of supply. August village panel: about 1,240 active listings across five villages. We confirm live MLS before you tour.",
       },
       {
         question: "Who helps with Summerlin tours?",
         answer: `${agentInfo.name} plans the Irvine side; ${agentInfo.partnerAgent.name} covers Valley showings and offers. Call ${agentInfo.phoneFormatted}.`,
       },
     ],
-    ctaTitle: "Tour Summerlin with a relocation plan",
+    ctaTitle: "See Summerlin homes by village",
     ctaBody: `Map sell/buy timing, then book Valley tours. Call ${agentInfo.phoneFormatted}.`,
     meta: {
       title: "Summerlin Homes for Sale | Irvine to Las Vegas | Dr. Gene Boyle",
       description:
-        "Explore Summerlin real estate with Dr. Gene Boyle and partner Dr. Jan Duffy, BHHS Nevada Properties. Median ~$625K. Call (702) 222-1964.",
+        "Summerlin homes, villages, and June–August 2026 market data with Dr. Gene Boyle and partner Dr. Jan Duffy. Call (702) 222-1964.",
       keywords: [
         "Summerlin homes for sale",
         "Summerlin Las Vegas real estate",
@@ -128,22 +128,22 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
   henderson: {
     slug: "henderson",
     name: "Henderson",
-    title: "Henderson homes —",
-    accent: "Nevada’s second city",
-    lede: `Green Valley, Inspirada, Anthem, and Lake Las Vegas inventory for relocators comparing square footage and commute. ${partnerLine}`,
+    title: "Henderson Homes —",
+    accent: "price, commute, and amenities",
+    lede: `Compare Green Valley, Inspirada, Anthem, and Lake Las Vegas by square footage, commute, HOA, and price — with source-labeled market panels. ${partnerLine}`,
     breadcrumbs: [...crumbs("Henderson", "henderson")],
-    statsTitle: "Henderson market | January 2026",
+    statsTitle: "Henderson market | 2026 local report (labeled)",
     stats: [
-      { value: "$485K", label: "Median price" },
-      { value: "24", label: "Avg DOM" },
-      { value: "1,280", label: "Active listings" },
-      { value: "+5.1%", label: "YoY" },
+      { value: "$540K", label: "Local SF median" },
+      { value: "35", label: "Local DOM" },
+      { value: "2.3", label: "Months supply" },
+      { value: "$490K", label: "Redfin trail. median" },
     ],
-    overviewTitle: "Henderson at a glance",
+    overviewTitle: "What is the current Henderson housing market?",
     overview: [
-      "Henderson is Nevada’s second-largest city with a broad mix of single-family homes, townhomes, and golf-adjacent communities southeast of the Strip.",
-      "Relocators often compare Green Valley’s mature streets, Inspirada’s newer plans, and Anthem / Lake Las Vegas for amenity packages and HOA costs.",
-      "Airport and Henderson Executive Airport access, plus shopping at The District and Green Valley Ranch, keep daily logistics practical.",
+      "Henderson needs a source-labeled panel because datasets differ by period. A local 2026 report states about a $540,000 single-family median, roughly 2.3 months of supply, and 35 days on market.",
+      "Redfin’s trailing three months ending May 2026 report about $490,000 and 57 days. Show both only when clearly labeled — then compare price, size, commute, and amenities for the homes you will actually tour.",
+      "Henderson mixes single-family, townhomes, and golf-adjacent communities southeast of the Strip. Relocators often shortlist Green Valley, Inspirada, Anthem, and Lake Las Vegas for floor plans and HOA amenity packages.",
     ],
     highlights: [
       {
@@ -188,24 +188,24 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
       {
         question: "How does Henderson pricing compare to Summerlin?",
         answer:
-          "January 2026 medians: Henderson roughly $485K vs Summerlin ~$625K. Product mix and HOA amenities drive the gap more than city limits alone.",
+          "Labeled 2026 snapshots: Henderson local report ~$540K SF median; Summerlin June sold median ~$537.5K with a separate August list-price panel higher. Product mix, village, and HOA amenities drive gaps more than city limits alone — we pull live comps for your shortlist.",
       },
       {
-        question: "Is Henderson good for California relocators?",
+        question: "How much time do buyers have to compare homes?",
         answer:
-          "Many Irvine movers compare tax, square footage, and commute. We map those numbers to specific streets — not general slogans.",
+          "Local Henderson reporting near 35 days and Redfin’s trailing period near 57 days both point to more comparison time than peak years — still property-specific. Confirm with current MLS before you write.",
       },
       {
         question: "Who shows Henderson homes?",
         answer: `${agentInfo.partnerAgent.name} covers local tours; ${agentInfo.name} coordinates California-side timing. ${agentInfo.phoneFormatted}.`,
       },
     ],
-    ctaTitle: "Build a Henderson shortlist",
+    ctaTitle: "Compare Henderson homes",
     ctaBody: `Filter by price, square footage, and commute — then tour. Call ${agentInfo.phoneFormatted}.`,
     meta: {
       title: "Henderson Homes for Sale | Irvine Relocation | Dr. Gene Boyle",
       description:
-        "Henderson Nevada real estate for Irvine relocators with Dr. Gene Boyle and Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+        "Henderson homes by price, commute, and amenities with dated 2026 market panels. Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
       keywords: ["Henderson homes for sale", "Henderson NV real estate", "Green Valley homes", "Irvine to Henderson"],
     },
     geo: {
@@ -219,21 +219,22 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
   "green-valley": {
     slug: "green-valley",
     name: "Green Valley",
-    title: "Green Valley —",
-    accent: "mature Henderson streets",
-    lede: "Golf, The District retail, and mid-size single-family stock in Henderson for relocators who want established landscaping.",
+    title: "Green Valley Homes —",
+    accent: "amenities, commute, and market data",
+    lede: "July 2026 single-family report plus live listings — compare size, price band, and commute without inventing inventory figures the source did not publish.",
     breadcrumbs: [...crumbs("Green Valley", "green-valley")],
-    statsTitle: "Green Valley context | January 2026",
+    statsTitle: "Green Valley | July 2026 single-family report",
     stats: [
-      { value: "$520K", label: "Median price" },
-      { value: "26", label: "Avg DOM" },
-      { value: "+4.8%", label: "YoY" },
-      { value: "Henderson", label: "City" },
+      { value: "$596K", label: "Median sold" },
+      { value: "28", label: "Median DOM" },
+      { value: "+3.2%", label: "YoY" },
+      { value: "61", label: "Homes sold" },
     ],
-    overviewTitle: "Green Valley overview",
+    overviewTitle: "What is the Green Valley median price?",
     overview: [
-      "Green Valley is a long-developed Henderson community with mature trees, golf courses, and walkable retail at The District.",
-      "Inventory skews to existing single-family homes and townhomes rather than brand-new tracts — useful when you want larger lots or finished landscaping.",
+      "Green Valley’s July 2026 single-family report shows a $596,000 median sold price, up 3.2% year over year, 28 median days on market, and 61 homes sold.",
+      "That source does not state active inventory or months of supply — this page does not invent them. We layer live MLS listings for current selection.",
+      "Green Valley is a long-developed Henderson community with mature landscaping, golf, and The District retail. Compare Green Valley Ranch and nearby Inspirada using the same property type and period definitions.",
     ],
     highlights: [
       { title: "The District", body: "Shopping, dining, and events at Green Valley Ranch’s mixed-use core." },
@@ -243,21 +244,21 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ],
     faqs: [
       {
-        question: "How does Green Valley differ from Inspirada?",
+        question: "How does Green Valley differ from Green Valley Ranch?",
         answer:
-          "Green Valley is more mature with established landscaping; Inspirada skews newer floor plans and resort-style amenity packages. Compare HOA fees and square footage side by side.",
+          "Green Valley is the broader mature Henderson area; Green Valley Ranch refers to the resort/casino and adjacent mixed-use District. Compare specific streets, HOA docs, and square footage rather than the brand name alone.",
       },
       {
         question: "Who can tour Green Valley?",
         answer: `Call ${agentInfo.phoneFormatted}. ${agentInfo.partnerAgent.name} handles Valley showings.`,
       },
     ],
-    ctaTitle: "Tour Green Valley inventory",
+    ctaTitle: "See Green Valley homes",
     ctaBody: `Schedule a consult to align Irvine sale timing with Henderson tours. ${agentInfo.phoneFormatted}.`,
     meta: {
       title: "Green Valley Homes | Henderson NV | Dr. Gene Boyle",
       description:
-        "Green Valley Henderson homes for Irvine-to-Las Vegas relocators. Call (702) 222-1964.",
+        "Green Valley Henderson homes with July 2026 market data for Irvine-to-Las Vegas relocators. Call (702) 222-1964.",
       keywords: ["Green Valley Henderson homes", "Green Valley real estate", "Henderson NV"],
     },
     geo: {

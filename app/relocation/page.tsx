@@ -5,8 +5,9 @@ import { marketingGuides } from "@/lib/guides/marketing-pages";
 const guide = marketingGuides["relocation"];
 
 export const metadata: Metadata = {
-  title: 'Irvine to Las Vegas Relocation | Dr. Gene Boyle',
-  description: 'Plan an Irvine to Las Vegas move with Dr. Gene Boyle. Call (702) 222-1964.',
+  title: 'Irvine to Las Vegas Relocation Planned Around Your Timeline | Dr. Gene Boyle',
+  description:
+    'Sell in Irvine and buy in Las Vegas with one timeline — August 2026 market context and local partner handoff. Call (702) 222-1964.',
 };
 
 export default function Page() {

@@ -11,11 +11,12 @@ import EditorialCta from "@/components/editorial/EditorialCta";
 import { community55List } from "@/lib/guides/communities-55";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import { answerFirst } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = {
-  title: "55+ Communities Las Vegas | Irvine Relocation | Dr. Gene Boyle",
+  title: "55+ Communities in Las Vegas and Henderson | Dr. Gene Boyle",
   description:
-    "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more active-adult communities with Dr. Gene Boyle. Call (702) 222-1964.",
+    "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more by eligibility, amenities, HOA, and home format. Call (702) 222-1964.",
   keywords: [
     "55+ communities Las Vegas",
     "Sun City Summerlin",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "What does 55+ mean?",
+    question: "What age and residency rules apply?",
     answer:
       "These communities typically require at least one occupant to meet an age qualification (commonly 55+). Always verify current HOA rules before offering.",
   },
@@ -36,9 +37,9 @@ const faqs = [
       "Purchase and occupancy rules differ by community. Some restrict permanent under-age occupancy. We review governing documents with you.",
   },
   {
-    question: "Sun City vs Trilogy?",
+    question: "How do prices, HOA dues, and resale rules compare?",
     answer:
-      "Sun City communities are often larger resale Del Webb plans; Trilogy skews newer/resort-styled Shea product. Tour both if west Valley 55+ is the target.",
+      "Sun City communities are often larger resale Del Webb plans; Trilogy skews newer/resort-styled Shea product. Compare fee schedules, amenity access, and resale process side by side before you tour.",
   },
 ];
 
@@ -50,14 +51,18 @@ export default function FiftyFivePlusIndexPage() {
         <EditorialVisualHero
           image={getMarketingImage("55-plus-communities")}
           kicker={siteConfig.fullName}
-          title="55+ communities —"
-          accent="active adult loops"
-          lede={`Compare amenities, HOA fees, single-story inventory, and commute — then tour with partner ${agentInfo.partnerAgent.name}. Call ${agentInfo.phoneFormatted}.`}
+          title="55+ Communities —"
+          accent="in Las Vegas and Henderson"
+          lede={answerFirst.fiftyFive}
         />
 
         <EditorialMediaBand image={getSectionImage("areas")} />
 
-        <EditorialSection index="01" label="Communities" title="Active-adult shortlist">
+        <EditorialSection
+          index="01"
+          label="Communities"
+          title="Which 55+ communities are in Summerlin and Henderson?"
+        >
           <div className="border-t border-[var(--line)]">
             {community55List.map((c, i) => (
               <Link
@@ -82,7 +87,7 @@ export default function FiftyFivePlusIndexPage() {
         <EditorialSection
           index="02"
           label="Process"
-          title="How we compare 55+ options"
+          title="Which amenities and home formats are available?"
           tone="muted"
         >
           <div className="grid md:grid-cols-3 gap-10 border-t border-[var(--line-soft)] pt-12">
@@ -112,7 +117,7 @@ export default function FiftyFivePlusIndexPage() {
 
         <EditorialFaq faqs={faqs} index="03" title="55+ questions" />
         <EditorialCta
-          title="Shortlist two communities"
+          title="Compare 55+ communities"
           body="Book Calendly or call — we will map tours across Summerlin and Henderson 55+ options."
         />
         <RealScoutListings />
