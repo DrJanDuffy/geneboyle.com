@@ -1,7 +1,5 @@
 import { agentInfo } from "@/lib/site-config";
-
-const AGENT_ENCODED_ID =
-  process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ID?.trim() || "QWdlbnQtMjI1MDUw";
+import { getRealScoutAgentEncodedId } from "@/lib/realscout/agent-id";
 
 type RealScoutOfficeWidgetProps = {
   /** Minimum list price in USD. Defaults to 600000. */
@@ -21,6 +19,8 @@ export default function RealScoutOfficeWidget({
   title = "Homes above $600,000",
   lede = `Live Las Vegas Valley inventory from Dr. Jan Duffy’s BHHS Nevada office — filter and tour with ${agentInfo.name}. Call ${agentInfo.phoneFormatted}.`,
 }: RealScoutOfficeWidgetProps) {
+  const agentEncodedId = getRealScoutAgentEncodedId();
+
   return (
     <section
       className={`border-b border-[var(--line-soft)] bg-paper-2/40 py-14 md:py-16 ${className}`}
@@ -38,7 +38,7 @@ export default function RealScoutOfficeWidget({
           className="realscout-wrapper w-full"
           dangerouslySetInnerHTML={{
             __html: `<realscout-office-listings
-              agent-encoded-id="${AGENT_ENCODED_ID}"
+              agent-encoded-id="${agentEncodedId}"
               sort-order="NEWEST"
               listing-status="For Sale"
               property-types=",SFR,MF,TC"

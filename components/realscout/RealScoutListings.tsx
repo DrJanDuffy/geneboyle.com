@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { getRealScoutAgentEncodedId } from "@/lib/realscout/agent-id";
 
 export default function RealScoutListings() {
-  const realScoutAgentEncodedId =
-    process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ID?.trim() || "QWdlbnQtMjI1MDUw";
+  const realScoutAgentEncodedId = getRealScoutAgentEncodedId();
   const realScoutHomeSearchUrl =
     process.env.NEXT_PUBLIC_REALSCOUT_URL?.trim() ||
     "https://drjanduffy.realscout.com/";
