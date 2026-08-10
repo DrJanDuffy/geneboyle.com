@@ -1,3 +1,9 @@
+/**
+ * @deprecated Legacy heyberkshire.com GBP helpers — NOT wired into geneboyle.com pages.
+ * For geneboyle.com use `lib/schema.ts` + `lib/seo/guide-schema.ts` and CTA phone (702) 222-1964.
+ * Do not import this file into geneboyle routes without rewriting NAP.
+ */
+
 // Google Business Profile Schema Data
 // Supports GBP ranking factors: Relevance, Distance, Prominence
 
