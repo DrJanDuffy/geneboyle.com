@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
+import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 
 function resolveHost(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_HOST?.trim();
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body>
         <GlobalHeroBanner />
         {children}
+        <WebMCPProvider />
         <Analytics />
         {/* RealScout — load once, after hydration so it does not block LCP */}
         <Script

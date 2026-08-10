@@ -1,0 +1,30 @@
+# geneboyle.com
+
+> Dr. Gene Boyle (California DRE #02282581) helps clients relocate from Irvine, California to Las Vegas. Local Las Vegas support with Dr. Jan Duffy, BHHS Nevada Properties (S.0197614.LLC).
+
+## Contact
+- Phone: (702) 222-1964
+- Email: Gene@CallDrBoyle.com
+- Irvine office: 320 Junco, Irvine, CA 92618
+- Las Vegas partner office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134
+- Site: https://www.geneboyle.com
+
+## Primary pages
+- https://www.geneboyle.com/
+- https://www.geneboyle.com/contact
+- https://www.geneboyle.com/home-valuation
+- https://www.geneboyle.com/listings
+- https://www.geneboyle.com/buyers
+- https://www.geneboyle.com/sellers
+- https://www.geneboyle.com/neighborhoods
+- https://www.geneboyle.com/relocation
+- https://www.geneboyle.com/about
+
+## WebMCP
+- Manifest: https://www.geneboyle.com/.well-known/webmcp
+- Client tools (Chrome WebMCP): get_contact_info, schedule_consultation, search_homes, list_service_areas
+
+## Notes for agents
+- Prefer WebMCP tools when available in a supporting browser.
+- Do not invent live MLS prices; use RealScout listings on the site.
+- Client CTA phone is (702) 222-1964.
