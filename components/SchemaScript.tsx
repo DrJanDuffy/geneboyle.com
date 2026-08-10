@@ -8,6 +8,7 @@
  */
 
 import { combineSchemas, schemaToJsonLd } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo/site-url";
 
 interface SchemaScriptProps {
   /** Single schema object */
@@ -64,7 +65,7 @@ export function BreadcrumbSchema({
       name: item.name,
       item: item.url.startsWith("http")
         ? item.url
-        : `https://heyberkshire.com${item.url}`,
+        : absoluteUrl(item.url),
     })),
   };
 
@@ -118,8 +119,8 @@ export function ReviewSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://heyberkshire.com#organization",
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+    "@id": `${absoluteUrl("/")}#organization`,
+    name: "Dr. Gene Boyle — Irvine to Las Vegas Relocation",
   };
 
   if (aggregateRating) {
@@ -174,7 +175,7 @@ export function NeighborhoodSchema({
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Place",
-    "@id": `https://heyberkshire.com/neighborhoods/${slug}#place`,
+    "@id": `${absoluteUrl(`/neighborhoods/${slug}`)}#place`,
     name: `${name}, Las Vegas`,
     description,
     address: {

@@ -11,6 +11,8 @@ import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
@@ -78,13 +80,23 @@ const faqs = [
   },
 ] as const;
 
+const pageSchemas = buildHubPageSchema({
+  path: "/contact",
+  name: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
+  description: answerFirst.contact,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact" },
+  ],
+  faqs: faqs.map((f) => ({ question: f.q, answer: f.a })),
+  serviceName: "Irvine to Las Vegas relocation consultation",
+});
+
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
-      />
+      <SchemaScript schema={contactSchema} id="contact-page-type-schema" />
+      <SchemaScript schema={pageSchemas} id="contact-page-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

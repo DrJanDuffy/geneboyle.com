@@ -10,6 +10,8 @@ import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "What Is Your Las Vegas Home Worth in August 2026? | Dr. Gene Boyle",
@@ -25,44 +27,40 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 });
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How accurate are online home value estimates like Zillow's Zestimate?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Online estimates like Zillow's Zestimate can be off by 5-15% or more, especially where home features vary. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA from a local expert provides far more accurate pricing.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What factors affect my Las Vegas home's value?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Key factors include location and amenities, square footage, lot size, bedrooms and bathrooms, age, upgrades, pool, views, HOA fees, and current market conditions. In Las Vegas, solar panels, energy efficiency, and covered patios also impact value.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does a home valuation take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A comprehensive market analysis is typically available within 24-48 hours of receiving your property information, including recent comparable sales, current competition, and a recommended price range.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is a home valuation the same as an appraisal?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. A CMA is a real estate agent's estimate based on market data. An appraisal is a formal valuation by a licensed appraiser, typically required by lenders. CMAs are free and useful for listing decisions; appraisals cost roughly $400-600 and are required for financing.",
-      },
-    },
+const valuationFaqs = [
+  {
+    question: "How accurate are online home value estimates like Zillow's Zestimate?",
+    answer:
+      "Online estimates can be off by a wide band. They cannot account for upgrades, condition, views, or lot characteristics. A professional CMA uses local comps.",
+  },
+  {
+    question: "What factors affect my Las Vegas home's value?",
+    answer:
+      "Location and amenities, square footage, lot size, beds/baths, age, upgrades, pool, views, HOA fees, and current competing inventory. Confirm with comps for the address.",
+  },
+  {
+    question: "How long does a home valuation take?",
+    answer:
+      "A comprehensive market analysis is typically available within 24-48 hours of receiving property facts and timing.",
+  },
+  {
+    question: "Is a home valuation the same as an appraisal?",
+    answer:
+      "No. A CMA is an agent estimate based on market data. An appraisal is a formal lender valuation by a licensed appraiser.",
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/home-valuation",
+  name: "What Is Your Las Vegas Home Worth | Dr. Gene Boyle",
+  description: answerFirst.valuation,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Home valuation", url: "/home-valuation" },
   ],
-};
+  faqs: [...valuationFaqs],
+  serviceName: "Home valuation / CMA conversation",
+});
 
 const factors = [
   {
@@ -128,10 +126,7 @@ const faqs = [
 export default function HomeValuationPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <SchemaScript schema={pageSchemas} id="home-valuation-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

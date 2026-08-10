@@ -12,5 +12,5 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <MarketingGuidePage guide={guide} guideKey="why-berkshire-hathaway" />;
+  return <MarketingGuidePage guide={guide} guideKey="why-berkshire-hathaway" path="/why-berkshire-hathaway" />;
 }

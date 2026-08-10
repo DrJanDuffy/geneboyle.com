@@ -1,6 +1,6 @@
 /**
- * Schema.org Structured Data Generators for heyberkshire.com
- * Following Google's 2025 Structured Data Guidelines
+ * Schema.org Structured Data Generators for geneboyle.com
+ * Following Google's structured data guidelines (current as of 2026).
  *
  * @see https://schema.org
  * @see https://developers.google.com/search/docs/appearance/structured-data
@@ -48,13 +48,15 @@ export interface SeniorCommunityData {
   name: string;
   description: string;
   priceRange: string;
-  numberOfHomes: number;
+  /** Omit or 0 when count is UNKNOWN — do not invent. */
+  numberOfHomes?: number;
   yearBuilt?: string;
   amenities: CommunityAmenity[];
   latitude?: number;
   longitude?: number;
   hoaFees?: string;
   ageRestriction?: string;
+  addressLocality?: string;
 }
 
 // ============================================================================
@@ -63,13 +65,9 @@ export interface SeniorCommunityData {
 
 const BASE_URL = siteConfig.url;
 
-// Social media profiles (to be updated with actual URLs)
+/** Public profiles used in sameAs — keep only verified URLs. */
 export const socialProfiles = {
-  facebook: "https://www.facebook.com/heyberkshire",
-  instagram: "https://www.instagram.com/heyberkshire",
   linkedin: "https://www.linkedin.com/in/drjanduffy",
-  tiktok: "https://www.tiktok.com/@heyberkshire",
-  youtube: "https://www.youtube.com/@heyberkshire",
 };
 
 // ============================================================================
@@ -77,27 +75,28 @@ export const socialProfiles = {
 // ============================================================================
 
 /**
- * Generate RealEstateAgent schema (LocalBusiness subtype)
- * Used site-wide in the root layout
+ * Generate RealEstateAgent schema (LocalBusiness subtype) for geneboyle.com
+ * Primary entity: Dr. Gene Boyle; Las Vegas partner: Dr. Jan Duffy.
  */
 export function generateRealEstateAgentSchema() {
+  const lv = officeInfo.lasVegasOffice;
   return {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${BASE_URL}#organization`,
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+    name: `${agentInfo.name} — Irvine to Las Vegas Relocation`,
     alternateName: [
-      "HeyBerkshire",
-      "BHHS Nevada Properties",
-      "Berkshire Hathaway HomeServices",
+      siteConfig.fullName,
+      "geneboyle.com",
+      "BHHS Nevada Properties partner",
     ],
     url: BASE_URL,
     logo: `${BASE_URL}/images/agent/portrait.jpg`,
     image: `${BASE_URL}/images/agent/portrait.jpg`,
     description: siteConfig.description,
-    telephone: "+1-702-500-1942",
+    telephone: "+1-702-222-1964",
     email: agentInfo.email,
-    priceRange: "$385K - $10M+",
+    priceRange: "Confirm on MLS",
     address: {
       "@type": "PostalAddress",
       streetAddress: officeInfo.address.street,
@@ -111,7 +110,57 @@ export function generateRealEstateAgentSchema() {
       latitude: officeInfo.coordinates.lat,
       longitude: officeInfo.coordinates.lng,
     },
+    employee: [
+      {
+        "@type": "Person",
+        name: agentInfo.name,
+        jobTitle: agentInfo.title,
+        telephone: "+1-702-222-1964",
+        email: agentInfo.email,
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "Real Estate License",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "California Department of Real Estate",
+          },
+          identifier: agentInfo.license,
+        },
+      },
+      {
+        "@type": "Person",
+        name: agentInfo.partnerAgent.name,
+        jobTitle: "Las Vegas partner — BHHS Nevada Properties",
+        telephone: "+1-702-222-1964",
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "Real Estate License",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "Nevada Real Estate Division",
+          },
+          identifier: agentInfo.partnerAgent.license,
+        },
+        worksFor: {
+          "@type": "Organization",
+          name: "Berkshire Hathaway HomeServices Nevada Properties",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: lv.street,
+            addressLocality: lv.city,
+            addressRegion: lv.state,
+            postalCode: lv.zip,
+            addressCountry: "US",
+          },
+        },
+      },
+    ],
     areaServed: [
+      {
+        "@type": "City",
+        name: "Irvine",
+        sameAs: "https://en.wikipedia.org/wiki/Irvine,_California",
+      },
       {
         "@type": "City",
         name: "Las Vegas",
@@ -122,40 +171,26 @@ export function generateRealEstateAgentSchema() {
         name: "Henderson",
         sameAs: "https://en.wikipedia.org/wiki/Henderson,_Nevada",
       },
-      {
-        "@type": "Place",
-        name: "Summerlin",
-      },
-      {
-        "@type": "City",
-        name: "North Las Vegas",
-      },
-      {
-        "@type": "Place",
-        name: "Green Valley",
-      },
+      { "@type": "Place", name: "Summerlin" },
+      { "@type": "City", name: "North Las Vegas" },
+      { "@type": "Place", name: "Green Valley" },
     ],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
         opens: "08:00",
         closes: "20:00",
       },
     ],
-    hasCredential: {
-      "@type": "EducationalOccupationalCredential",
-      credentialCategory: "Real Estate License",
-      recognizedBy: {
-        "@type": "Organization",
-        name: "Nevada Real Estate Division",
-      },
-      validIn: {
-        "@type": "State",
-        name: "Nevada",
-      },
-      identifier: agentInfo.license,
-    },
     sameAs: Object.values(socialProfiles),
     parentOrganization: {
       "@type": "Organization",
@@ -166,7 +201,8 @@ export function generateRealEstateAgentSchema() {
         "@type": "Organization",
         name: "Berkshire Hathaway HomeServices",
         url: "https://www.bhhs.com",
-        sameAs: "https://en.wikipedia.org/wiki/Berkshire_Hathaway_HomeServices",
+        sameAs:
+          "https://en.wikipedia.org/wiki/Berkshire_Hathaway_HomeServices",
       },
     },
     aggregateRating: {
@@ -177,17 +213,17 @@ export function generateRealEstateAgentSchema() {
       worstRating: "1",
     },
     knowsAbout: [
+      "Irvine to Las Vegas relocation",
+      "California to Nevada relocation",
       "Las Vegas real estate",
       "Henderson homes",
       "Summerlin properties",
       "Luxury homes",
       "New construction",
       "Investment properties",
-      "Relocation services",
       "55+ communities",
-      "First-time homebuyers",
     ],
-    slogan: "Your Berkshire Hathaway HomeServices expert in Las Vegas",
+    slogan: siteConfig.tagline,
   };
 }
 
@@ -307,7 +343,7 @@ export function generateReviewSchema(reviews: ReviewItem[]) {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${BASE_URL}#organization`,
-    name: "Dr. Jan Duffy - Berkshire Hathaway HomeServices Nevada Properties",
+    name: `${agentInfo.name} — Irvine to Las Vegas Relocation`,
     aggregateRating: generateAggregateRatingSchema(
       agentStats.averageRating,
       agentStats.reviewCount
@@ -383,13 +419,15 @@ export function generateSeniorCommunitySchema(community: SeniorCommunityData) {
     description: community.description,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Henderson",
+      addressLocality: community.addressLocality || "Las Vegas",
       addressRegion: "NV",
       addressCountry: "US",
     },
-    numberOfAccommodationUnits: community.numberOfHomes,
-    petsAllowed: true,
   };
+
+  if (community.numberOfHomes && community.numberOfHomes > 0) {
+    schema.numberOfAccommodationUnits = community.numberOfHomes;
+  }
 
   if (community.latitude && community.longitude) {
     schema.geo = {

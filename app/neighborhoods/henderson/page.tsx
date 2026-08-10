@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import AreaGuidePage from "@/components/editorial/AreaGuidePage";
 import { neighborhoodGuides } from "@/lib/guides/neighborhoods";
-import {
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-  generateNeighborhoodSchema,
-  combineSchemas,
-} from "@/lib/schema";
+import { buildNeighborhoodGuideSchema } from "@/lib/seo/guide-schema";
 
 const guide = neighborhoodGuides["henderson"];
 
@@ -18,23 +13,7 @@ export const metadata: Metadata = buildPageMetadata({
   keywords: guide.meta.keywords,
 });
 
-const pageSchemas = combineSchemas(
-  generateBreadcrumbSchema(
-    guide.breadcrumbs.map((c) => ({
-      name: c.label,
-      url: c.href ?? `/neighborhoods/henderson`,
-    }))
-  ),
-  generateNeighborhoodSchema({
-    name: guide.name,
-    slug: guide.slug,
-    description: guide.geo?.description ?? guide.lede,
-    latitude: guide.geo?.latitude ?? 36.17,
-    longitude: guide.geo?.longitude ?? -115.14,
-    containedIn: guide.geo?.containedIn ?? "Las Vegas",
-  }),
-  generateFAQSchema(guide.faqs)
-);
+const pageSchemas = buildNeighborhoodGuideSchema(guide, "/neighborhoods/henderson");
 
 export default function Page() {
   return <AreaGuidePage guide={guide} schema={pageSchemas} />;

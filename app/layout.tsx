@@ -8,6 +8,7 @@ import Script from "next/script";
 import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 import AIChatWidget from "@/components/chat/AIChatWidget";
+import SitewideSchema from "@/components/seo/SitewideSchema";
 
 const display = Instrument_Serif({
   subsets: ["latin"],
@@ -119,6 +120,7 @@ export default function RootLayout({
       className={`${display.variable} ${serif.variable} ${sans.variable}`}
     >
       <body className="font-serif">
+        <SitewideSchema />
         <GlobalHeroBanner />
         {children}
         <WebMCPProvider />

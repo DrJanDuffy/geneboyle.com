@@ -91,4 +91,14 @@ export const answerFirst = {
   about: `Dr. Gene Boyle (California DRE #02282581) plans Irvine and Orange County exits. Dr. Jan Duffy (S.0197614.LLC) covers Las Vegas Valley tours, offers, and closing with Berkshire Hathaway HomeServices Nevada Properties. One client phone number for the loop: (702) 222-1964.`,
 
   fiftyFive: `Compare 55+ communities by eligibility rules, home formats, amenities, HOA questions, and resale process — not lifestyle slogans. Confirm age-residency requirements, fee schedules, and listing rules for Sun City Summerlin, Sun City Anthem, Trilogy, and peer communities before you tour.`,
+
+  services: `Irvine-to-Las Vegas services cover sell timing on the California side, Valley buyer representation, listing strategy, 55+ comparisons, and closing coordination with BHHS Nevada Properties. One client phone number keeps the loop clear: (702) 222-1964.`,
+
+  luxury: `Luxury searches filter by lot, view, finishes, guard-gated access, and square footage — not metro medians alone. Compare The Ridges, MacDonald Highlands, and Southern Highlands product with live MLS comps before you stretch on list price.`,
+
+  newConstruction: `Builder reps work for the builder. Independent buyer representation protects upgrades, incentives, contingencies, and appraisal gaps on new construction in Las Vegas and Henderson. Confirm lot premiums and HOA documents before reservation.`,
+
+  investment: `Investment math needs rent comps, HOA rental rules, vacancy assumptions, and hold period — not a single cap-rate headline. Pull current MLS rents and governing docs for each candidate address before you underwrite.`,
+
+  marketUpdate: `Use dated Valley figures, not evergreen claims. ${valleyAugust6.label}: ${valleyAugust6.medianSf} single-family median, ${valleyAugust6.activeSfListings} active SF listings, ${valleyAugust6.monthsSupply} months of supply, ${valleyAugust6.medianDom} median days on market. See /market-report for labeled submarket panels.`,
 } as const;

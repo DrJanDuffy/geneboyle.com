@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
+import SchemaScript from "@/components/SchemaScript";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -30,24 +32,6 @@ export const metadata: Metadata = buildPageMetadata({
     "Dr Gene Boyle listings",
   ],
 });
-
-const listingsSchema = {
-  "@context": "https://schema.org",
-  "@type": "RealEstateListing",
-  name: "Las Vegas MLS Property Listings",
-  description:
-    "Live MLS property listings for Las Vegas, Henderson, and Summerlin homes for sale",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: `${agentInfo.name} — Berkshire Hathaway HomeServices Nevada Properties partner`,
-    telephone: "+17022221964",
-  },
-  areaServed: [
-    { "@type": "City", name: "Las Vegas, NV" },
-    { "@type": "City", name: "Henderson, NV" },
-    { "@type": "City", name: "Summerlin, NV" },
-  ],
-};
 
 const popularSearches = [
   { name: "Summerlin homes", href: "/neighborhoods/summerlin", count: "1,200+" },
@@ -94,25 +78,25 @@ const neighborhoods = [
   {
     name: "Southern Highlands",
     description:
-      "Guard-gated community with championship golf and mountain views; higher median price band.",
-    medianPrice: "$750,000",
-    daysOnMarket: 32,
+      "Guard-gated community with championship golf and mountain views — confirm current median on MLS.",
+    medianPrice: "UNKNOWN",
+    daysOnMarket: 0,
     href: "/neighborhoods/southern-highlands",
   },
   {
     name: "North Las Vegas",
     description:
-      "Newer construction corridors and growing infrastructure at a lower median price point.",
-    medianPrice: "$385,000",
-    daysOnMarket: 18,
+      "Newer construction corridors and growing infrastructure — confirm current median on MLS.",
+    medianPrice: "UNKNOWN",
+    daysOnMarket: 0,
     href: "/neighborhoods/north-las-vegas",
   },
   {
     name: "Skye Canyon",
     description:
-      "Newer master-planned community with modern floor plans and mountain-access recreation nearby.",
-    medianPrice: "$550,000",
-    daysOnMarket: 20,
+      "Newer master-planned community with modern floor plans — confirm current median on MLS.",
+    medianPrice: "UNKNOWN",
+    daysOnMarket: 0,
     href: "/neighborhoods/skye-canyon",
   },
 ] as const;
@@ -159,13 +143,22 @@ const faqs = [
   },
 ] as const;
 
+const pageSchemas = buildHubPageSchema({
+  path: "/listings",
+  name: "Las Vegas Homes for Sale | Dr. Gene Boyle",
+  description: answerFirst.listings,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Listings", url: "/listings" },
+  ],
+  faqs: faqs.map((f) => ({ question: f.q, answer: f.a })),
+  serviceName: "Las Vegas MLS home search",
+});
+
 export default function ListingsPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(listingsSchema) }}
-      />
+      <SchemaScript schema={pageSchemas} id="listings-hub-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero
@@ -294,7 +287,9 @@ export default function ListingsPage() {
                 </h3>
                 <p className="text-sm leading-relaxed mb-4">{n.description}</p>
                 <p className="font-sans text-xs text-ink-muted">
-                  Median {n.medianPrice} · DOM {n.daysOnMarket} days
+                  {n.medianPrice === "UNKNOWN"
+                    ? "Median UNKNOWN — confirm on MLS"
+                    : `Median ${n.medianPrice} · DOM ${n.daysOnMarket} days`}
                 </p>
               </article>
             ))}

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
+import SchemaScript from "@/components/SchemaScript";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -25,18 +27,34 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 });
 
-const buyerSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Home Buying Services Las Vegas",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: `${agentInfo.name} — BHHS Nevada Properties partner`,
-    telephone: "+17022221964",
+const buyerFaqs = [
+  {
+    question: "Is now a good time to buy in Las Vegas?",
+    answer: answerFirst.buyers,
   },
-  areaServed: "Las Vegas, Henderson, Summerlin, Clark County NV",
-  serviceType: "Buyer Representation",
-};
+  {
+    question: "How do Irvine relocators start a Las Vegas search?",
+    answer:
+      "Document price band, square footage, commute, amenities, financing, and travel schedule, then sequence the California sale with Valley tours. Call (702) 222-1964.",
+  },
+  {
+    question: "Do I need a pre-approval before touring?",
+    answer:
+      "A pre-approval strengthens offers and clarifies budget. It is not required for an initial consult.",
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/buyers",
+  name: "Buy a Las Vegas Home with a Clear Plan | Dr. Gene Boyle",
+  description: answerFirst.buyers,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Buyers", url: "/buyers" },
+  ],
+  faqs: [...buyerFaqs],
+  serviceName: "Home buying services — Las Vegas Valley",
+});
 
 const buyingSteps = [
   {
@@ -82,10 +100,7 @@ const paths = [
 export default function BuyersPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(buyerSchema) }}
-      />
+      <SchemaScript schema={pageSchemas} id="buyers-hub-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

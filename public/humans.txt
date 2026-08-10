@@ -1,55 +1,37 @@
 # humanstxt.org
 
 /* TEAM */
-Agent: Dr. Jan Duffy
-License: S.0197614.LLC
-Site: https://heyberkshire.com
-Location: Las Vegas, Nevada, USA
-Phone: (702) 500-1942
+Agent: Dr. Gene Boyle
+License: California DRE #02282581
+Site: https://www.geneboyle.com
+Location: Irvine, California, USA (planning) / Las Vegas, Nevada, USA (partner coverage)
+Phone: (702) 222-1964
 
+Partner: Dr. Jan Duffy
+License: S.0197614.LLC
 Brokerage: Berkshire Hathaway HomeServices Nevada Properties
-Site: https://www.bhhs.com
+Partner office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134
 
 /* THANKS */
-Framework: Next.js 14
+Framework: Next.js 15
 Deployment: Vercel
-CDN: Cloudflare
-Analytics: Vercel Analytics, Google Analytics
-Monitoring: Sentry
-Security: Cloudflare Turnstile, Upstash Rate Limiting
-Testing: Vitest
-Fonts: Geist Sans
+CDN: Cloudflare (DNS only / gray cloud with Vercel)
+Analytics: Vercel Analytics
+Fonts: Instrument Serif, Source Serif 4, Manrope
 
 /* SITE */
-Last update: 2026-02-14
+Last update: 2026-08-10
 Language: English
 Doctype: HTML5
 Standards: W3C, WCAG 2.1, Fair Housing Act
 Components: React, TypeScript, Tailwind CSS
-IDE: Cursor / VS Code
+IDE: Cursor
 
 /* INTEGRATIONS */
-CRM: Follow Up Boss
+CRM: Follow Up Boss (native RealScout sync)
 IDX/MLS: RealScout
 Scheduling: Calendly
-AI: Claude 3.5 Sonnet (Anthropic)
-
-/* PERFORMANCE */
-Lighthouse Score: 95+
-Core Web Vitals: Optimized
-Image Formats: AVIF, WebP
-Cache Strategy: Edge caching + ISR
-Security Headers: CSP, HSTS, X-Frame-Options
-
-/* SECURITY */
-HTTPS: Enforced
-CAPTCHA: Cloudflare Turnstile
-Rate Limiting: Upstash Redis
-Error Tracking: Sentry
-Vulnerability Scanning: GitHub Actions + Snyk
 
 /* LEGAL */
 Equal Housing Opportunity
 Fair Housing Compliant
-GDPR Ready
-CCPA Compliant

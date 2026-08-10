@@ -1,5 +1,11 @@
 import type { MarketingGuide } from "@/lib/guides/marketing-types";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import {
+  answerFirst,
+  summerlinSnapshot,
+  hendersonSnapshot,
+  valleyAugust6,
+} from "@/lib/market/august-2026";
 
 const phoneCta = {
   href: agentInfo.phoneTel,
@@ -24,7 +30,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Real estate services —",
     accent: "Irvine planning, Las Vegas execution",
-    lede: `${agentInfo.name} coordinates California-to-Nevada moves; ${partnerLine} Call ${agentInfo.phoneFormatted}.`,
+    lede: answerFirst.services,
     ctas: [phoneCta, contactCta],
     sections: [
       {
@@ -105,7 +111,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Irvine to Las Vegas Relocation —",
     accent: "planned around your timeline",
-    lede: `California-to-Nevada relocation starts with a decision map: sell first, buy first, or coordinate both. ${agentInfo.name} + ${partnerLine}`,
+    lede: answerFirst.relocation,
     breadcrumbs: crumbs({ label: "Relocation" }),
     ctas: [
       phoneCta,
@@ -191,7 +197,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Las Vegas Housing Market Report —",
     accent: "August 2026",
-    lede: `Dated Valley snapshot for offer and list strategy — not an evergreen paragraph. Planning with ${agentInfo.name}; ${partnerLine}`,
+    lede: answerFirst.marketReport,
     breadcrumbs: crumbs({ label: "Market report" }),
     ctas: [
       phoneCta,
@@ -276,15 +282,15 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Market update —",
     accent: "what changed this cycle",
-    lede: `Short read on inventory, rates sensitivity, and relocator demand. ${agentInfo.name} · ${partnerLine}`,
+    lede: answerFirst.marketUpdate,
     breadcrumbs: crumbs({ label: "Market update" }),
-    ctas: [phoneCta],
-    statsTitle: "Quick signals",
+    ctas: [phoneCta, { href: "/market-report", label: "Full report", variant: "secondary" }],
+    statsTitle: "August 6, 2026 Valley single-family signals",
     stats: [
-      { value: "4,850", label: "Active LV listings" },
-      { value: "2,340", label: "Recent closed" },
-      { value: "28", label: "Avg DOM" },
-      { value: "+4.2%", label: "YoY median" },
+      { value: valleyAugust6.medianSf, label: "SF median" },
+      { value: valleyAugust6.activeSfListings, label: "Active SF listings" },
+      { value: valleyAugust6.monthsSupply, label: "Months of supply" },
+      { value: valleyAugust6.medianDom, label: "Median DOM" },
     ],
     sections: [
       {
@@ -292,7 +298,7 @@ export const marketingGuides = {
         label: "This cycle",
         title: "Inventory is up; urgency is selective",
         paragraphs: [
-          "Active listings near 4,850 give buyers options that did not exist in the peak frenzy years. That does not mean every seller must cut — it means list price must match the last 60–90 days of closes in the same product type.",
+          `The August 6, 2026 Valley report counted ${valleyAugust6.activeSfListings} active single-family listings and ${valleyAugust6.monthsSupply} months of supply. That does not mean every seller must cut — list price must match the last 60–90 days of closes in the same product type.`,
           `California relocators remain a steady demand slice, especially in Summerlin and Henderson square-footage bands that undercut coastal California for comparable interior space. Call ${agentInfo.phoneFormatted} to align your timing.`,
         ],
       },
@@ -337,15 +343,15 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Market insights —",
     accent: "patterns behind the headlines",
-    lede: `How relocators, investors, and luxury sellers should read the Valley. ${siteConfig.brandLine}.`,
+    lede: answerFirst.marketReport,
     breadcrumbs: crumbs({ label: "Market insights" }),
     ctas: [phoneCta, { href: "/market-report", label: "Full report", variant: "secondary" }],
-    statsTitle: "Benchmarks",
+    statsTitle: "Labeled submarket snapshots (not one metro average)",
     stats: [
-      { value: "$625K", label: "Summerlin median" },
-      { value: "$485K", label: "Henderson median" },
-      { value: "$1.2M", label: "Luxury median" },
-      { value: "$385", label: "Luxury $/sq ft" },
+      { value: summerlinSnapshot.juneMedianSold, label: "Summerlin June sold median" },
+      { value: hendersonSnapshot.localMedianSf, label: "Henderson local SF median" },
+      { value: valleyAugust6.medianSf, label: "Valley SF median (Aug 6)" },
+      { value: "MLS", label: "Luxury — confirm comps" },
     ],
     sections: [
       {
@@ -462,7 +468,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Luxury homes —",
     accent: "discretion and accurate $/sq ft",
-    lede: `The Ridges, MacDonald Highlands, Southern Highlands, and custom estates. ${agentInfo.name}; ${partnerLine}`,
+    lede: answerFirst.luxury,
     breadcrumbs: crumbs({ label: "Luxury homes" }),
     ctas: [phoneCta, { href: "/buyers/luxury-homes-las-vegas", label: "Luxury buyer guide", variant: "secondary" }],
     statsTitle: "Luxury band",
@@ -514,7 +520,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "Investment properties —",
     accent: "underwrite before you tour",
-    lede: `Rent comps, HOA rental rules, and hold math for Las Vegas and Henderson. ${partnerLine}`,
+    lede: answerFirst.investment,
     breadcrumbs: crumbs({ label: "Investment properties" }),
     ctas: [phoneCta, contactCta],
     sections: [
@@ -569,7 +575,7 @@ export const marketingGuides = {
     kicker: siteConfig.fullName,
     title: "New construction —",
     accent: "your advocate opposite the builder",
-    lede: `Builder reps work for the builder. Independent representation costs you nothing in many deals and protects upgrades and contingencies. ${agentInfo.name}; ${partnerLine}`,
+    lede: answerFirst.newConstruction,
     breadcrumbs: crumbs({ label: "New construction" }),
     ctas: [phoneCta, contactCta],
     sections: [
@@ -732,7 +738,7 @@ export const marketingGuides = {
     statsTitle: "Relocator benchmarks",
     stats: [
       { value: "$450K", label: "LV median" },
-      { value: "$625K", label: "Summerlin median" },
+      { value: summerlinSnapshot.juneMedianSold, label: "Summerlin June sold median" },
       { value: "0%", label: "NV state income tax" },
       { value: "28", label: "Avg DOM" },
     ],

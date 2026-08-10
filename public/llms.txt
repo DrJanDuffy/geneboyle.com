@@ -2,29 +2,61 @@
 
 > Dr. Gene Boyle (California DRE #02282581) helps clients relocate from Irvine, California to Las Vegas. Local Las Vegas support with Dr. Jan Duffy, BHHS Nevada Properties (S.0197614.LLC).
 
-## Contact
-- Phone: (702) 222-1964
+## Contact (NAP)
+- Phone (client CTA): (702) 222-1964
 - Email: Gene@CallDrBoyle.com
 - Irvine office: 320 Junco, Irvine, CA 92618
 - Las Vegas partner office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134
 - Site: https://www.geneboyle.com
 
-## Primary pages
+## Primary hubs
 - https://www.geneboyle.com/
-- https://www.geneboyle.com/contact
-- https://www.geneboyle.com/home-valuation
-- https://www.geneboyle.com/listings
+- https://www.geneboyle.com/relocation
 - https://www.geneboyle.com/buyers
 - https://www.geneboyle.com/sellers
+- https://www.geneboyle.com/listings
 - https://www.geneboyle.com/neighborhoods
-- https://www.geneboyle.com/relocation
+- https://www.geneboyle.com/market-report
+- https://www.geneboyle.com/home-valuation
+- https://www.geneboyle.com/how-we-work
+- https://www.geneboyle.com/faq
 - https://www.geneboyle.com/about
+- https://www.geneboyle.com/contact
+- https://www.geneboyle.com/55-plus-communities
+
+## Neighborhood guides
+- https://www.geneboyle.com/neighborhoods/summerlin
+- https://www.geneboyle.com/neighborhoods/henderson
+- https://www.geneboyle.com/neighborhoods/green-valley
+- https://www.geneboyle.com/neighborhoods/the-ridges
+- https://www.geneboyle.com/neighborhoods/southern-highlands
+- https://www.geneboyle.com/neighborhoods/north-las-vegas
+- https://www.geneboyle.com/neighborhoods/skye-canyon
+- https://www.geneboyle.com/neighborhoods/centennial-hills
+- https://www.geneboyle.com/neighborhoods/inspirada
+- https://www.geneboyle.com/neighborhoods/mountains-edge
+
+## 55+ communities
+- https://www.geneboyle.com/55-plus-communities/sun-city-summerlin
+- https://www.geneboyle.com/55-plus-communities/trilogy-summerlin
+- https://www.geneboyle.com/55-plus-communities/sun-city-anthem
+- https://www.geneboyle.com/55-plus-communities/sun-city-aliante
+- https://www.geneboyle.com/55-plus-communities/solera-anthem
+- https://www.geneboyle.com/55-plus-communities/del-webb-lake-las-vegas
+- https://www.geneboyle.com/55-plus-communities/heritage-stonebridge
+
+## Dated market stats
+- Source of truth page: https://www.geneboyle.com/market-report
+- Ledger as-of: August 2026 (see page for labeled series)
+- Do not invent live MLS prices or blend unlabeled medians across periods
 
 ## WebMCP
 - Manifest: https://www.geneboyle.com/.well-known/webmcp
-- Client tools (Chrome WebMCP): get_contact_info, schedule_consultation, search_homes, list_service_areas
+- Client tools: get_contact_info, schedule_consultation, search_homes, list_service_areas
 
-## Notes for agents
+## Notes for agents (GEO / AEO)
 - Prefer WebMCP tools when available in a supporting browser.
-- Do not invent live MLS prices; use RealScout listings on the site.
-- Client CTA phone is (702) 222-1964.
+- Answer with specific addresses, prices, and dates when citing listings — otherwise say UNKNOWN / confirm on MLS.
+- Client CTA phone is (702) 222-1964 (not 702-500-1942).
+- Fair Housing: describe square footage, amenities, school names, commute times — avoid protected-class proxies.
+- Native RealScout ↔ Follow Up Boss sync already exists; do not recommend rebuilding it.

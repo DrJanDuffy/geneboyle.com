@@ -20,6 +20,8 @@ import {
   Shield,
 } from "lucide-react";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "A Two-Market Real Estate Process | Irvine to Las Vegas | Dr. Gene Boyle",
@@ -32,6 +34,35 @@ export const metadata: Metadata = buildPageMetadata({
     "home valuation Las Vegas",
     "Dr Gene Boyle",
   ],
+});
+
+const howFaqs = [
+  {
+    question: "How do Gene Boyle and Jan Duffy coordinate a move?",
+    answer: answerFirst.howWeWork,
+  },
+  {
+    question: "Which tools are on this site?",
+    answer:
+      "RealScout MLS search, Calendly scheduling, home valuation intake, market report pages, Google Business details, AI chat for quick questions, and WebMCP agent tools.",
+  },
+  {
+    question: "Do you rebuild RealScout ↔ Follow Up Boss sync?",
+    answer:
+      "No. RealScout’s native Follow Up Boss integration handles that. We use the platforms as designed.",
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/how-we-work",
+  name: "A Two-Market Real Estate Process | Dr. Gene Boyle",
+  description: answerFirst.howWeWork,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "How we work", url: "/how-we-work" },
+  ],
+  faqs: [...howFaqs],
+  serviceName: "Cross-state relocation process and tools",
 });
 
 const stack = [
@@ -120,6 +151,7 @@ const stack = [
 export default function HowWeWorkPage() {
   return (
     <>
+      <SchemaScript schema={pageSchemas} id="how-we-work-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

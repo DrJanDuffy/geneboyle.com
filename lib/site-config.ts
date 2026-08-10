@@ -56,7 +56,10 @@ export const officeInfo = {
   phoneTel: "tel:+17022221964",
 };
 
-// Market Statistics (Updated January 2026)
+/**
+ * @deprecated Do not cite on public pages — January 2026 era figures.
+ * Use `lib/market/august-2026.ts` (or say UNKNOWN / confirm on MLS).
+ */
 export const marketStats = {
   lastUpdated: "January 2026",
   lasVegas: {

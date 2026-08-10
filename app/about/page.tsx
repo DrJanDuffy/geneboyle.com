@@ -10,6 +10,8 @@ import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Meet Dr. Gene Boyle and Dr. Jan Duffy | Irvine to Las Vegas",
@@ -22,6 +24,33 @@ export const metadata: Metadata = buildPageMetadata({
     "Las Vegas relocation realtor",
     "BHHS Nevada Properties partner",
   ],
+});
+
+const aboutFaqs = [
+  {
+    question: "Who is Dr. Gene Boyle?",
+    answer: answerFirst.about,
+  },
+  {
+    question: "Who handles Las Vegas tours?",
+    answer: `${agentInfo.partnerAgent.name} (${agentInfo.partnerAgent.license}) covers Valley tours, offers, and closing with Berkshire Hathaway HomeServices Nevada Properties.`,
+  },
+  {
+    question: "What phone number should clients use?",
+    answer: `Client CTA is ${agentInfo.phoneFormatted}. Email ${agentInfo.email}.`,
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/about",
+  name: "Meet Dr. Gene Boyle and Dr. Jan Duffy | Irvine to Las Vegas",
+  description: answerFirst.about,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ],
+  faqs: [...aboutFaqs],
+  serviceName: "Irvine to Las Vegas relocation partnership",
 });
 
 const personSchema = {
@@ -80,6 +109,7 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
+      <SchemaScript schema={pageSchemas} id="about-hub-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

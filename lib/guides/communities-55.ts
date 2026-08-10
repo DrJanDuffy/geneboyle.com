@@ -26,7 +26,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Summerlin", label: "Location" },
       { value: "Resale", label: "Primary inventory" },
     ],
-    overviewTitle: "About Sun City Summerlin",
+    overviewTitle: "What age rules and amenities define Sun City Summerlin?",
     overview: [
       "Sun City Summerlin is a large Del Webb active-adult community on the west side with multiple recreation centers and golf.",
       "Inventory is primarily resale single-story homes — useful for relocators prioritizing single-level living and HOA amenity packages.",
@@ -47,6 +47,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Can under-55 buyers purchase?",
         answer:
           "Rules vary and often restrict permanent occupancy. We review governing documents with you — do not assume exceptions.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Sun City Summerlin",
@@ -72,7 +78,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Resort", label: "Amenity style" },
       { value: "Summerlin", label: "Area" },
     ],
-    overviewTitle: "About Trilogy",
+    overviewTitle: "How does Trilogy at Summerlin compare with Sun City?",
     overview: [
       "Trilogy at Summerlin emphasizes resort-style amenities and newer active-adult floor plans compared with older Del Webb resale product.",
       "Compare HOA fees, lock-and-leave suitability, and square footage against Sun City Summerlin when both are on your shortlist.",
@@ -88,6 +94,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Trilogy vs Sun City Summerlin?",
         answer:
           "Trilogy often skews newer/resort-styled; Sun City is larger and more resale-heavy. Tour both if 55+ west Valley is the target.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Trilogy at Summerlin",
@@ -112,7 +124,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Golf", label: "On-site" },
       { value: "Del Webb", label: "Brand" },
     ],
-    overviewTitle: "About Sun City Anthem",
+    overviewTitle: "What should relocators compare at Sun City Anthem?",
     overview: [
       "Sun City Anthem is a major active-adult community in Henderson with golf, recreation centers, and extensive resale inventory.",
       "Often compared with Solera and Del Webb Lake Las Vegas for south-Valley 55+ options.",
@@ -128,6 +140,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Is Sun City Anthem only single-story?",
         answer:
           "Many homes are single-story, but verify the specific floor plan. Do not assume every listing is single-level.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Sun City Anthem",
@@ -152,7 +170,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Del Webb", label: "Brand" },
       { value: "Resale", label: "Inventory" },
     ],
-    overviewTitle: "About Sun City Aliante",
+    overviewTitle: "What defines Sun City Aliante for 55+ buyers?",
     overview: [
       "Sun City Aliante offers active-adult living in North Las Vegas with recreation amenities and generally lower price bands than Summerlin 55+ product.",
       "Compare airport and Strip drive times if you travel frequently.",
@@ -168,6 +186,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "How does Aliante compare to Summerlin 55+?",
         answer:
           "Location and price band differ most. Match amenities and commute to your routine rather than brand name alone.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Sun City Aliante",
@@ -192,7 +216,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Anthem", label: "Area" },
       { value: "Resale", label: "Inventory" },
     ],
-    overviewTitle: "About Solera",
+    overviewTitle: "What should buyers know about Solera at Anthem?",
     overview: [
       "Solera at Anthem is an active-adult community often compared with Sun City Anthem for Henderson 55+ living at a different amenity and price mix.",
     ],
@@ -207,6 +231,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Solera vs Sun City Anthem?",
         answer:
           "Different amenity scale and inventory mix. Tour both if Henderson 55+ is the target.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Solera at Anthem",
@@ -231,7 +261,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Henderson", label: "City" },
       { value: "Del Webb", label: "Brand" },
     ],
-    overviewTitle: "About Del Webb at Lake Las Vegas",
+    overviewTitle: "What should 55+ buyers compare at Del Webb at Lake Las Vegas?",
     overview: [
       "This Del Webb community sits near Lake Las Vegas with active-adult amenities and a distinct setting from west-side Summerlin 55+ options.",
     ],
@@ -246,6 +276,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Is this inside the Lake Las Vegas gates?",
         answer:
           "Access and gate rules depend on the specific parcel and association. We verify before showings.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Del Webb Lake Las Vegas",
@@ -270,7 +306,7 @@ export const community55Guides: Record<string, AreaGuide> = {
       { value: "Valley", label: "Location" },
       { value: "HOA", label: "Amenity review" },
     ],
-    overviewTitle: "About Heritage at Stonebridge",
+    overviewTitle: "What should relocators compare at Heritage Stonebridge?",
     overview: [
       "Heritage at Stonebridge is part of the Valley’s newer active-adult inventory set. Compare amenities, fees, and drive times against Sun City and Trilogy options.",
     ],
@@ -285,6 +321,12 @@ export const community55Guides: Record<string, AreaGuide> = {
         question: "Is Heritage still selling new?",
         answer:
           "Availability changes by phase. We check current builder and resale inventory when you are ready to tour.",
+      },
+
+      {
+        question: "How do I compare HOA fees without guessing?",
+        answer:
+          "Request current HOA documents and a fee schedule for the specific address. Amenity packages and special assessments vary by village — do not rely on a community-wide average.",
       },
     ],
     ctaTitle: "Tour Heritage at Stonebridge",

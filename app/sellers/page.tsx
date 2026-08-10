@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
+import SchemaScript from "@/components/SchemaScript";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -24,18 +26,34 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 });
 
-const sellerSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Home Selling Services",
-  provider: {
-    "@type": "RealEstateAgent",
-    name: `${agentInfo.name} — BHHS Nevada Properties partner`,
-    telephone: "+17022221964",
+const sellerFaqs = [
+  {
+    question: "How should I price a Las Vegas listing in August 2026?",
+    answer: answerFirst.sellers,
   },
-  areaServed: "Irvine CA, Las Vegas NV, Henderson NV, Summerlin NV",
-  serviceType: "Seller Representation",
-};
+  {
+    question: "Should I sell in Irvine before I buy in Las Vegas?",
+    answer:
+      "Sell-first, buy-first, and coordinated dual closes each have trade-offs. We map contingencies, temporary housing, and equity timing before you list.",
+  },
+  {
+    question: "Where do I start a valuation?",
+    answer:
+      "Use the home valuation page or call (702) 222-1964 with address, beds, baths, square feet, upgrades, and timing.",
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/sellers",
+  name: "Sell Your Las Vegas Home with Evidence | Dr. Gene Boyle",
+  description: answerFirst.sellers,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Sellers", url: "/sellers" },
+  ],
+  faqs: [...sellerFaqs],
+  serviceName: "Home selling services — Irvine and Las Vegas",
+});
 
 const benefits = [
   {
@@ -101,10 +119,7 @@ const steps = [
 export default function SellersPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(sellerSchema) }}
-      />
+      <SchemaScript schema={pageSchemas} id="sellers-hub-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

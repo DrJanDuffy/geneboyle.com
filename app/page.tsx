@@ -5,9 +5,11 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import { getHeroImage } from "@/lib/guides/media";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
-import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import { agentInfo, officeInfo } from "@/lib/site-config";
 import { answerFirst, marketAsOf, valleyAugust6 } from "@/lib/market/august-2026";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import SchemaScript from "@/components/SchemaScript";
+import { generateFAQSchema } from "@/lib/schema";
 
 export const revalidate = 3600;
 
@@ -76,54 +78,13 @@ export default function Home() {
   const config = getPageDomainConfig();
   const homeHero = getHeroImage("home");
 
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "@id": `${siteConfig.url}/#organization`,
-    name: `Dr. Gene Boyle - ${config.neighborhood}`,
-    url: siteConfig.url,
-    telephone: "+17022221964",
-    email: agentInfo.email,
-    description: siteConfig.description,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: officeInfo.address.street,
-      addressLocality: officeInfo.address.city,
-      addressRegion: officeInfo.address.state,
-      postalCode: officeInfo.address.zip,
-      addressCountry: "US",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "200",
-    },
-    knowsAbout: [
-      "Irvine to Las Vegas relocation",
-      "Las Vegas real estate",
-      "Henderson homes",
-      "Summerlin homes",
-    ],
-  };
-
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteConfig.url}/#website`,
-    url: siteConfig.url,
-    name: siteConfig.fullName,
-    description: siteConfig.description,
-    publisher: { "@id": `${siteConfig.url}/#organization` },
-  };
+  const homeFaqSchema = generateFAQSchema(
+    sections.map((s) => ({ question: s.h2, answer: s.body }))
+  );
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([organizationSchema, websiteSchema]),
-        }}
-      />
+      <SchemaScript schema={homeFaqSchema} id="home-faq-schema" />
       <Navbar />
       <main>
         <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-ink text-paper">

@@ -12,6 +12,9 @@ import { neighborhoodGuideList } from "@/lib/guides/neighborhoods";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
+import EditorialFaq from "@/components/editorial/EditorialFaq";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Compare Las Vegas Areas by Amenities, Commute, and Home Type | Dr. Gene Boyle",
@@ -25,9 +28,39 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 });
 
+const neighborhoodFaqs = [
+  {
+    question: "Which Las Vegas area fits my budget and commute?",
+    answer: answerFirst.neighborhoods,
+  },
+  {
+    question: "Should I start with Summerlin or Henderson?",
+    answer:
+      "Start with Summerlin, Henderson, and Green Valley for inventory breadth, then refine by square footage, commute, amenities, and HOA costs. Tour both west Valley and Henderson if your brief is open.",
+  },
+  {
+    question: "Are all neighborhood medians from the same report?",
+    answer:
+      "No. Summerlin, Henderson, and Green Valley use dated labeled series. Other areas show UNKNOWN until a verified local median is available — confirm on MLS.",
+  },
+] as const;
+
+const pageSchemas = buildHubPageSchema({
+  path: "/neighborhoods",
+  name: "Compare Las Vegas Areas | Dr. Gene Boyle",
+  description: answerFirst.neighborhoods,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Neighborhoods", url: "/neighborhoods" },
+  ],
+  faqs: [...neighborhoodFaqs],
+  serviceName: "Las Vegas neighborhood comparison for relocators",
+});
+
 export default function NeighborhoodsIndexPage() {
   return (
     <>
+      <SchemaScript schema={pageSchemas} id="neighborhoods-index-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero
@@ -91,6 +124,12 @@ export default function NeighborhoodsIndexPage() {
             slogans — those do not help you choose a street.
           </p>
         </EditorialSection>
+
+        <EditorialFaq
+          faqs={[...neighborhoodFaqs]}
+          index="03"
+          title="Neighborhood questions"
+        />
 
         <EditorialCta
           title="Compare three areas, then tour"

@@ -13,6 +13,8 @@ import { community55List } from "@/lib/guides/communities-55";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import { answerFirst } from "@/lib/market/august-2026";
+import SchemaScript from "@/components/SchemaScript";
+import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "55+ Communities in Las Vegas and Henderson | Dr. Gene Boyle",
@@ -44,9 +46,22 @@ const faqs = [
   },
 ];
 
+const pageSchemas = buildHubPageSchema({
+  path: "/55-plus-communities",
+  name: "55+ Communities in Las Vegas and Henderson | Dr. Gene Boyle",
+  description: answerFirst.fiftyFive,
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "55+ Communities", url: "/55-plus-communities" },
+  ],
+  faqs,
+  serviceName: "55+ community comparison for relocators",
+});
+
 export default function FiftyFivePlusIndexPage() {
   return (
     <>
+      <SchemaScript schema={pageSchemas} id="fifty-five-index-schema" />
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero

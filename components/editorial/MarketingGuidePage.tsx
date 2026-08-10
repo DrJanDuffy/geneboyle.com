@@ -1,6 +1,7 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
+import SchemaScript from "@/components/SchemaScript";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
@@ -10,25 +11,31 @@ import EditorialCta from "@/components/editorial/EditorialCta";
 import { siteConfig } from "@/lib/site-config";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import type { MarketingGuide } from "@/lib/guides/marketing-types";
+import { buildMarketingGuideSchema } from "@/lib/seo/guide-schema";
 
 type Props = {
   guide: MarketingGuide;
   guideKey: string;
+  /** Canonical path beginning with `/` — required for FAQ + Breadcrumb JSON-LD. */
+  path: string;
+  /** Optional override; defaults to auto-built FAQPage + Breadcrumb + WebPage + Service. */
   schema?: React.ReactNode;
 };
 
 export default function MarketingGuidePage({
   guide,
   guideKey,
+  path,
   schema,
 }: Props) {
   let sectionNum = 1;
   const nextIndex = () => String(sectionNum++).padStart(2, "0");
   const heroImage = getMarketingImage(guideKey);
+  const autoSchema = buildMarketingGuideSchema(guide, path);
 
   return (
     <>
-      {schema}
+      {schema ?? <SchemaScript schema={autoSchema} id={`${guideKey}-schema`} />}
       <Navbar />
       <main className="pb-16">
         <EditorialVisualHero
