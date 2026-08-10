@@ -4,6 +4,7 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import FAQSection from "@/components/sections/FAQSection";
+import ClientToolsSection from "@/components/sections/ClientToolsSection";
 import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import {
@@ -12,6 +13,7 @@ import {
   TrendingUp,
   Shield,
   Users,
+  Calendar,
 } from "lucide-react";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
@@ -256,6 +258,7 @@ export default function Home() {
         </section>
 
         <RealScoutListings />
+        <ClientToolsSection />
         <WhyChooseUs />
         <ReviewsSection />
 
@@ -280,15 +283,22 @@ export default function Home() {
                 Call 702-222-1964
               </a>
               <Link
-                href="/contact"
-                className="inline-block bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
+                href="/contact#schedule"
+                className="inline-flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
               >
-                Send a Message
+                <Calendar className="h-5 w-5 mr-2" />
+                Book on Calendly
+              </Link>
+              <Link
+                href="/home-valuation"
+                className="inline-flex items-center justify-center border border-white/40 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
+              >
+                Home valuation
               </Link>
             </div>
             <p className="mt-6 text-blue-200 text-sm">
-              Dr. Jan Duffy | License S.0197614.LLC | Berkshire Hathaway
-              HomeServices Nevada Properties
+              Dr. Gene Boyle · California DRE #02282581 · Las Vegas partner Dr.
+              Jan Duffy (S.0197614.LLC), BHHS Nevada Properties
             </p>
           </div>
         </section>

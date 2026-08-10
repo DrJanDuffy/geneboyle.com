@@ -16,7 +16,7 @@ export default function AIChatWidget() {
     {
       role: "assistant",
       content:
-        "Hello! I'm your real estate assistant. How can I help you find your dream home in Las Vegas or Henderson today?",
+        "Hi — I can help with Irvine-to-Las Vegas relocation questions, neighborhoods, and next steps. For a call, use (702) 222-1964 or book on the Contact page.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -80,7 +80,7 @@ export default function AIChatWidget() {
       const errorMessage: Message = {
         role: "assistant",
         content:
-          "I'm sorry, I'm having trouble connecting right now. Please try again or contact Dr. Jan Duffy directly at (702) 500-1942.",
+          "I'm sorry, I'm having trouble connecting right now. Please try again or call Dr. Gene Boyle at (702) 222-1964.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -181,7 +181,7 @@ export default function AIChatWidget() {
               </Button>
             </div>
             <p className="text-xs text-slate-500 mt-2 text-center">
-              Powered by AI • Contact: (702) 500-1942
+              Powered by AI • Call (702) 222-1964
             </p>
           </div>
         </div>
