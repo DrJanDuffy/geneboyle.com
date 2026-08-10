@@ -9,7 +9,11 @@ import { agentInfo, officeInfo } from "@/lib/site-config";
 import { answerFirst, marketAsOf, valleyAugust6 } from "@/lib/market/august-2026";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import SchemaScript from "@/components/SchemaScript";
-import { generateFAQSchema } from "@/lib/schema";
+import {
+  combineSchemas,
+  generateFAQSchema,
+  generateWebPageSchema,
+} from "@/lib/schema";
 import RealScoutOfficeWidget from "@/components/realscout/RealScoutOfficeWidget";
 
 export const revalidate = 3600;
@@ -79,13 +83,23 @@ export default function Home() {
   const config = getPageDomainConfig();
   const homeHero = getHeroImage("home");
 
-  const homeFaqSchema = generateFAQSchema(
-    sections.map((s) => ({ question: s.h2, answer: s.body }))
+  const homeSchemas = combineSchemas(
+    generateWebPageSchema({
+      name: "Irvine to Las Vegas Relocation | Dr. Gene Boyle",
+      description:
+        "Sell in Irvine and buy in Las Vegas with one coordinated timeline. Dr. Gene Boyle with partner Dr. Jan Duffy, BHHS Nevada Properties.",
+      url: "/",
+      datePublished: "2026-05-01",
+      dateModified: "2026-08-10",
+    }),
+    generateFAQSchema(
+      sections.map((s) => ({ question: s.h2, answer: s.body }))
+    )
   );
 
   return (
     <>
-      <SchemaScript schema={homeFaqSchema} id="home-faq-schema" />
+      <SchemaScript schema={homeSchemas} id="home-faq-schema" />
       <Navbar />
       <main>
         <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-ink text-paper">
@@ -160,6 +174,7 @@ export default function Home() {
             </div>
             <p className="mt-4 font-sans text-xs text-ink-muted max-w-3xl">
               {valleyAugust6.sourceNote} Not evergreen — verify before offers.
+              Last updated: August 2026.
             </p>
           </div>
         </section>

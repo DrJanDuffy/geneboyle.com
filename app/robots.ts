@@ -33,6 +33,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Google-Extended", allow: "/" },
       { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "Applebot-Extended", allow: "/" },
+      { userAgent: "Bingbot", allow: "/" },
     ],
     sitemap: absoluteUrl("/sitemap.xml"),
     host: siteUrl,
