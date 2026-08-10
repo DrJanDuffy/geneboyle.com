@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import SchemaScript from "@/components/SchemaScript";
@@ -18,7 +19,7 @@ type Props = {
   /** Canonical path beginning with `/` — required for FAQ + Breadcrumb JSON-LD. */
   path: string;
   /** Optional override; defaults to auto-built FAQPage + Breadcrumb + WebPage + Service. */
-  schema?: React.ReactNode;
+  schema?: ReactNode;
 };
 
 export default function MarketingGuidePage({
@@ -61,74 +62,145 @@ export default function MarketingGuidePage({
 
         {guide.sections.map((section, sectionIdx) => {
           const index = nextIndex();
-          const block =
-            section.kind === "prose" ? (
-              <EditorialSection
-                key={section.title}
-                index={index}
-                label={section.label}
-                title={section.title}
-                tone={section.tone}
-              >
-                <div className="max-w-prose space-y-5 text-lg leading-relaxed">
-                  {section.paragraphs.map((p) => (
-                    <p key={p.slice(0, 40)}>{p}</p>
-                  ))}
-                </div>
-              </EditorialSection>
-            ) : section.kind === "cards" ? (
-              <EditorialSection
-                key={section.title}
-                index={index}
-                label={section.label}
-                title={section.title}
-                tone={section.tone}
-              >
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 border-t border-[var(--line-soft)] pt-12">
-                  {section.items.map((item) => (
-                    <article key={item.title}>
-                      <h3 className="font-sans text-base font-semibold text-ink mb-2">
-                        {item.title}
+          let block: ReactNode;
+          switch (section.kind) {
+            case "prose":
+              block = (
+                <EditorialSection
+                  key={section.title}
+                  index={index}
+                  label={section.label}
+                  title={section.title}
+                  tone={section.tone}
+                >
+                  <div className="max-w-prose space-y-5 text-lg leading-relaxed">
+                    {section.paragraphs.map((p) => (
+                      <p key={p.slice(0, 40)}>{p}</p>
+                    ))}
+                  </div>
+                </EditorialSection>
+              );
+              break;
+            case "cards":
+              block = (
+                <EditorialSection
+                  key={section.title}
+                  index={index}
+                  label={section.label}
+                  title={section.title}
+                  tone={section.tone}
+                >
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 border-t border-[var(--line-soft)] pt-12">
+                    {section.items.map((item) => (
+                      <article key={item.title}>
+                        <h3 className="font-sans text-base font-semibold text-ink mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed">{item.body}</p>
+                        {item.href && (
+                          <a
+                            href={item.href}
+                            className="inline-flex mt-3 font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
+                          >
+                            Open →
+                          </a>
+                        )}
+                      </article>
+                    ))}
+                  </div>
+                </EditorialSection>
+              );
+              break;
+            case "steps":
+              block = (
+                <EditorialSection
+                  key={section.title}
+                  index={index}
+                  label={section.label}
+                  title={section.title}
+                  tone={section.tone}
+                >
+                  <div className="max-w-3xl border-t border-[var(--line)]">
+                    {section.steps.map((step, i) => (
+                      <div
+                        key={step.title}
+                        className="border-b border-[var(--line-soft)] py-6"
+                      >
+                        <p className="index-tag mb-2">
+                          <b>{String(i + 1).padStart(2, "0")}</b>
+                        </p>
+                        <h3 className="font-sans text-base font-semibold text-ink mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="leading-relaxed">{step.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </EditorialSection>
+              );
+              break;
+            case "local":
+              block = (
+                <EditorialSection
+                  key={section.title}
+                  index={index}
+                  label={section.label}
+                  title={section.title}
+                  tone={section.tone}
+                >
+                  <div className="grid lg:grid-cols-2 gap-10 border-t border-[var(--line)] pt-10">
+                    <div>
+                      <h3 className="font-sans text-sm font-semibold text-ink mb-3 uppercase tracking-[0.12em]">
+                        Hours
                       </h3>
-                      <p className="text-sm leading-relaxed">{item.body}</p>
-                      {item.href && (
-                        <a
-                          href={item.href}
-                          className="inline-flex mt-3 font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
-                        >
-                          Open →
-                        </a>
-                      )}
-                    </article>
-                  ))}
-                </div>
-              </EditorialSection>
-            ) : (
-              <EditorialSection
-                key={section.title}
-                index={index}
-                label={section.label}
-                title={section.title}
-                tone={section.tone}
-              >
-                <div className="max-w-3xl border-t border-[var(--line)]">
-                  {section.steps.map((step, i) => (
-                    <div
-                      key={step.title}
-                      className="border-b border-[var(--line-soft)] py-6"
-                    >
-                      <p className="index-tag mb-2">
-                        <b>{String(i + 1).padStart(2, "0")}</b>
-                      </p>
-                      <h3 className="font-sans text-base font-semibold text-ink mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="leading-relaxed">{step.body}</p>
+                      <ul className="space-y-2 text-sm text-ink-soft">
+                        {section.hours.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                      <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 font-sans text-sm">
+                        {section.actions.map((action) => (
+                          <a
+                            key={action.href}
+                            href={action.href}
+                            className="inline-flex justify-center border border-[var(--line)] px-4 py-2.5 text-ink hover:bg-ink hover:text-paper transition-colors"
+                            target={
+                              action.href.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              action.href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                          >
+                            {action.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </EditorialSection>
-            );
+                    <div className="overflow-hidden border border-[var(--line-soft)] bg-paper-2 min-h-[280px]">
+                      <iframe
+                        title={section.mapTitle}
+                        src={section.mapEmbedUrl}
+                        className="w-full h-full min-h-[280px]"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
+                </EditorialSection>
+              );
+              break;
+            default: {
+              const _exhaustive: never = section;
+              throw new Error(
+                `Unhandled marketing section kind: ${JSON.stringify(_exhaustive)}`
+              );
+            }
+          }
 
           return (
             <div key={section.title}>

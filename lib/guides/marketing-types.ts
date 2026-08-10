@@ -25,6 +25,16 @@ export type MarketingSection =
       title: string;
       steps: { title: string; body: string }[];
       tone?: "default" | "muted" | "ink";
+    }
+  | {
+      kind: "local";
+      label?: string;
+      title: string;
+      hours: string[];
+      mapEmbedUrl: string;
+      mapTitle: string;
+      actions: { href: string; label: string }[];
+      tone?: "default" | "muted" | "ink";
     };
 
 export type MarketingGuide = {

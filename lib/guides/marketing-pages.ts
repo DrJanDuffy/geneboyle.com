@@ -403,8 +403,8 @@ export const marketingGuides = {
   "google-business": {
     kicker: siteConfig.fullName,
     title: "Find us —",
-    accent: "NAP and how to reach the team",
-    lede: `${agentInfo.name} · ${agentInfo.licenseLabel}. Phone ${agentInfo.phoneFormatted}. Email ${agentInfo.email}.`,
+    accent: "NAP, hours, map, and reviews",
+    lede: `${agentInfo.name} · ${agentInfo.licenseLabel}. Phone ${agentInfo.phoneFormatted}. Email ${agentInfo.email}. Irvine planning office and Las Vegas partner office stay identical across Google Business Profile and this site.`,
     breadcrumbs: crumbs({ label: "Google Business / NAP" }),
     ctas: [phoneCta, { href: `mailto:${agentInfo.email}`, label: "Email", variant: "secondary" }],
     sections: [
@@ -424,6 +424,31 @@ export const marketingGuides = {
           {
             title: "Phone & email",
             body: `${agentInfo.phoneFormatted} · ${agentInfo.email}`,
+          },
+        ],
+      },
+      {
+        kind: "local",
+        label: "Visit",
+        title: "Hours, map pin, and local actions",
+        hours: [
+          "Monday–Sunday: 8:00 AM – 8:00 PM (Pacific)",
+          "Appointments preferred for Irvine planning and Las Vegas tours",
+          "Same client CTA phone on every channel: (702) 222-1964",
+        ],
+        mapEmbedUrl:
+          "https://www.google.com/maps?q=9406+W+Lake+Mead+Blvd+Suite+100+Las+Vegas+NV+89134&output=embed",
+        mapTitle:
+          "Map pin for Berkshire Hathaway HomeServices Nevada Properties — 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
+        actions: [
+          { href: agentInfo.phoneTel, label: "Call" },
+          {
+            href: "https://www.google.com/maps/dir/?api=1&destination=9406+W+Lake+Mead+Blvd+Suite+100+Las+Vegas+NV+89134",
+            label: "Directions",
+          },
+          {
+            href: "https://www.google.com/search?q=Dr.+Gene+Boyle+Irvine+to+Las+Vegas+relocation+reviews",
+            label: "View Google Reviews",
           },
         ],
       },
@@ -449,13 +474,17 @@ export const marketingGuides = {
     ],
     faqs: [
       {
-        question: "Which address should I put in my GPS for meetings?",
+        question: "Which address should I put in my GPS for meetings with Dr. Gene Boyle?",
         answer:
-          "Confirm when you book. Irvine planning: 320 Junco, Irvine, CA 92618. Las Vegas partner office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
+          "Confirm when you book. Irvine planning meetings use 320 Junco, Irvine, CA 92618. Las Vegas partner office meetings use 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134.",
       },
       {
-        question: "Is this the Google Business listing for reviews?",
-        answer: `Yes — keep Name, Address, and Phone identical to this page. Call ${agentInfo.phoneFormatted} if something looks wrong online.`,
+        question: "What are Dr. Gene Boyle’s business hours for Irvine-to-Las Vegas relocation?",
+        answer: `Dr. Gene Boyle’s client hours are Monday–Sunday 8:00 AM–8:00 PM Pacific. Call or text ${agentInfo.phoneFormatted} to book Irvine planning or Las Vegas tours.`,
+      },
+      {
+        question: "Is this the Google Business listing for Dr. Gene Boyle reviews?",
+        answer: `Yes — keep Name, Address, and Phone identical to this page (${agentInfo.phoneFormatted}; Irvine 320 Junco and Las Vegas partner 9406 W Lake Mead Blvd Suite 100). Call ${agentInfo.phoneFormatted} if something looks wrong online.`,
       },
     ],
     ctaTitle: "Save the NAP, then call",

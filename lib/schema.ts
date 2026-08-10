@@ -113,10 +113,19 @@ export function generateRealEstateAgentSchema() {
     employee: [
       {
         "@type": "Person",
+        "@id": `${BASE_URL}#person-gene-boyle`,
         name: agentInfo.name,
         jobTitle: agentInfo.title,
+        url: `${BASE_URL}/about`,
+        image: `${BASE_URL}/images/agent/portrait.jpg`,
         telephone: "+1-702-222-1964",
         email: agentInfo.email,
+        knowsAbout: [
+          "Irvine to Las Vegas relocation",
+          "California DRE sales",
+          "Orange County to Nevada moves",
+          "Cross-state closing coordination",
+        ],
         hasCredential: {
           "@type": "EducationalOccupationalCredential",
           credentialCategory: "Real Estate License",
@@ -129,9 +138,19 @@ export function generateRealEstateAgentSchema() {
       },
       {
         "@type": "Person",
+        "@id": `${BASE_URL}#person-jan-duffy`,
         name: agentInfo.partnerAgent.name,
         jobTitle: "Las Vegas partner — BHHS Nevada Properties",
+        url: `${BASE_URL}/about`,
         telephone: "+1-702-222-1964",
+        sameAs: Object.values(socialProfiles),
+        knowsAbout: [
+          "Las Vegas Valley real estate",
+          "Henderson homes",
+          "Summerlin properties",
+          "55+ communities",
+          "BHHS Nevada Properties buyer representation",
+        ],
         hasCredential: {
           "@type": "EducationalOccupationalCredential",
           credentialCategory: "Real Estate License",
