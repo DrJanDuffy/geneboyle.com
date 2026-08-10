@@ -1,205 +1,101 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          <div>
-            <h3 className="font-bold text-xl mb-4">{siteConfig.fullName}</h3>
-            <p className="text-slate-300 mb-4 text-sm">
-              Irvine to Las Vegas relocation planning with Las Vegas partner{" "}
+    <footer className="border-t border-[var(--line)] bg-paper-2">
+      <div className="site-wrap py-14 md:py-16">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12">
+          <div className="md:col-span-5">
+            <p className="font-display text-2xl text-ink tracking-tight">
+              {siteConfig.fullName}
+            </p>
+            <p className="kicker mt-2">Continuous relocation planning</p>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed">
+              Irvine to Las Vegas with Las Vegas partner{" "}
               {agentInfo.partnerAgent.name}, Berkshire Hathaway HomeServices
               Nevada Properties.
             </p>
           </div>
 
-          <div>
-            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+          <div className="md:col-span-3 font-sans text-sm">
+            <p className="text-ink-muted uppercase tracking-[0.14em] text-xs mb-4">
+              Explore
+            </p>
+            <ul className="space-y-2.5 text-ink-soft">
               <li>
-                <Link
-                  href="/listings"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Search homes (RealScout)
+                <Link href="/listings" className="hover:text-ink">
+                  Homes
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/how-we-work"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  How we work
+                <Link href="/how-we-work" className="hover:text-ink">
+                  Tools
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/home-valuation"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Home valuation
+                <Link href="/neighborhoods" className="hover:text-ink">
+                  Areas
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/neighborhoods"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Neighborhoods
+                <Link href="/home-valuation" className="hover:text-ink">
+                  Valuation
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/market-report"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Market report
+                <Link href="/google-business" className="hover:text-ink">
+                  Google Business
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/google-business"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Google Business Profile
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Contact / schedule
+                <Link href="/contact#schedule" className="hover:text-ink">
+                  Book a call
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-bold text-lg mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/buyers"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Home buying
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/buyers/california-relocator"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  California relocators
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sellers"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Home selling
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/relocation"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Relocation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/luxury-homes"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  Luxury homes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/55-plus-communities"
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  55+ communities
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-lg mb-4">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-300 text-sm">
-                  {officeInfo.address.full}
-                  <br />
-                  <span className="text-slate-400">
-                    LV partner: {officeInfo.lasVegasOffice.full}
-                  </span>
-                </span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
-                <Link
-                  href={agentInfo.phoneTel}
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                  aria-label={`Call ${agentInfo.name} at ${agentInfo.phoneFormatted}`}
-                >
-                  {agentInfo.phoneFormatted}
-                </Link>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-3 text-blue-400 flex-shrink-0" />
-                <Link
-                  href={`mailto:${agentInfo.email}`}
-                  className="text-slate-300 hover:text-white transition-colors text-sm"
-                >
-                  {agentInfo.email}
-                </Link>
-              </li>
-            </ul>
+          <div className="md:col-span-4 font-sans text-sm">
+            <p className="text-ink-muted uppercase tracking-[0.14em] text-xs mb-4">
+              Contact
+            </p>
+            <p className="text-ink-soft leading-relaxed">
+              {officeInfo.address.full}
+              <br />
+              <span className="text-ink-muted">
+                LV: {officeInfo.lasVegasOffice.full}
+              </span>
+            </p>
+            <p className="mt-4">
+              <a
+                href={agentInfo.phoneTel}
+                className="text-accent font-medium hover:text-accent-soft"
+              >
+                {agentInfo.phoneFormatted}
+              </a>
+            </p>
+            <p className="mt-2">
+              <a
+                href={`mailto:${agentInfo.email}`}
+                className="text-ink-soft hover:text-ink"
+              >
+                {agentInfo.email}
+              </a>
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm text-center md:text-left">
-              © {currentYear} {siteConfig.fullName}. Partner brokerage: Berkshire
-              Hathaway HomeServices Nevada Properties.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link
-                href="/faq"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                FAQ
-              </Link>
-              <Link
-                href="/how-we-work"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                Tools
-              </Link>
-              <Link
-                href="/sitemap.xml"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                Sitemap
-              </Link>
-            </div>
-          </div>
-          <p className="text-slate-500 text-xs mt-4 text-center">
-            {agentInfo.name} · {agentInfo.licenseLabel} · Partner{" "}
-            {agentInfo.partnerAgent.name} ({agentInfo.partnerAgent.license})
+        <div className="mt-12 pt-6 border-t border-[var(--line-soft)] flex flex-col md:flex-row md:items-center md:justify-between gap-3 font-sans text-xs text-ink-muted">
+          <p>
+            © {currentYear} {siteConfig.fullName}. Partner: BHHS Nevada
+            Properties.
+          </p>
+          <p>
+            {agentInfo.licenseLabel} · Partner {agentInfo.partnerAgent.name} (
+            {agentInfo.partnerAgent.license})
           </p>
         </div>
       </div>

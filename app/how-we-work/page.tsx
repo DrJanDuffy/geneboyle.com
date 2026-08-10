@@ -117,42 +117,40 @@ export default function HowWeWorkPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 pb-16">
-        <section className="container mx-auto px-4 mb-16">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-3">
-            {siteConfig.fullName}
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 max-w-3xl">
-            How we work — tools on this site
+      <main className="pt-28 pb-16">
+        <section className="site-wrap mb-16">
+          <p className="index-tag mb-4">{siteConfig.fullName}</p>
+          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
+            How we work —{" "}
+            <em className="italic text-accent">tools on this site</em>
           </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mb-8">
-            Every major piece of the stack is available here for Irvine-to-Las
-            Vegas relocation: MLS search, scheduling, AI answers, valuation,
-            market data, and Google Business details. Call{" "}
+          <p className="text-xl max-w-prose mb-8">
+            MLS search, Calendly, AI answers, valuation, market data, and Google
+            Business details for Irvine-to-Las Vegas relocation. Call{" "}
             <a
               href={agentInfo.phoneTel}
-              className="font-semibold text-blue-700 hover:underline"
+              className="font-medium text-accent hover:underline"
             >
               {agentInfo.phoneFormatted}
             </a>
             .
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 font-sans text-sm">
             <Link
               href="/listings"
-              className="inline-flex bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-md font-semibold"
+              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
             >
               Search homes
             </Link>
             <Link
               href="#schedule"
-              className="inline-flex bg-slate-900 hover:bg-slate-800 text-white px-5 py-3 rounded-md font-semibold"
+              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
             >
               Book a time
             </Link>
             <a
               href={agentInfo.phoneTel}
-              className="inline-flex items-center gap-2 border border-slate-300 px-5 py-3 rounded-md font-semibold text-slate-800 hover:bg-slate-50"
+              className="inline-flex items-center gap-2 text-accent font-medium px-2 py-3"
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               {agentInfo.phoneFormatted}
@@ -160,74 +158,72 @@ export default function HowWeWorkPage() {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 mb-20">
-          <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-            {stack.map(({ id, icon: Icon, name, platform, summary, href, cta }) => (
+        <section className="site-wrap mb-20">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-14">
+            {stack.map(({ id, icon: Icon, name, platform, summary, href, cta }, i) => (
               <article
                 key={id}
                 id={id}
-                className="scroll-mt-28 border-t border-slate-200 pt-8"
+                className="scroll-mt-28 border-t border-[var(--line-soft)] pt-8"
               >
-                <div className="flex items-start gap-4">
-                  <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold text-slate-900 mb-1">{name}</h2>
-                    <p className="text-xs font-medium uppercase tracking-wide text-slate-500 mb-3">
-                      {platform}
-                    </p>
-                    <p className="text-slate-600 mb-4">{summary}</p>
-                    <Link
-                      href={href}
-                      className="text-sm font-semibold text-blue-700 hover:underline"
-                    >
-                      {cta}
-                    </Link>
-                  </div>
+                <p className="index-tag mb-3">
+                  <b>{String(i + 1).padStart(2, "0")}</b> — {platform}
+                </p>
+                <div className="flex items-start gap-3 mb-3">
+                  <Icon className="h-5 w-5 text-accent mt-1 shrink-0" aria-hidden="true" />
+                  <h2 className="font-display text-2xl text-ink">{name}</h2>
                 </div>
+                <p className="mb-4 leading-relaxed">{summary}</p>
+                <Link
+                  href={href}
+                  className="font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
+                >
+                  {cta}
+                </Link>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="schedule" className="scroll-mt-28 bg-slate-50 py-16 mb-16">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
-              Schedule with Calendly
+        <section id="schedule" className="scroll-mt-28 bg-paper-2 py-16 mb-16">
+          <div className="site-wrap max-w-4xl">
+            <p className="index-tag text-center mb-4">Calendly</p>
+            <h2 className="font-display text-3xl md:text-4xl text-ink mb-3 text-center">
+              Schedule a consultation
             </h2>
-            <p className="text-slate-600 text-center mb-8 max-w-2xl mx-auto">
-              Choose a consultation slot. You will get Calendly’s confirmation
-              email; follow-up continues in Follow Up Boss via native integrations.
+            <p className="text-center max-w-prose mx-auto mb-8">
+              Choose a slot. Confirmations come from Calendly; follow-up continues
+              in Follow Up Boss via native integrations.
             </p>
             <CalendlyWidget height="700px" />
           </div>
         </section>
 
-        <section className="container mx-auto px-4 mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
-            Featured listings (RealScout)
+        <section className="site-wrap mb-10 text-center">
+          <p className="index-tag mb-3">RealScout</p>
+          <h2 className="font-display text-3xl text-ink mb-3">
+            Featured listings
           </h2>
-          <p className="text-slate-600 text-center mb-8">
+          <p className="max-w-prose mx-auto mb-8">
             Live MLS data below. Attribution and MLS disclaimer appear with the
             widget.
           </p>
         </section>
         <RealScoutListings />
 
-        <section className="container mx-auto px-4 mt-16 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-3">Visit or call</h2>
-          <p className="text-slate-600 mb-2">{officeInfo.address.full}</p>
-          <p className="text-slate-600 mb-2">
+        <section className="site-wrap mt-16 text-center">
+          <h2 className="font-display text-2xl text-ink mb-3">Visit or call</h2>
+          <p className="mb-2">{officeInfo.address.full}</p>
+          <p className="mb-2">
             Las Vegas partner: {officeInfo.lasVegasOffice.full}
           </p>
-          <p className="text-slate-600 mb-6">
+          <p className="mb-6 text-sm">
             {agentInfo.name} · {agentInfo.licenseLabel} · Partner{" "}
             {agentInfo.partnerAgent.name} ({agentInfo.partnerAgent.license})
           </p>
           <Link
             href="/google-business"
-            className="inline-flex text-blue-700 font-semibold hover:underline"
+            className="font-sans text-sm font-medium text-accent hover:underline underline-offset-4"
           >
             Google Business Profile details
           </Link>

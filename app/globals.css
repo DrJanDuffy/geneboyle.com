@@ -2,19 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --paper: #eef1f4;
+  --paper-2: #e4e8ed;
+  --ink: #12161c;
+  --ink-soft: #3d4654;
+  --muted: #6b7380;
+  --line: rgba(18, 22, 28, 0.14);
+  --line-soft: rgba(18, 22, 28, 0.08);
+  --accent: #1f6b6b;
+  --pad: clamp(1.5rem, 5vw, 5.5rem);
+  --maxw: 1280px;
+  --col: 64ch;
+}
+
 @layer base {
-  a,
-  button {
-    @apply transition;
+  html {
+    scroll-behavior: smooth;
   }
 
-  a {
-    @apply text-emerald-500 underline hover:bg-emerald-100
-        outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-emerald-500;
+  body {
+    @apply bg-paper text-ink font-serif antialiased;
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 100% -10%,
+        rgba(31, 107, 107, 0.08),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 0% 100%,
+        rgba(18, 22, 28, 0.04),
+        transparent 50%
+      );
   }
 
   ::selection {
-    @apply bg-emerald-200 text-emerald-950;
+    background: var(--accent);
+    color: var(--paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance font-display font-normal tracking-tight;
+  }
+
+  p {
+    @apply text-pretty text-ink-soft;
+  }
+
+  a {
+    @apply outline-none transition-colors;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-paper;
   }
 
   label,
@@ -22,38 +66,75 @@
   b {
     @apply font-semibold;
   }
+}
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-balance;
+@layer components {
+  .site-wrap {
+    width: min(100% - 2 * var(--pad), var(--maxw));
+    margin-inline: auto;
   }
 
-  p {
-    @apply text-pretty;
+  .index-tag {
+    @apply font-sans text-[0.72rem] font-medium uppercase tracking-[0.14em] text-ink-muted;
+  }
+
+  .index-tag b {
+    @apply font-medium text-ink;
+  }
+
+  .kicker {
+    @apply font-sans text-[0.65rem] font-medium uppercase tracking-[0.28em] text-ink-muted;
+  }
+
+  .editorial-rule {
+    border: 0;
+    border-top: 1px solid var(--line);
+    @apply my-10;
+  }
+
+  .reveal {
+    animation: fade-up 0.7s ease-out both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.24s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scroll-pulse {
+    animation: none !important;
   }
 }
 
 /* ===== RealScout Widget Styling ===== */
-
-/* RealScout Simple Search - Desktop */
 realscout-simple-search {
-  --rs-ss-font-primary-color: #1e293b;
-  --rs-ss-searchbar-border-color: #e2e8f0;
-  --rs-ss-box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  --rs-ss-font-primary-color: #12161c;
+  --rs-ss-searchbar-border-color: rgba(18, 22, 28, 0.16);
+  --rs-ss-box-shadow: 0 12px 40px -12px rgba(18, 22, 28, 0.35);
   --rs-ss-widget-width: 600px !important;
-  --rs-ss-border-radius: 9999px;
-  --rs-ss-background-color: rgba(255, 255, 255, 0.95);
+  --rs-ss-border-radius: 2px;
+  --rs-ss-background-color: rgba(238, 241, 244, 0.96);
 }
 
-/* RealScout Office Listings */
 realscout-office-listings {
-  --rs-listing-divider-color: #2563eb;
+  --rs-listing-divider-color: #1f6b6b;
   width: 100%;
 }
 
-/* RealScout container wrapper */
 .realscout-wrapper {
   display: flex;
   justify-content: center;
@@ -62,7 +143,6 @@ realscout-office-listings {
   padding: 0 1rem;
 }
 
-/* Mobile Responsive: Tablet */
 @media (max-width: 768px) {
   realscout-simple-search {
     --rs-ss-widget-width: 100% !important;
@@ -74,14 +154,9 @@ realscout-office-listings {
   }
 }
 
-/* Mobile Responsive: Phone */
 @media (max-width: 480px) {
   realscout-simple-search {
     --rs-ss-widget-width: 100% !important;
     max-width: 100%;
-  }
-
-  .realscout-wrapper {
-    padding: 0 1rem;
   }
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
+import { Instrument_Serif, Source_Serif_4, Manrope } from "next/font/google";
 import "./globals.css";
 import { getDomainConfig } from "@/lib/domain-config";
 import { siteConfig } from "@/lib/site-config";
@@ -8,6 +8,29 @@ import Script from "next/script";
 import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 import AIChatWidget from "@/components/chat/AIChatWidget";
+
+const display = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const serif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const sans = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 function resolveHost(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_HOST?.trim();
@@ -71,25 +94,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
+    <html
+      lang="en"
+      className={`${display.variable} ${serif.variable} ${sans.variable}`}
+    >
       <head>
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="font-serif">
         <GlobalHeroBanner />
         {children}
         <WebMCPProvider />
         <AIChatWidget />
         <Analytics />
-        {/* Calendly — required for inline widgets on /contact, /home-valuation, /how-we-work */}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
           strategy="lazyOnload"
         />
-        {/* RealScout — load once, after hydration so it does not block LCP */}
         <Script
           src="https://em.realscout.com/dist/rs-loading.js"
           strategy="lazyOnload"

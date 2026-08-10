@@ -1,88 +1,66 @@
 import Image from "next/image";
-import Navbar from "@/components/layouts/Navbar";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import ReviewsSection from "@/components/sections/ReviewsSection";
-import FAQSection from "@/components/sections/FAQSection";
-import ClientToolsSection from "@/components/sections/ClientToolsSection";
-import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
-import {
-  Phone,
-  Home as HomeIcon,
-  TrendingUp,
-  Shield,
-  Users,
-  Calendar,
-} from "lucide-react";
+import Navbar from "@/components/layouts/Navbar";
+import Footer from "@/components/layouts/Footer";
+import RealScoutListings from "@/components/realscout/RealScoutListings";
+import ClientToolsSection from "@/components/sections/ClientToolsSection";
+import FAQSection from "@/components/sections/FAQSection";
+import ReviewsSection from "@/components/sections/ReviewsSection";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
+import { agentInfo, officeInfo } from "@/lib/site-config";
 
-// Maps pageType → human-readable FAQ section title/subtitle
+export const revalidate = 3600;
+
 const FAQ_SECTION_COPY: Record<string, { title: string; subtitle: string }> = {
   community: {
-    title: "Community Real Estate FAQ",
-    subtitle: "Common questions from buyers and sellers in this neighborhood",
+    title: "Community relocation FAQ",
+    subtitle: "Common questions before you choose a Las Vegas Valley area",
   },
   luxury: {
-    title: "Luxury Las Vegas Real Estate FAQ",
-    subtitle: "What high-end buyers and sellers ask Dr. Jan most",
+    title: "Luxury home FAQ",
+    subtitle: "What relocating buyers ask about higher-end inventory",
   },
   "55plus": {
-    title: "55+ Community FAQ",
-    subtitle: "Everything active-adult buyers need to know before moving",
+    title: "55+ community FAQ",
+    subtitle: "What active-adult buyers ask before touring",
   },
   search: {
-    title: "Las Vegas Home Search FAQ",
-    subtitle: "Straight answers from a 30-year Las Vegas market expert",
+    title: "Home search FAQ",
+    subtitle: "Straight answers for Irvine-to-Las Vegas movers",
   },
   lifestyle: {
     title: "Moving to Las Vegas FAQ",
-    subtitle: "What relocating buyers ask Dr. Jan most often",
+    subtitle: "What relocating buyers ask most often",
   },
   investment: {
-    title: "Las Vegas Investment Property FAQ",
-    subtitle: "Numbers, strategy, and market insight for investors",
+    title: "Investment property FAQ",
+    subtitle: "Process and market context for investors",
   },
 };
 
-// Static/ISR homepage — avoids headers()-forced dynamic rendering (no-store TTFB hit).
-export const revalidate = 3600;
-
 export default function Home() {
   const config = getPageDomainConfig();
-
-  // ── Domain-aware FAQs ────────────────────────────────────────────────────
   const faqs = getFaqsForDomain(config.pageType, config.domain);
   const faqCopy =
-    FAQ_SECTION_COPY[config.pageType] ?? FAQ_SECTION_COPY["search"];
-
-  // Personalise the FAQ title with the neighborhood name for community/55+ pages
+    FAQ_SECTION_COPY[config.pageType] ?? FAQ_SECTION_COPY.search;
   const faqTitle =
     config.pageType === "community" || config.pageType === "55plus"
       ? `${config.neighborhood} FAQ`
       : faqCopy.title;
 
-  // ── Schema: RealEstateAgent ──────────────────────────────────────────────
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name:
-      config.domain === "geneboyle.com"
-        ? `Dr. Gene Boyle - ${config.neighborhood}`
-        : `Dr. Jan Duffy - ${config.neighborhood} Real Estate`,
-    url: `https://www.${config.domain !== "default" ? config.domain : "geneboyle.com"}`,
+    name: `Dr. Gene Boyle - ${config.neighborhood}`,
+    url: "https://www.geneboyle.com",
     telephone: "+17022221964",
     address: {
       "@type": "PostalAddress",
-      streetAddress:
-        config.domain === "geneboyle.com"
-          ? "320 Junco"
-          : "9406 W Lake Mead Blvd, Suite 100",
-      addressLocality:
-        config.domain === "geneboyle.com" ? "Irvine" : "Las Vegas",
-      addressRegion: config.domain === "geneboyle.com" ? "CA" : "NV",
-      postalCode: config.domain === "geneboyle.com" ? "92618" : "89134",
+      streetAddress: officeInfo.address.street,
+      addressLocality: officeInfo.address.city,
+      addressRegion: officeInfo.address.state,
+      postalCode: officeInfo.address.zip,
     },
     aggregateRating: {
       "@type": "AggregateRating",
@@ -91,7 +69,6 @@ export default function Home() {
     },
   };
 
-  // ── Schema: FAQPage ──────────────────────────────────────────────────────
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -117,188 +94,258 @@ export default function Home() {
       />
       <Navbar />
       <main>
-        {/* Domain-Aware Hero — next/image LCP (not CSS background) */}
-        <section className="relative bg-slate-900 text-white py-24 md:py-32 overflow-hidden">
+        {/* Hero — Discovery Loop composition: brand + one line + one CTA + full-bleed image */}
+        <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-ink text-paper">
           <Image
             src="/Image/hero_bg_1.jpg"
-            alt={`${config.neighborhood} relocation and Las Vegas homes with Dr. Gene Boyle`}
+            alt="Las Vegas Valley residential rooftops at dusk — Irvine to Las Vegas relocation"
             fill
             priority
             fetchPriority="high"
-            sizes="(max-width: 768px) 100vw, 100vw"
+            sizes="100vw"
             quality={55}
-            className="object-cover object-center opacity-30"
+            className="object-cover object-center opacity-45"
           />
-          <div className="relative z-10 container mx-auto px-4 text-center">
-            {config.ctaBadge && (
-              <span className="inline-block bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
-                {config.ctaBadge}
-              </span>
-            )}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {config.heroHeadline}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-10 max-w-3xl mx-auto">
-              {config.heroSubheadline}
-            </p>
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25"
+            aria-hidden="true"
+          />
 
-            {/* RealScout Search Widget */}
-            <div className="mb-8 flex justify-center">
+          <div className="relative z-10 site-wrap pb-16 pt-32 md:pb-20 md:pt-40">
+            <p className="kicker text-paper/70 animate-fade-in">
+              Continuous relocation planning
+            </p>
+            <h1 className="mt-4 font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-tight text-paper animate-fade-up">
+              Dr. Gene
+              <br />
+              <em className="not-italic text-accent-soft">Boyle</em>
+            </h1>
+            <p className="mt-6 max-w-xl font-serif text-lg md:text-xl text-paper/80 animate-fade-up reveal-delay-1">
+              {config.heroSubheadline ||
+                "Irvine to Las Vegas relocation — California-side planning with Las Vegas partner Dr. Jan Duffy."}
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center animate-fade-up reveal-delay-2">
+              <Link
+                href="/listings"
+                className="inline-flex justify-center bg-paper text-ink font-sans text-sm font-medium px-5 py-3 hover:bg-accent-faint transition-colors"
+              >
+                Search Las Vegas homes
+              </Link>
+              <a
+                href={agentInfo.phoneTel}
+                className="inline-flex justify-center border border-paper/35 text-paper font-sans text-sm font-medium px-5 py-3 hover:bg-paper/10 transition-colors"
+              >
+                Call {agentInfo.phoneFormatted}
+              </a>
+            </div>
+
+            <div className="mt-14 flex justify-center sm:justify-start">
+              <a
+                href="#approach"
+                className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-paper/55 animate-scroll-pulse"
+              >
+                Scroll
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Problem frame — DL “bottlenecked” pattern */}
+        <section className="py-20 md:py-28">
+          <div className="site-wrap max-w-3xl">
+            <h2 className="font-display text-3xl md:text-5xl text-ink leading-tight reveal">
+              Cross-state moves are{" "}
+              <em className="italic text-accent">bottlenecked</em>.
+            </h2>
+            <p className="mt-6 text-lg md:text-xl leading-relaxed reveal reveal-delay-1">
+              Selling in Orange County, buying in the Las Vegas Valley, timing
+              school calendars, and touring inventory are still run as sequential
+              human loops. We compress that loop with one California planner and
+              one Las Vegas partner team.
+            </p>
+          </div>
+        </section>
+
+        <hr className="editorial-rule site-wrap" />
+
+        {/* 01 Approach */}
+        <section id="approach" className="scroll-mt-28 py-16 md:py-24">
+          <div className="site-wrap">
+            <p className="index-tag mb-6">
+              <b>01</b> — The Approach
+            </p>
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight">
+                  Automating the{" "}
+                  <em className="italic text-accent">relocation loop</em>.
+                </h2>
+              </div>
+              <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed">
+                <p>
+                  Dr. Gene Boyle ({agentInfo.licenseLabel}) runs the California
+                  side from {officeInfo.address.full}. Dr. Jan Duffy (
+                  {agentInfo.partnerAgent.license}) and BHHS Nevada Properties
+                  cover Las Vegas showings, offers, and closing logistics.
+                </p>
+                <p>
+                  On this site you get live MLS search (RealScout), Calendly
+                  booking, AI answers for quick questions, and market context —
+                  without rebuilding native CRM sync.
+                </p>
+                <Link
+                  href="/how-we-work"
+                  className="inline-flex font-sans text-sm font-medium text-accent hover:text-accent-soft underline-offset-4 hover:underline"
+                >
+                  See every tool on this site →
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-14 grid md:grid-cols-3 gap-10 border-t border-[var(--line-soft)] pt-12">
+              {[
+                {
+                  title: "Start with the search",
+                  body: "RealScout listings and saved searches keep inventory in one loop.",
+                },
+                {
+                  title: "Act as your first customer",
+                  body: "We use the same Calendly + CRM path we recommend to clients.",
+                },
+                {
+                  title: "Close the loop in Nevada",
+                  body: "Local partner coverage for tours, negotiations, and settlement.",
+                },
+              ].map((step) => (
+                <div key={step.title}>
+                  <h3 className="font-sans text-base font-semibold text-ink mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-base leading-relaxed">{step.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Search band */}
+        <section className="bg-ink text-paper py-16 md:py-20">
+          <div className="site-wrap text-center">
+            <p className="kicker text-paper/50 mb-4">Live MLS</p>
+            <h2 className="font-display text-3xl md:text-4xl mb-8">
+              Search the Valley.
+            </h2>
+            <div className="flex justify-center">
               <div
                 dangerouslySetInnerHTML={{
                   __html: `<realscout-simple-search agent-encoded-id="${config.realscoutAgentId}"></realscout-simple-search>`,
                 }}
               />
             </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">500+</span>
-                <span>Families Helped</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">30+ Years</span>
-                <span>Las Vegas Experience</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-white">4.9★</span>
-                <span>Client Rating</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Value Proposition */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                {config.domain === "geneboyle.com"
-                  ? "Why Work With Dr. Gene Boyle?"
-                  : "Why Work With Dr. Jan Duffy?"}
-              </h2>
-              <p className="text-lg text-slate-600">
-                {config.domain === "geneboyle.com"
-                  ? "California-side relocation planning from Irvine, paired with Dr. Jan Duffy and BHHS Nevada Properties on the Las Vegas side."
-                  : "Berkshire Hathaway HomeServices Nevada Properties — the most trusted name in Las Vegas real estate."}
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {[
-                {
-                  icon: Shield,
-                  title: "Trusted Brand",
-                  desc: "Backed by Warren Buffett's Berkshire Hathaway — unmatched integrity",
-                },
-                {
-                  icon: Users,
-                  title: "50K+ Network",
-                  desc: "Global referral network for seamless moves to or from any market",
-                },
-                {
-                  icon: TrendingUp,
-                  title: "$127M+ Sold",
-                  desc: "Proven results across every Las Vegas neighborhood since 2008",
-                },
-                {
-                  icon: HomeIcon,
-                  title: "Full Service",
-                  desc: "Buying, selling, 55+, luxury, investment — one expert handles it all",
-                },
-              ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="text-center p-6">
-                  <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Icon className="h-8 w-8 text-blue-600" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">{title}</h3>
-                  <p className="text-slate-600 text-sm">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Market Stats */}
-        <section className="py-16 bg-slate-900 text-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">
-                {config.neighborhood} Real Estate Market
-              </h2>
-              <p className="text-slate-400">Current data — updated regularly</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {[
-                { value: "$450K", label: "Median Price", sub: "+4.2% YoY" },
-                { value: "28", label: "Avg Days on Market", sub: "" },
-                { value: "4,850", label: "Active Listings", sub: "" },
-                { value: "2.1", label: "Months Inventory", sub: "" },
-              ].map(({ value, label, sub }) => (
-                <div key={label} className="text-center">
-                  <div className="text-4xl font-bold text-blue-400 mb-1">
-                    {value}
-                  </div>
-                  <div className="text-slate-300 text-sm">{label}</div>
-                  {sub && (
-                    <div className="text-green-400 text-xs mt-1">{sub}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link
-                href="/market-report"
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold transition-colors"
-              >
-                Full Market Report
-              </Link>
-            </div>
           </div>
         </section>
 
         <RealScoutListings />
-        <ClientToolsSection />
-        <WhyChooseUs />
-        <ReviewsSection />
 
-        {/* Domain-Aware FAQ with FAQPage schema already injected above */}
+        {/* 02 Mission */}
+        <section id="mission" className="scroll-mt-28 py-20 md:py-28 bg-paper-2">
+          <div className="site-wrap max-w-4xl">
+            <p className="index-tag mb-6">
+              <b>02</b> — Mission
+            </p>
+            <p className="font-display text-2xl md:text-4xl leading-snug text-ink">
+              Our mission is straightforward: help Irvine and Orange County
+              households relocate to Las Vegas with fewer handoffs, clearer
+              timelines, and a single phone number —{" "}
+              <a
+                href={agentInfo.phoneTel}
+                className="text-accent italic hover:text-accent-soft"
+              >
+                {agentInfo.phoneFormatted}
+              </a>
+              .
+            </p>
+          </div>
+        </section>
+
+        <ClientToolsSection />
+
+        {/* 03 Areas */}
+        <section id="areas" className="scroll-mt-28 py-16 md:py-24">
+          <div className="site-wrap">
+            <p className="index-tag mb-6">
+              <b>03</b> — Areas
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl text-ink mb-4 max-w-2xl">
+              Where relocators look first.
+            </h2>
+            <p className="max-w-prose text-lg mb-10">
+              Explore neighborhood pages for Summerlin, Henderson, and more —
+              then tour with the Las Vegas partner team.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 font-sans text-sm">
+              {[
+                ["summerlin", "Summerlin"],
+                ["henderson", "Henderson"],
+                ["green-valley", "Green Valley"],
+                ["the-ridges", "The Ridges"],
+                ["skye-canyon", "Skye Canyon"],
+                ["inspirada", "Inspirada"],
+              ].map(([slug, label]) => (
+                <Link
+                  key={slug}
+                  href={`/neighborhoods/${slug}`}
+                  className="text-ink-soft hover:text-accent underline-offset-4 hover:underline"
+                >
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/neighborhoods"
+                className="text-accent font-medium hover:underline underline-offset-4"
+              >
+                All areas →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <ReviewsSection />
         <FAQSection faqs={faqs} title={faqTitle} subtitle={faqCopy.subtitle} />
 
-        {/* Domain-Specific CTA */}
-        <section className="py-16 md:py-20 bg-blue-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {config.ctaHeadline}
-            </h2>
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-              {config.ctaSubheadline}
+        {/* 04 Next */}
+        <section
+          id="next"
+          className="scroll-mt-28 py-20 md:py-28 bg-ink text-paper"
+        >
+          <div className="site-wrap max-w-3xl">
+            <p className="index-tag text-paper/45 mb-6">
+              <b className="text-paper/80">04</b> — What&apos;s next
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+17022221964"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-50 transition-colors"
-              >
-                <Phone className="h-5 w-5 mr-2" />
-                Call 702-222-1964
-              </a>
+            <h2 className="font-display text-3xl md:text-5xl leading-tight mb-6">
+              Book the first loop.
+            </h2>
+            <p className="text-lg text-paper/75 mb-10 max-w-prose">
+              Pick a Calendly slot or call. We will map sell/buy timing, target
+              areas, and your first Las Vegas tour window.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/contact#schedule"
-                className="inline-flex items-center justify-center bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors"
+                className="inline-flex justify-center bg-paper text-ink font-sans text-sm font-medium px-5 py-3 hover:bg-accent-faint transition-colors"
               >
-                <Calendar className="h-5 w-5 mr-2" />
-                Book on Calendly
+                Schedule on Calendly
               </Link>
               <Link
                 href="/home-valuation"
-                className="inline-flex items-center justify-center border border-white/40 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex justify-center border border-paper/30 text-paper font-sans text-sm font-medium px-5 py-3 hover:bg-paper/10 transition-colors"
               >
-                Home valuation
+                Start a home valuation
               </Link>
             </div>
-            <p className="mt-6 text-blue-200 text-sm">
-              Dr. Gene Boyle · California DRE #02282581 · Las Vegas partner Dr.
-              Jan Duffy (S.0197614.LLC), BHHS Nevada Properties
+            <p className="mt-10 font-sans text-xs text-paper/45">
+              {agentInfo.name} · {agentInfo.licenseLabel} · Partner{" "}
+              {agentInfo.partnerAgent.name} ({agentInfo.partnerAgent.license})
             </p>
           </div>
         </section>

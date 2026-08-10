@@ -1,25 +1,16 @@
 import Link from "next/link";
-import {
-  Search,
-  Calendar,
-  MessageCircle,
-  Home,
-  MapPin,
-  BarChart3,
-  Bot,
-} from "lucide-react";
 
 const tools = [
   {
-    icon: Search,
+    n: "01",
     title: "Live MLS search",
     description:
-      "Browse Las Vegas Valley listings with RealScout — saved searches and alerts sync to your agent.",
+      "Browse Las Vegas Valley listings with RealScout — alerts sync through native CRM integrations.",
     href: "/listings",
     cta: "Search homes",
   },
   {
-    icon: Calendar,
+    n: "02",
     title: "Book a consultation",
     description:
       "Pick a time on Calendly for an Irvine-to-Las Vegas relocation call or showing.",
@@ -27,34 +18,34 @@ const tools = [
     cta: "Schedule now",
   },
   {
-    icon: Home,
+    n: "03",
     title: "Home valuation",
     description:
-      "Start a valuation conversation for a property you are selling or leaving behind in California.",
+      "Start a valuation conversation for a property you may sell before relocating.",
     href: "/home-valuation",
     cta: "Get valuation",
   },
   {
-    icon: MessageCircle,
+    n: "04",
     title: "AI relocation assistant",
     description:
-      "Ask quick questions about areas, process, and next steps — then book a call when you are ready.",
+      "Ask quick process questions via the chat button — then book a call when you are ready.",
     href: "/how-we-work#ai-assistant",
     cta: "How it works",
   },
   {
-    icon: MapPin,
-    title: "Office & Google profile",
+    n: "05",
+    title: "Google Business Profile",
     description:
-      "NAP, hours, map, and reviews aligned with the Google Business Profile.",
+      "NAP, hours, map, and review links aligned with the Google Business Profile.",
     href: "/google-business",
     cta: "View profile",
   },
   {
-    icon: BarChart3,
+    n: "06",
     title: "Market reports",
     description:
-      "Median prices, inventory, and relocation-focused market context for Las Vegas and Henderson.",
+      "Median prices, inventory, and relocation-focused context for Las Vegas and Henderson.",
     href: "/market-report",
     cta: "Read report",
   },
@@ -62,56 +53,53 @@ const tools = [
 
 export default function ClientToolsSection() {
   return (
-    <section className="py-16 md:py-20 bg-slate-50" aria-labelledby="client-tools-heading">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 mb-2">
-            On this site
-          </p>
-          <h2
-            id="client-tools-heading"
-            className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
-          >
-            Everything you need to plan the move
-          </h2>
-          <p className="text-lg text-slate-600">
-            RealScout listings, Calendly scheduling, AI answers, valuations, and
-            local market data — connected to Dr. Gene Boyle and Las Vegas partner
-            Dr. Jan Duffy.
-          </p>
-        </div>
+    <section
+      id="tools"
+      className="scroll-mt-28 py-16 md:py-24"
+      aria-labelledby="client-tools-heading"
+    >
+      <div className="site-wrap">
+        <p className="index-tag mb-6">
+          <b>On this site</b> — Tools
+        </p>
+        <h2
+          id="client-tools-heading"
+          className="font-display text-3xl md:text-4xl text-ink max-w-2xl leading-tight mb-4"
+        >
+          Everything you need to plan the move.
+        </h2>
+        <p className="max-w-prose text-lg mb-12">
+          RealScout, Calendly, AI answers, valuations, and market data —
+          connected to Dr. Gene Boyle and Las Vegas partner Dr. Jan Duffy.
+        </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {tools.map(({ icon: Icon, title, description, href, cta }) => (
-            <div key={title} className="flex flex-col">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
-                <Icon className="h-6 w-6" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">{title}</h3>
-              <p className="text-sm text-slate-600 flex-1 mb-4">{description}</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 border-t border-[var(--line-soft)] pt-12">
+          {tools.map(({ n, title, description, href, cta }) => (
+            <article key={title}>
+              <p className="font-sans text-xs text-ink-muted mb-3">{n}</p>
+              <h3 className="font-sans text-base font-semibold text-ink mb-2">
+                {title}
+              </h3>
+              <p className="text-sm leading-relaxed mb-4">{description}</p>
               <Link
                 href={href}
-                className="text-sm font-semibold text-blue-700 hover:text-blue-800 underline-offset-2 hover:underline"
+                className="font-sans text-sm font-medium text-accent hover:text-accent-soft underline-offset-4 hover:underline"
               >
                 {cta}
               </Link>
-            </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-12 max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-slate-600">
-          <Bot className="h-5 w-5 text-slate-500" aria-hidden="true" />
-          <p className="text-center">
-            Browser agents can use WebMCP tools on this site for contact, scheduling,
-            and search.{" "}
-            <Link
-              href="/how-we-work#webmcp"
-              className="font-semibold text-blue-700 hover:underline"
-            >
-              See agent tools
-            </Link>
-          </p>
-        </div>
+        <p className="mt-14 font-sans text-sm text-ink-muted">
+          Browser agents can use WebMCP tools for contact, scheduling, and search.{" "}
+          <Link
+            href="/how-we-work#webmcp"
+            className="text-accent font-medium hover:underline underline-offset-4"
+          >
+            See agent tools
+          </Link>
+        </p>
       </div>
     </section>
   );
