@@ -41,11 +41,8 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
-      - name: Enable Corepack (pnpm for @cloudflare/next-on-pages)
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.15.9 --activate
-          pnpm --version
+      # package.json pins packageManager=npm — do not enable Corepack/pnpm here.
+      # @cloudflare/next-on-pages runs via npx/npm (build:cloudflare).
 
       # vercel build (used by @cloudflare/next-on-pages) packages the Flask API
       # and now requires Astral's uv on PATH (https://vercel.link/python-version).
