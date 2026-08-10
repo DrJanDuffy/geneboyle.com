@@ -104,17 +104,18 @@ export default function Home() {
         {/* Hero — Discovery Loop composition: brand + one line + one CTA + full-bleed image */}
         <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-ink text-paper">
           <Image
-            src={getHeroImage("home").src}
-            alt={getHeroImage("home").alt}
+            src={homeHero.src}
+            alt={homeHero.alt}
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            quality={55}
-            className="object-cover object-center opacity-45"
+            quality={70}
+            className="object-cover object-center"
           />
+          {/* Bottom-only scrim so photography stays bright; text remains readable */}
           <div
-            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25"
+            className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"
             aria-hidden="true"
           />
 

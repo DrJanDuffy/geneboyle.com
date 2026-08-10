@@ -215,12 +215,16 @@ const sectionImages: Record<string, GuideImage> = {
 
 const heroImages: Record<string, GuideImage> = {
   home: {
-    src: "/images/hero/relocation.jpg",
-    alt: "Las Vegas Valley residential rooftops at dusk — Irvine to Las Vegas relocation",
+    src: "/images/hero/home.jpg",
+    alt: "Bright modern Las Vegas Valley home with pool under clear desert sky",
   },
   "home-alt": {
     src: "/images/hero/home-alt.jpg",
     alt: "Desert mountain view over Las Vegas Valley homes",
+  },
+  relocation: {
+    src: "/images/hero/relocation.jpg",
+    alt: "Desert highway toward the Las Vegas Valley at dusk",
   },
 };
 
@@ -254,7 +258,7 @@ export function getSectionImage(key: string): GuideImage {
 export function getHeroImage(key: string = "home"): GuideImage {
   return (
     heroImages[key] ?? {
-      src: "/images/hero/relocation.jpg",
+      src: "/images/hero/home.jpg",
       alt: "Las Vegas Valley residential community",
     }
   );
