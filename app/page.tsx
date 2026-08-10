@@ -10,6 +10,7 @@ import { answerFirst, marketAsOf, valleyAugust6 } from "@/lib/market/august-2026
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import SchemaScript from "@/components/SchemaScript";
 import { generateFAQSchema } from "@/lib/schema";
+import RealScoutOfficeWidget from "@/components/realscout/RealScoutOfficeWidget";
 
 export const revalidate = 3600;
 
@@ -132,6 +133,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <RealScoutOfficeWidget />
 
         <section className="py-12 md:py-14 border-b border-[var(--line-soft)]">
           <div className="site-wrap">

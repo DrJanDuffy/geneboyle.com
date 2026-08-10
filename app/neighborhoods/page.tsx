@@ -3,7 +3,6 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
@@ -135,8 +134,6 @@ export default function NeighborhoodsIndexPage() {
           title="Compare three areas, then tour"
           body="We sequence Irvine sell timing with Las Vegas showings — one phone number for the loop."
         />
-
-        <RealScoutListings />
       </main>
       <Footer />
     </>

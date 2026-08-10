@@ -1,6 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
@@ -363,7 +362,6 @@ export default function ContactPage() {
           Last updated: August 2026
         </p>
       </main>
-      <RealScoutListings />
       <Footer />
     </>
   );

@@ -1,6 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import SchemaScript from "@/components/SchemaScript";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -157,7 +156,6 @@ export default function MarketingGuidePage({
           primaryLabel={guide.ctaLabel}
         />
 
-        {guide.showListings !== false && <RealScoutListings />}
       </main>
       <Footer />
     </>

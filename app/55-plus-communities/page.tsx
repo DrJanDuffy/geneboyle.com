@@ -3,7 +3,6 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
@@ -136,7 +135,6 @@ export default function FiftyFivePlusIndexPage() {
           title="Compare 55+ communities"
           body="Book Calendly or call — we will map tours across Summerlin and Henderson 55+ options."
         />
-        <RealScoutListings />
       </main>
       <Footer />
     </>

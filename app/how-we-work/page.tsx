@@ -3,7 +3,6 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
@@ -263,7 +262,6 @@ export default function HowWeWorkPage() {
             widget.
           </p>
         </section>
-        <RealScoutListings />
 
         <section className="site-wrap mt-16 text-center">
           <h2 className="font-display text-2xl text-ink mb-3">Visit or call</h2>

@@ -1,6 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
@@ -233,7 +232,6 @@ export default function SellersPage() {
             comps.
           </p>
         </section>
-        <RealScoutListings />
 
         <section className="site-wrap mt-16">
           <div className="bg-ink text-paper py-14 px-6 md:px-12">

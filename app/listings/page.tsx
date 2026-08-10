@@ -179,22 +179,7 @@ export default function ListingsPage() {
 
         <EditorialMediaBand image={getSectionImage("areas")} />
 
-        <section id="mls" className="scroll-mt-28 mb-20">
-          <div className="site-wrap max-w-7xl">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `<realscout-office-listings 
-                    agent-encoded-id="QWdlbnQtMjI1MDUw" 
-                    sort-order="NEWEST" 
-                    listing-status="For Sale" 
-                    property-types=",SFR,MF,TC"
-                  ></realscout-office-listings>`,
-              }}
-            />
-          </div>
-        </section>
-
-        <section className="site-wrap mb-20">
+        <section className="site-wrap mb-20" id="mls">
           <p className="index-tag mb-4">
             <b>01</b> — Popular searches
           </p>

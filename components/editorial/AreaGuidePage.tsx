@@ -1,6 +1,5 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import SchemaScript from "@/components/SchemaScript";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -166,17 +165,6 @@ export default function AreaGuidePage({ guide, schema }: AreaGuidePageProps) {
           primaryHref="/contact#schedule"
           primaryLabel="Schedule a tour plan"
         />
-
-        <section className="site-wrap mb-8 text-center">
-          <p className="index-tag mb-3">Live MLS</p>
-          <h2 className="font-display text-2xl text-ink mb-2">
-            Featured listings
-          </h2>
-          <p className="max-w-prose mx-auto mb-6 text-sm">
-            Attribution and MLS disclaimer appear with the widget.
-          </p>
-        </section>
-        <RealScoutListings />
       </main>
       <Footer />
     </>

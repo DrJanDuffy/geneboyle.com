@@ -6,6 +6,7 @@ import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo } from "@/lib/site-config";
+import RealScoutOfficeWidget from "@/components/realscout/RealScoutOfficeWidget";
 
 async function getProperty(id: string) {
   return {
@@ -80,8 +81,12 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
               priority
             />
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-12 gap-12 mb-16">
+        <RealScoutOfficeWidget />
+
+        <div className="site-wrap">
+          <div className="grid md:grid-cols-12 gap-12 mb-16 mt-16">
             <div className="md:col-span-7">
               <p className="index-tag mb-3">
                 <b>01</b> — Overview
