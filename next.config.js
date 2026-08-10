@@ -48,9 +48,14 @@ const nextConfig = {
     ];
   },
 
-  // Python API rewrites
+  // Rewrites
   rewrites: async () => {
     return [
+      // Google Search Console HTML-file verification → app/gsc-verify
+      {
+        source: "/:file(google*.html)",
+        destination: "/gsc-verify/:file",
+      },
       {
         source: "/api/:path*",
         destination:

@@ -1,39 +1,40 @@
-import { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
+import type { MetadataRoute } from "next";
+import { absoluteUrl, getSiteOrigin } from "@/lib/seo/site-url";
 
-const siteUrl = siteConfig.url.replace(/\/$/, "");
-
+/**
+ * robots.txt for Google Search Console + AI crawlers.
+ * Sitemap URL must be absolute for GSC to read it reliably.
+ */
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = getSiteOrigin();
+
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/monitoring/"],
-      },
-      // Allow major AI crawlers for agent/LLM discovery (WebMCP + llms.txt).
-      {
-        userAgent: "GPTBot",
-        allow: "/",
+        disallow: ["/api/", "/admin/", "/monitoring/", "/gsc-verify/"],
       },
       {
-        userAgent: "ChatGPT-User",
+        userAgent: "Googlebot",
         allow: "/",
+        disallow: ["/api/", "/admin/", "/monitoring/", "/gsc-verify/"],
       },
       {
-        userAgent: "ClaudeBot",
+        userAgent: "Googlebot-Image",
         allow: "/",
       },
-      {
-        userAgent: "anthropic-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
+      // AI / answer-engine crawlers (GEO / AEO)
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "anthropic-ai", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
     host: siteUrl,
   };
 }

@@ -65,11 +65,32 @@ export function generateMetadata(): Metadata {
       ? "Irvine to Las Vegas relocation with Dr. Gene Boyle"
       : "Las Vegas real estate with Dr. Jan Duffy",
   };
+  const googleVerification =
+    process.env.GOOGLE_SITE_VERIFICATION?.trim() ||
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
   return {
     metadataBase: new URL("https://www.geneboyle.com"),
     title,
     description: config.description,
     keywords: config.keywords,
+    alternates: {
+      canonical: "https://www.geneboyle.com",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    verification: googleVerification
+      ? { google: googleVerification }
+      : undefined,
     openGraph: {
       title: config.heroHeadline,
       description: config.description,
