@@ -7,7 +7,11 @@ import ClientToolsSection from "@/components/sections/ClientToolsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
-import { getSectionImage } from "@/lib/guides/media";
+import {
+  getAreaImage,
+  getHeroImage,
+  getSectionImage,
+} from "@/lib/guides/media";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { agentInfo, officeInfo } from "@/lib/site-config";
@@ -50,6 +54,7 @@ export default function Home() {
     config.pageType === "community" || config.pageType === "55plus"
       ? `${config.neighborhood} FAQ`
       : faqCopy.title;
+  const homeHero = getHeroImage("home");
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -99,8 +104,8 @@ export default function Home() {
         {/* Hero — Discovery Loop composition: brand + one line + one CTA + full-bleed image */}
         <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-ink text-paper">
           <Image
-            src="/Image/hero_bg_1.jpg"
-            alt="Las Vegas Valley residential rooftops at dusk — Irvine to Las Vegas relocation"
+            src={getHeroImage("home").src}
+            alt={getHeroImage("home").alt}
             fill
             priority
             fetchPriority="high"
@@ -278,6 +283,8 @@ export default function Home() {
 
         <ClientToolsSection />
 
+        <EditorialMediaBand image={getSectionImage("tools")} />
+
         {/* 03 Areas */}
         <section id="areas" className="scroll-mt-28 py-16 md:py-24">
           <div className="site-wrap">
@@ -291,7 +298,7 @@ export default function Home() {
               Explore neighborhood pages for Summerlin, Henderson, and more —
               then tour with the Las Vegas partner team.
             </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-3 font-sans text-sm">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-10">
               {[
                 ["summerlin", "Summerlin"],
                 ["henderson", "Henderson"],
@@ -299,27 +306,44 @@ export default function Home() {
                 ["the-ridges", "The Ridges"],
                 ["skye-canyon", "Skye Canyon"],
                 ["inspirada", "Inspirada"],
-              ].map(([slug, label]) => (
-                <Link
-                  key={slug}
-                  href={`/neighborhoods/${slug}`}
-                  className="text-ink-soft hover:text-accent underline-offset-4 hover:underline"
-                >
-                  {label}
-                </Link>
-              ))}
-              <Link
-                href="/neighborhoods"
-                className="text-accent font-medium hover:underline underline-offset-4"
-              >
-                All areas →
-              </Link>
+              ].map(([slug, label]) => {
+                const image = getAreaImage(slug);
+                return (
+                  <Link
+                    key={slug}
+                    href={`/neighborhoods/${slug}`}
+                    className="group block"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ink mb-3">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        quality={55}
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <span className="font-sans text-sm text-ink group-hover:text-accent underline-offset-4 group-hover:underline">
+                      {label}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
+            <Link
+              href="/neighborhoods"
+              className="font-sans text-sm text-accent font-medium hover:underline underline-offset-4"
+            >
+              All areas →
+            </Link>
           </div>
         </section>
 
         <ReviewsSection />
         <FAQSection faqs={faqs} title={faqTitle} subtitle={faqCopy.subtitle} />
+
+        <EditorialMediaBand image={getSectionImage("next")} />
 
         {/* 04 Next */}
         <section

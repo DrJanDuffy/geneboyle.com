@@ -213,6 +213,17 @@ const sectionImages: Record<string, GuideImage> = {
   },
 };
 
+const heroImages: Record<string, GuideImage> = {
+  home: {
+    src: "/images/hero/relocation.jpg",
+    alt: "Las Vegas Valley residential rooftops at dusk — Irvine to Las Vegas relocation",
+  },
+  "home-alt": {
+    src: "/images/hero/home-alt.jpg",
+    alt: "Desert mountain view over Las Vegas Valley homes",
+  },
+};
+
 export function getAreaImage(slug: string): GuideImage {
   return (
     neighborhoodImages[slug] ?? {
@@ -236,6 +247,15 @@ export function getSectionImage(key: string): GuideImage {
     sectionImages[key] ?? {
       src: "/images/sections/approach.jpg",
       alt: "Las Vegas Valley real estate",
+    }
+  );
+}
+
+export function getHeroImage(key: string = "home"): GuideImage {
+  return (
+    heroImages[key] ?? {
+      src: "/images/hero/relocation.jpg",
+      alt: "Las Vegas Valley residential community",
     }
   );
 }
