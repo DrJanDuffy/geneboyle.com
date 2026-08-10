@@ -6,6 +6,9 @@ import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
@@ -81,39 +84,24 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            Contact —{" "}
-            <em className="italic text-accent">start the relocation loop</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            Planning an Irvine to Las Vegas move? Schedule on Calendly or call{" "}
-            <a
-              href={agentInfo.phoneTel}
-              className="font-medium text-accent hover:underline"
-            >
-              {agentInfo.phoneFormatted}
-            </a>
-            . Las Vegas partner support from {agentInfo.partnerAgent.name}, BHHS
-            Nevada Properties.
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <a
-              href="#schedule"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Book a time
-            </a>
-            <a
-              href={agentInfo.phoneTel}
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Call {agentInfo.phoneFormatted}
-            </a>
-          </div>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("contact")}
+          kicker={siteConfig.fullName}
+          title="Contact —"
+          accent="start the relocation loop"
+          lede={`Planning an Irvine to Las Vegas move? Schedule on Calendly or call ${agentInfo.phoneFormatted}. Las Vegas partner support from ${agentInfo.partnerAgent.name}, BHHS Nevada Properties.`}
+          ctas={[
+            { href: "#schedule", label: "Book a time", variant: "primary" },
+            {
+              href: agentInfo.phoneTel,
+              label: `Call ${agentInfo.phoneFormatted}`,
+              variant: "secondary",
+            },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">

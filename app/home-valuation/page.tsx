@@ -2,10 +2,12 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title:
@@ -130,36 +132,29 @@ export default function HomeValuationPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-6">
-          <nav className="font-sans text-xs text-ink-muted mb-8">
-            <Link href="/" className="hover:text-accent">
-              Home
-            </Link>
-            {" / "}
-            <Link href="/sellers" className="hover:text-accent">
-              Sellers
-            </Link>
-            {" / "}
-            <span className="text-ink">Home valuation</span>
-          </nav>
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            What&apos;s the home worth —{" "}
-            <em className="italic text-accent">before you relocate</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            Free valuation conversation for a home you may sell on the way from
-            Irvine to Las Vegas. Call{" "}
-            <a
-              href={agentInfo.phoneTel}
-              className="font-medium text-accent hover:underline"
-            >
-              {agentInfo.phoneFormatted}
-            </a>
-            . Las Vegas partner support from {agentInfo.partnerAgent.name}.
-          </p>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("home-valuation")}
+          kicker={siteConfig.fullName}
+          title="What's the home worth —"
+          accent="before you relocate"
+          lede={`Free valuation conversation for a home you may sell on the way from Irvine to Las Vegas. Call ${agentInfo.phoneFormatted}. Las Vegas partner support from ${agentInfo.partnerAgent.name}.`}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Sellers", href: "/sellers" },
+            { label: "Home valuation" },
+          ]}
+          ctas={[
+            { href: "#schedule", label: "Schedule valuation", variant: "primary" },
+            {
+              href: agentInfo.phoneTel,
+              label: `Call ${agentInfo.phoneFormatted}`,
+              variant: "secondary",
+            },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">

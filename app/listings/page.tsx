@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title:
@@ -156,36 +159,24 @@ export default function ListingsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(listingsSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-14">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            Las Vegas homes —{" "}
-            <em className="italic text-accent">live MLS search</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            Search Las Vegas, Henderson, and Summerlin inventory updated through
-            RealScout. Irvine-to-Las Vegas relocation planning with{" "}
-            {agentInfo.name}; Las Vegas partner {agentInfo.partnerAgent.name}.
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <a
-              href="#mls"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Jump to listings
-            </a>
-            <a
-              href={agentInfo.phoneTel}
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Call {agentInfo.phoneFormatted}
-            </a>
-          </div>
-          <p className="mt-6 font-sans text-xs text-ink-muted">
-            Live MLS data · Attribution and disclaimer appear with the widget
-          </p>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("listings")}
+          kicker={siteConfig.fullName}
+          title="Las Vegas homes —"
+          accent="live MLS search"
+          lede={`Search Las Vegas, Henderson, and Summerlin inventory updated through RealScout. Irvine-to-Las Vegas relocation planning with ${agentInfo.name}; Las Vegas partner ${agentInfo.partnerAgent.name}.`}
+          ctas={[
+            { href: "#mls", label: "Jump to listings", variant: "primary" },
+            {
+              href: agentInfo.phoneTel,
+              label: `Call ${agentInfo.phoneFormatted}`,
+              variant: "secondary",
+            },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section id="mls" className="scroll-mt-28 mb-20">
           <div className="site-wrap max-w-7xl">

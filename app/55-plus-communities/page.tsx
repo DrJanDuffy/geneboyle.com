@@ -3,11 +3,13 @@ import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
-import EditorialHero from "@/components/editorial/EditorialHero";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
 import EditorialFaq from "@/components/editorial/EditorialFaq";
 import EditorialCta from "@/components/editorial/EditorialCta";
 import { community55List } from "@/lib/guides/communities-55";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -44,13 +46,16 @@ export default function FiftyFivePlusIndexPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-16">
-        <EditorialHero
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("55-plus-communities")}
           kicker={siteConfig.fullName}
           title="55+ communities —"
           accent="active adult loops"
           lede={`Compare amenities, HOA fees, single-story inventory, and commute — then tour with partner ${agentInfo.partnerAgent.name}. Call ${agentInfo.phoneFormatted}.`}
         />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <EditorialSection index="01" label="Communities" title="Active-adult shortlist">
           <div className="border-t border-[var(--line)]">

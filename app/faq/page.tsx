@@ -12,6 +12,9 @@ import {
   combineSchemas,
 } from "@/lib/schema";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title: "FAQ | Irvine to Las Vegas Relocation | Dr. Gene Boyle",
@@ -151,18 +154,24 @@ export default function FAQPage() {
     <>
       <SchemaScript schema={pageSchemas} id="faq-page-schema" />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            FAQ —{" "}
-            <em className="italic text-accent">straight answers</em>
-          </h1>
-          <p className="text-xl max-w-prose">
-            Irvine-to-Las Vegas relocation, buying, selling, and how we work
-            with Berkshire Hathaway HomeServices Nevada Properties.
-          </p>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("faq")}
+          kicker={siteConfig.fullName}
+          title="FAQ —"
+          accent="straight answers"
+          lede="Irvine-to-Las Vegas relocation, buying, selling, and how we work with Berkshire Hathaway HomeServices Nevada Properties."
+          ctas={[
+            { href: "/contact#schedule", label: "Book a consult", variant: "primary" },
+            {
+              href: agentInfo.phoneTel,
+              label: `Call ${agentInfo.phoneFormatted}`,
+              variant: "secondary",
+            },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <div className="site-wrap space-y-16 mb-20">
           {faqCategories.map((category, catIndex) => (

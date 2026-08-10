@@ -5,6 +5,9 @@ import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import {
   Search,
   Calendar,
@@ -14,7 +17,6 @@ import {
   BarChart3,
   Bot,
   Shield,
-  Phone,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -117,46 +119,20 @@ export default function HowWeWorkPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            How we work —{" "}
-            <em className="italic text-accent">tools on this site</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            MLS search, Calendly, AI answers, valuation, market data, and Google
-            Business details for Irvine-to-Las Vegas relocation. Call{" "}
-            <a
-              href={agentInfo.phoneTel}
-              className="font-medium text-accent hover:underline"
-            >
-              {agentInfo.phoneFormatted}
-            </a>
-            .
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <Link
-              href="/listings"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Search homes
-            </Link>
-            <Link
-              href="#schedule"
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Book a time
-            </Link>
-            <a
-              href={agentInfo.phoneTel}
-              className="inline-flex items-center gap-2 text-accent font-medium px-2 py-3"
-            >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              {agentInfo.phoneFormatted}
-            </a>
-          </div>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("how-we-work")}
+          kicker={siteConfig.fullName}
+          title="How we work —"
+          accent="tools on this site"
+          lede={`MLS search, Calendly, AI answers, valuation, market data, and Google Business details for Irvine-to-Las Vegas relocation. Call ${agentInfo.phoneFormatted}.`}
+          ctas={[
+            { href: "/listings", label: "Search homes", variant: "primary" },
+            { href: "#schedule", label: "Book a time", variant: "secondary" },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-14">

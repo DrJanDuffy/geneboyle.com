@@ -2,12 +2,14 @@ import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
 import SchemaScript from "@/components/SchemaScript";
-import EditorialHero from "@/components/editorial/EditorialHero";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
 import EditorialStats from "@/components/editorial/EditorialStats";
 import EditorialFaq from "@/components/editorial/EditorialFaq";
 import EditorialCta from "@/components/editorial/EditorialCta";
-import { agentInfo, siteConfig } from "@/lib/site-config";
+import { agentInfo } from "@/lib/site-config";
+import { getAreaImage, getSectionImage } from "@/lib/guides/media";
 import type { AreaGuide } from "@/lib/guides/types";
 
 type AreaGuidePageProps = {
@@ -16,18 +18,18 @@ type AreaGuidePageProps = {
 };
 
 export default function AreaGuidePage({ guide, schema }: AreaGuidePageProps) {
+  const heroImage = getAreaImage(guide.slug);
+
   return (
     <>
       {schema ? (
-        <SchemaScript
-          schema={schema}
-          id={`${guide.slug}-schema`}
-        />
+        <SchemaScript schema={schema} id={`${guide.slug}-schema`} />
       ) : null}
       <Navbar />
-      <main className="pt-28 pb-16">
-        <EditorialHero
-          kicker={siteConfig.fullName}
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={heroImage}
+          kicker={guide.name}
           breadcrumbs={guide.breadcrumbs}
           title={guide.title}
           accent={guide.accent}
@@ -47,6 +49,11 @@ export default function AreaGuidePage({ guide, schema }: AreaGuidePageProps) {
             <EditorialStats stats={guide.stats} />
           </EditorialSection>
         )}
+
+        <EditorialMediaBand
+          image={heroImage}
+          caption={heroImage.alt}
+        />
 
         <EditorialSection
           index="02"
@@ -80,8 +87,14 @@ export default function AreaGuidePage({ guide, schema }: AreaGuidePageProps) {
           </EditorialSection>
         )}
 
+        <EditorialMediaBand image={getSectionImage("areas")} />
+
         {guide.details && guide.details.length > 0 && (
-          <EditorialSection index="04" label="Details" title={guide.detailsTitle}>
+          <EditorialSection
+            index="04"
+            label="Details"
+            title={guide.detailsTitle}
+          >
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 border-t border-[var(--line-soft)] pt-12">
               {guide.details.map((d) => (
                 <article key={d.title}>

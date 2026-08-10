@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title: "Sell Your Home | Irvine to Las Vegas Relocation | Dr. Gene Boyle",
@@ -101,39 +104,20 @@ export default function SellersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(sellerSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            Sell with a plan —{" "}
-            <em className="italic text-accent">then relocate</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            Free valuation and listing strategy for sellers relocating from
-            Irvine to Las Vegas. Call{" "}
-            <a
-              href={agentInfo.phoneTel}
-              className="font-medium text-accent hover:underline"
-            >
-              {agentInfo.phoneFormatted}
-            </a>
-            .
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <Link
-              href="/home-valuation"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Start valuation
-            </Link>
-            <Link
-              href="/contact#schedule"
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Book a consult
-            </Link>
-          </div>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("sellers")}
+          kicker={siteConfig.fullName}
+          title="Sell with a plan —"
+          accent="then relocate"
+          lede={`Free valuation and listing strategy for sellers relocating from Irvine to Las Vegas. Call ${agentInfo.phoneFormatted}.`}
+          ctas={[
+            { href: "/home-valuation", label: "Start valuation", variant: "primary" },
+            { href: "/contact#schedule", label: "Book a consult", variant: "secondary" },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">

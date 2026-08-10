@@ -1,58 +1,36 @@
-# Image Assets Guide
+# Image Assets
+
+Generated and curated visuals for geneboyle.com editorial pages (Discovery Loop–inspired).
 
 ## Folder Structure
 
 ```
 images/
-├── hero/           # Homepage hero backgrounds
-├── agent/          # Dr. Jan Duffy photos
-├── properties/     # Listing photos
-├── neighborhoods/  # Area/community photos
-├── testimonials/   # Client headshots
-└── logos/          # Brand assets
+├── hero/           # Alternate hero backgrounds
+├── marketing/      # Services, buyers, sellers, market, contact, etc.
+├── neighborhoods/  # Area + 55+ community heroes
+├── sections/       # Homepage / interstitial media bands
+├── agent/          # Consultation atmosphere
+├── properties/     # Featured property-style visuals
+├── testimonials/   # (legacy path; reviews use /Image/person*)
+└── logos/          # Brand assets (if added)
 ```
 
-## Recommended Specifications
+## Source of truth in code
 
-| Folder | Size | Format | Notes |
-|--------|------|--------|-------|
-| hero/ | 1920x1080+ | WebP, JPG | 16:9 ratio, compress <200KB |
-| agent/ | 400x400+ | WebP, JPG | Square, professional headshot |
-| properties/ | 1200x800+ | WebP, JPG | Landscape, MLS-quality |
-| neighborhoods/ | 1200x800+ | WebP, JPG | Scenic community shots |
-| testimonials/ | 200x200 | WebP, JPG | Square, optional |
-| logos/ | Various | PNG, SVG | Transparent background |
+`lib/guides/media.ts` maps every area slug and marketing key to `src` + `alt`.
 
-## Naming Conventions
+Components:
+- `EditorialVisualHero` — full-bleed page hero
+- `EditorialMediaBand` — interstitial full-bleed section image
 
-- Use lowercase with hyphens: `summerlin-aerial.webp`
-- Be descriptive: `dr-jan-duffy-headshot.jpg`
-- Include size if multiple: `hero-desktop.webp`, `hero-mobile.webp`
+## Specs
 
-## Image Optimization
-
-Before uploading, optimize images:
-
-1. **Online tools**: [Squoosh](https://squoosh.app), [TinyPNG](https://tinypng.com)
-2. **CLI**: `npx @squoosh/cli --webp '{"quality":80}' image.jpg`
-3. **Target**: <200KB for hero, <100KB for thumbnails
-
-## Usage in Code
-
-```tsx
-import Image from 'next/image'
-
-<Image 
-  src="/images/hero/las-vegas-skyline.webp"
-  alt="Las Vegas skyline at sunset"
-  width={1920}
-  height={1080}
-  priority // for above-fold images
-/>
-```
+| Folder | Size | Format | Target |
+|--------|------|--------|--------|
+| hero / neighborhoods / marketing / sections | 1920×1080 | JPEG | ~100–250KB |
 
 ## Notes
 
-- Next.js auto-optimizes images via `next/image`
-- WebP preferred for web (30% smaller than JPEG)
-- Always include descriptive alt text for SEO/accessibility
+- Prefer `next/image` with descriptive alt text (location/service).
+- Do not invent MLS listing photos here — live inventory stays on RealScout.

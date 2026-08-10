@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <MarketingGuidePage guide={guide} />;
+  return <MarketingGuidePage guide={guide} guideKey="google-business" />;
 }

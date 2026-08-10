@@ -3,10 +3,12 @@ import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import RealScoutListings from "@/components/realscout/RealScoutListings";
-import EditorialHero from "@/components/editorial/EditorialHero";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import EditorialSection from "@/components/editorial/EditorialSection";
 import EditorialCta from "@/components/editorial/EditorialCta";
 import { neighborhoodGuideList } from "@/lib/guides/neighborhoods";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -25,8 +27,9 @@ export default function NeighborhoodsIndexPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-16">
-        <EditorialHero
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("neighborhoods")}
           kicker={siteConfig.fullName}
           title="Neighborhoods —"
           accent="where relocators look first"
@@ -40,6 +43,8 @@ export default function NeighborhoodsIndexPage() {
             },
           ]}
         />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <EditorialSection index="01" label="Areas" title="Valley shortlist">
           <div className="border-t border-[var(--line)]">

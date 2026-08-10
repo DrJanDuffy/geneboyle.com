@@ -6,6 +6,8 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import ClientToolsSection from "@/components/sections/ClientToolsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getSectionImage } from "@/lib/guides/media";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { getFaqsForDomain } from "@/lib/faq-config";
 import { agentInfo, officeInfo } from "@/lib/site-config";
@@ -166,6 +168,8 @@ export default function Home() {
           </div>
         </section>
 
+        <EditorialMediaBand image={getSectionImage("approach")} />
+
         <hr className="editorial-rule site-wrap" />
 
         {/* 01 Approach */}
@@ -228,6 +232,8 @@ export default function Home() {
           </div>
         </section>
 
+        <EditorialMediaBand image={getSectionImage("areas")} />
+
         {/* Search band */}
         <section className="bg-ink text-paper py-16 md:py-20">
           <div className="site-wrap text-center">
@@ -267,6 +273,8 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <EditorialMediaBand image={getSectionImage("mission")} />
 
         <ClientToolsSection />
 

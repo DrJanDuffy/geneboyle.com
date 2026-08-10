@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title: "About Dr. Gene Boyle | Irvine to Las Vegas Relocation",
@@ -76,33 +79,24 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.brandName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            {agentInfo.name} —{" "}
-            <em className="italic text-accent">continuous relocation planning</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            {agentInfo.licenseLabel}. Based at {officeInfo.address.full}. Las
-            Vegas partner {agentInfo.partnerAgent.name} at{" "}
-            {officeInfo.lasVegasOffice.full}.
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <Link
-              href="/contact#schedule"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Schedule a consult
-            </Link>
-            <a
-              href={agentInfo.phoneTel}
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Call {agentInfo.phoneFormatted}
-            </a>
-          </div>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("about")}
+          kicker={siteConfig.brandName}
+          title={`${agentInfo.name} —`}
+          accent="continuous relocation planning"
+          lede={`${agentInfo.licenseLabel}. Based at ${officeInfo.address.full}. Las Vegas partner ${agentInfo.partnerAgent.name} at ${officeInfo.lasVegasOffice.full}.`}
+          ctas={[
+            { href: "/contact#schedule", label: "Schedule a consult", variant: "primary" },
+            {
+              href: agentInfo.phoneTel,
+              label: `Call ${agentInfo.phoneFormatted}`,
+              variant: "secondary",
+            },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">

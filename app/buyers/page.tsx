@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, siteConfig } from "@/lib/site-config";
+import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
+import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
   title: "Home Buying Guide Las Vegas | Irvine Relocation | Dr. Gene Boyle",
@@ -82,39 +85,20 @@ export default function BuyersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buyerSchema) }}
       />
       <Navbar />
-      <main className="pt-28 pb-16">
-        <section className="site-wrap mb-16">
-          <p className="index-tag mb-4">{siteConfig.fullName}</p>
-          <h1 className="font-display text-4xl md:text-6xl text-ink max-w-3xl leading-tight mb-5">
-            Buy in Las Vegas —{" "}
-            <em className="italic text-accent">with a relocation plan</em>
-          </h1>
-          <p className="text-xl max-w-prose mb-8">
-            Irvine-side planning with {agentInfo.name}; local tours and offers
-            with partner {agentInfo.partnerAgent.name}. Call{" "}
-            <a
-              href={agentInfo.phoneTel}
-              className="font-medium text-accent hover:underline"
-            >
-              {agentInfo.phoneFormatted}
-            </a>
-            .
-          </p>
-          <div className="flex flex-wrap gap-3 font-sans text-sm">
-            <Link
-              href="/listings"
-              className="inline-flex bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
-            >
-              Search homes
-            </Link>
-            <Link
-              href="/contact#schedule"
-              className="inline-flex border border-[var(--line)] text-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Book a consult
-            </Link>
-          </div>
-        </section>
+      <main className="pb-16">
+        <EditorialVisualHero
+          image={getMarketingImage("buyers")}
+          kicker={siteConfig.fullName}
+          title="Buy in Las Vegas —"
+          accent="with a relocation plan"
+          lede={`Irvine-side planning with ${agentInfo.name}; local tours and offers with partner ${agentInfo.partnerAgent.name}. Call ${agentInfo.phoneFormatted}.`}
+          ctas={[
+            { href: "/listings", label: "Search homes", variant: "primary" },
+            { href: "/contact#schedule", label: "Book a consult", variant: "secondary" },
+          ]}
+        />
+
+        <EditorialMediaBand image={getSectionImage("approach")} />
 
         <section className="site-wrap mb-20">
           <p className="index-tag mb-4">

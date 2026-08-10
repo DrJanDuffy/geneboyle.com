@@ -18,7 +18,7 @@ async function getProperty(id: string) {
     name: "Modern home in Summerlin",
     location: "Summerlin, Las Vegas, NV",
     price: "$850,000",
-    image: "/Image/hero_bg_1.jpg",
+    image: "/images/marketing/listings.jpg",
     bedrooms: 4,
     bathrooms: 3,
     squareFeet: 3200,
