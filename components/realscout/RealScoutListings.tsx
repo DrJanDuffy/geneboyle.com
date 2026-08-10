@@ -7,7 +7,8 @@ export default function RealScoutListings() {
   const realScoutAgentEncodedId =
     process.env.NEXT_PUBLIC_REALSCOUT_AGENT_ID?.trim() || "QWdlbnQtMjI1MDUw";
   const realScoutHomeSearchUrl =
-    process.env.NEXT_PUBLIC_REALSCOUT_URL?.trim() || "https://drjanduffy.realscout.com/";
+    process.env.NEXT_PUBLIC_REALSCOUT_URL?.trim() ||
+    "https://drjanduffy.realscout.com/";
 
   return (
     <section className="py-16 md:py-24 bg-slate-50">
@@ -21,8 +22,16 @@ export default function RealScoutListings() {
               Discover exceptional homes in Las Vegas and Henderson
             </p>
           </div>
-          <Button asChild variant="outline" className="mt-4 md:mt-0">
-            <a href={realScoutHomeSearchUrl} target="_blank" rel="noopener noreferrer">
+          <Button
+            asChild
+            variant="outline"
+            className="mt-4 md:mt-0 border-slate-300 text-slate-900 hover:bg-slate-100 hover:text-slate-900"
+          >
+            <a
+              href={realScoutHomeSearchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View All Properties
             </a>
           </Button>
