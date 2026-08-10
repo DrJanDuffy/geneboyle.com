@@ -26,13 +26,13 @@ export default function Footer() {
             </p>
             <ul className="space-y-2.5 text-ink-soft">
               <li>
-                <Link href="/listings" className="hover:text-ink">
-                  Homes
+                <Link href="/relocation" className="hover:text-ink">
+                  Relocation
                 </Link>
               </li>
               <li>
-                <Link href="/how-we-work" className="hover:text-ink">
-                  Tools
+                <Link href="/listings" className="hover:text-ink">
+                  Homes
                 </Link>
               </li>
               <li>
@@ -41,13 +41,28 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/home-valuation" className="hover:text-ink">
-                  Valuation
+                <Link href="/buyers" className="hover:text-ink">
+                  Buyers
                 </Link>
               </li>
               <li>
-                <Link href="/google-business" className="hover:text-ink">
-                  Google Business
+                <Link href="/sellers" className="hover:text-ink">
+                  Sellers
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-we-work" className="hover:text-ink">
+                  How we work
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-ink">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/home-valuation" className="hover:text-ink">
+                  Valuation
                 </Link>
               </li>
               <li>

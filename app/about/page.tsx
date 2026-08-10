@@ -1,12 +1,12 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
-import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
+import ReviewsSection from "@/components/sections/ReviewsSection";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 
 export const metadata: Metadata = {
@@ -174,7 +174,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="site-wrap">
+        <ReviewsSection />
+
+        <section className="site-wrap mt-16">
           <div className="bg-ink text-paper py-14 px-6 md:px-12">
             <h2 className="font-display text-3xl md:text-4xl mb-4">
               Ready for the first conversation?
@@ -199,10 +201,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        <div className="mt-16">
-          <RealScoutListings />
-        </div>
       </main>
       <Footer />
     </>

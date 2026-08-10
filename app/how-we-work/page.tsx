@@ -135,6 +135,47 @@ export default function HowWeWorkPage() {
         <EditorialMediaBand image={getSectionImage("areas")} />
 
         <section className="site-wrap mb-20">
+          <p className="index-tag mb-4">
+            <b>00</b> — The approach
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl text-ink mb-4 max-w-2xl">
+            Automating the relocation loop.
+          </h2>
+          <p className="max-w-prose text-lg mb-10">
+            {agentInfo.name} ({agentInfo.licenseLabel}) runs California-side
+            planning from {officeInfo.address.full}. {agentInfo.partnerAgent.name}{" "}
+            ({agentInfo.partnerAgent.license}) and BHHS Nevada Properties cover
+            Las Vegas showings, offers, and closing logistics.
+          </p>
+          <div className="grid md:grid-cols-3 gap-10 border-t border-[var(--line-soft)] pt-12">
+            {[
+              {
+                title: "Start with the search",
+                body: "RealScout listings and saved searches keep inventory in one loop.",
+              },
+              {
+                title: "Act as your first customer",
+                body: "We use the same Calendly + CRM path we recommend to clients.",
+              },
+              {
+                title: "Close the loop in Nevada",
+                body: "Local partner coverage for tours, negotiations, and settlement.",
+              },
+            ].map((step) => (
+              <div key={step.title}>
+                <h3 className="font-sans text-base font-semibold text-ink mb-2">
+                  {step.title}
+                </h3>
+                <p className="leading-relaxed">{step.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="site-wrap mb-20">
+          <p className="index-tag mb-6">
+            <b>01</b> — Tools on this site
+          </p>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-14">
             {stack.map(({ id, icon: Icon, name, platform, summary, href, cta }, i) => (
               <article

@@ -5,10 +5,11 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "/#approach", label: "Approach" },
+  { href: "/relocation", label: "Relocation" },
   { href: "/listings", label: "Homes" },
   { href: "/neighborhoods", label: "Areas" },
-  { href: "/how-we-work", label: "Tools" },
+  { href: "/how-we-work", label: "How we work" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
 ];
 
