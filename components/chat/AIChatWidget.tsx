@@ -101,32 +101,31 @@ export default function AIChatWidget() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg z-50 transition-all hover:scale-110"
-          aria-label="Open chat"
+          className="fixed bottom-6 right-6 bg-ink hover:bg-accent text-paper p-4 z-50 transition-colors"
+          aria-label="Open relocation chat"
         >
           <MessageCircle className="h-6 w-6" />
         </button>
       )}
 
-      {/* Chat Widget */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl z-50 flex flex-col border border-slate-200">
-          {/* Header */}
-          <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+        <div className="fixed bottom-6 right-6 w-[min(24rem,calc(100vw-2rem))] h-[min(37.5rem,calc(100vh-5rem))] bg-paper z-50 flex flex-col border border-[var(--line)] shadow-[0_20px_50px_-20px_rgba(18,22,28,0.45)]">
+          <div className="bg-ink text-paper p-4 flex justify-between items-center">
             <div>
-              <h3 className="font-semibold">Real Estate Assistant</h3>
-              <p className="text-xs text-blue-100">Ask me anything!</p>
+              <h3 className="font-display text-lg">Relocation assistant</h3>
+              <p className="font-sans text-xs text-paper/60">
+                Quick answers · then call (702) 222-1964
+              </p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="hover:bg-blue-700 rounded p-1 transition-colors"
+              className="hover:bg-paper/10 p-1 transition-colors"
               aria-label="Close chat"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div
@@ -136,42 +135,43 @@ export default function AIChatWidget() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
+                  className={`max-w-[80%] p-3 ${
                     message.role === "user"
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-100 text-slate-900"
+                      ? "bg-ink text-paper"
+                      : "bg-paper-2 text-ink"
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  <p className="font-sans text-sm whitespace-pre-wrap">
+                    {message.content}
+                  </p>
                 </div>
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-100 rounded-lg p-3">
-                  <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
+                <div className="bg-paper-2 p-3">
+                  <Loader2 className="h-5 w-5 animate-spin text-accent" />
                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className="p-4 border-t border-slate-200">
+          <div className="p-4 border-t border-[var(--line)]">
             <div className="flex gap-2">
               <Input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder="Ask about the relocation loop…"
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 rounded-none border-[var(--line)] bg-paper"
               />
               <Button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="rounded-none bg-ink hover:bg-accent text-paper"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -180,8 +180,8 @@ export default function AIChatWidget() {
                 )}
               </Button>
             </div>
-            <p className="text-xs text-slate-500 mt-2 text-center">
-              Powered by AI • Call (702) 222-1964
+            <p className="font-sans text-xs text-ink-muted mt-2 text-center">
+              AI assist · Call (702) 222-1964 for licensed advice
             </p>
           </div>
         </div>

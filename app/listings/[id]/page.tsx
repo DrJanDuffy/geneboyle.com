@@ -1,21 +1,21 @@
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import { agentInfo } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Property Details | Las Vegas & Henderson Real Estate",
-  description: "View detailed information about this property listing in Las Vegas or Henderson, NV.",
+  title: "Property Details | Las Vegas Homes | Dr. Gene Boyle",
+  description:
+    "View property details for Las Vegas and Henderson listings. Call (702) 222-1964 for a private tour.",
 };
 
-// This would typically fetch from RealScout API
 async function getProperty(id: string) {
-  // Placeholder - replace with RealScout API call
   return {
     id,
-    name: "Modern Luxury Home",
+    name: "Modern home in Summerlin",
     location: "Summerlin, Las Vegas, NV",
     price: "$850,000",
     image: "/Image/hero_bg_1.jpg",
@@ -24,7 +24,7 @@ async function getProperty(id: string) {
     squareFeet: 3200,
     yearBuilt: 2018,
     description:
-      "Stunning modern home in desirable Summerlin community. Features open floor plan, updated kitchen, and beautiful backyard. Close to schools, shopping, and entertainment.",
+      "Open floor plan, updated kitchen, and usable backyard. Approximately 3,200 sq ft. Confirm current MLS status and disclosures before touring.",
   };
 }
 
@@ -39,109 +39,94 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
   return (
     <>
       <Navbar />
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <nav className="mb-6 text-sm">
-            <ol className="flex items-center space-x-2 text-slate-600">
-              <li>
-                <a href="/" className="hover:text-blue-600">
-                  Home
-                </a>
-              </li>
-              <li>/</li>
-              <li>
-                <a href="http://drjanduffy.realscout.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
-                  Properties
-                </a>
-              </li>
-              <li>/</li>
-              <li className="text-slate-900">{property.name}</li>
-            </ol>
+      <main className="pt-28 pb-16">
+        <div className="site-wrap">
+          <nav className="font-sans text-xs text-ink-muted mb-8" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-accent">
+              Home
+            </Link>
+            {" / "}
+            <Link href="/listings" className="hover:text-accent">
+              Listings
+            </Link>
+            {" / "}
+            <span className="text-ink">{property.name}</span>
           </nav>
 
-          {/* Property Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
-              {property.name}
-            </h1>
-            <div className="flex items-center text-slate-600 mb-4">
-              <MapPin className="h-5 w-5 mr-2" />
-              {property.location}
-            </div>
-            <div className="text-3xl font-bold text-blue-600">{property.price}</div>
-          </div>
+          <p className="index-tag mb-4">MLS detail · Placeholder</p>
+          <h1 className="font-display text-4xl md:text-5xl text-ink max-w-3xl leading-tight mb-3">
+            {property.name}
+          </h1>
+          <p className="flex items-center gap-2 text-ink-soft mb-4">
+            <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+            {property.location}
+          </p>
+          <p className="font-display text-3xl text-accent mb-10">{property.price}</p>
 
-          {/* Main Image */}
-          <div className="relative h-64 md:h-96 rounded-lg overflow-hidden mb-8">
+          <div className="relative h-64 md:h-[28rem] overflow-hidden mb-12 bg-paper-2">
             <Image
               src={property.image}
-              alt={property.name}
+              alt={`${property.name} in ${property.location}`}
               fill
               className="object-cover"
+              sizes="100vw"
               priority
             />
           </div>
 
-          {/* Property Details Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Main Content */}
-            <div className="md:col-span-2">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Property Details</h2>
-              <p className="text-slate-700 mb-6">{property.description}</p>
-
-              <div className="bg-slate-50 rounded-lg p-6 mb-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Features</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center">
-                    <Bed className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-slate-700">{property.bedrooms} Bedrooms</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Bath className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-slate-700">{property.bathrooms} Bathrooms</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Square className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-slate-700">
-                      {property.squareFeet.toLocaleString()} sq ft
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <Calendar className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-slate-700">Built {property.yearBuilt}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* RealScout Widget Integration Point */}
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Schedule a Showing</h3>
-                <p className="text-slate-700 mb-4">
-                  Contact us to schedule a private viewing of this property.
-                </p>
-                <Button asChild className="bg-blue-600 hover:bg-blue-700">
-                  <a href="/contact">Contact Agent</a>
-                </Button>
-              </div>
+          <div className="grid md:grid-cols-12 gap-12 mb-16">
+            <div className="md:col-span-7">
+              <p className="index-tag mb-3">
+                <b>01</b> — Overview
+              </p>
+              <p className="text-lg leading-relaxed mb-8">{property.description}</p>
+              <p className="text-sm text-ink-muted">
+                Live inventory is best searched via RealScout on the listings page.
+                This detail route is a layout placeholder until wired to MLS IDs.
+              </p>
             </div>
-
-            {/* Sidebar */}
-            <div className="md:col-span-1">
-              <div className="bg-white border border-slate-200 rounded-lg p-6 sticky top-24">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Contact Agent</h3>
-                <p className="text-slate-600 mb-4">Dr. Jan Duffy</p>
-                <p className="text-sm text-slate-600 mb-6">
-                  Berkshire Hathaway HomeServices Nevada Properties
-                </p>
-                <div className="space-y-3">
-                  <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                    <a href="tel:+17025001942">Call (702) 500-1942</a>
-                  </Button>
-                  <Button asChild variant="outline" className="w-full">
-                    <a href="/contact">Send Message</a>
-                  </Button>
-                </div>
+            <div className="md:col-span-5">
+              <p className="index-tag mb-3">
+                <b>02</b> — Specs
+              </p>
+              <ul className="border-t border-[var(--line)]">
+                {[
+                  [Bed, `${property.bedrooms} bedrooms`],
+                  [Bath, `${property.bathrooms} bathrooms`],
+                  [Square, `${property.squareFeet.toLocaleString()} sq ft`],
+                  [Calendar, `Built ${property.yearBuilt}`],
+                ].map(([Icon, label]) => {
+                  const IconComp = Icon as typeof Bed;
+                  return (
+                    <li
+                      key={String(label)}
+                      className="flex items-center gap-3 border-b border-[var(--line-soft)] py-4 text-sm"
+                    >
+                      <IconComp className="h-4 w-4 text-accent" aria-hidden="true" />
+                      {label as string}
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 font-sans text-sm">
+                <a
+                  href={agentInfo.phoneTel}
+                  className="inline-flex justify-center bg-ink text-paper px-5 py-3 hover:bg-accent transition-colors"
+                >
+                  Call {agentInfo.phoneFormatted}
+                </a>
+                <Link
+                  href="/contact#schedule"
+                  className="inline-flex justify-center border border-[var(--line)] px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
+                >
+                  Schedule a tour
+                </Link>
+                <Link
+                  href="/listings"
+                  className="inline-flex justify-center text-accent font-medium hover:underline underline-offset-4 py-2"
+                >
+                  Back to live MLS search →
+                </Link>
               </div>
             </div>
           </div>
