@@ -31,6 +31,17 @@ export function generateMetadata(): Metadata {
   const title = isGeneBoyle
     ? `${config.neighborhood} | Dr. Gene Boyle | BHHS Nevada partner`
     : `${config.neighborhood} | Dr. Jan Duffy, REALTOR® | BHHS Nevada`;
+  const siteName = isGeneBoyle
+    ? "Dr. Gene Boyle | geneboyle.com"
+    : "Dr. Jan Duffy | Berkshire Hathaway HomeServices Nevada Properties";
+  const ogImage = {
+    url: "/og-image.jpg",
+    width: 1200,
+    height: 630,
+    alt: isGeneBoyle
+      ? "Irvine to Las Vegas relocation with Dr. Gene Boyle"
+      : "Las Vegas real estate with Dr. Jan Duffy",
+  };
   return {
     metadataBase: new URL("https://www.geneboyle.com"),
     title,
@@ -41,6 +52,15 @@ export function generateMetadata(): Metadata {
       description: config.description,
       type: "website",
       url: "https://www.geneboyle.com",
+      siteName,
+      locale: "en_US",
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: config.heroHeadline,
+      description: config.description,
+      images: [ogImage.url],
     },
   };
 }
