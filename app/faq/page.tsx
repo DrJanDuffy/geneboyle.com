@@ -4,6 +4,7 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import SchemaScript from "@/components/SchemaScript";
 import {
   generateBreadcrumbSchema,
@@ -17,10 +18,10 @@ import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst, valleyAugust6 } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Irvine-to-Las Vegas Relocation Questions Answered | Dr. Gene Boyle",
-  description:
-    "FAQ for Irvine to Las Vegas relocation: prices, sell-first vs buy-first, timelines, and neighborhood comparison with Dr. Gene Boyle and Dr. Jan Duffy.",
+  description: "FAQ for Irvine to Las Vegas relocation: prices, sell-first vs buy-first, timelines, and neighborhood comparison with Dr. Gene Boyle and Dr. Jan Duffy.",
+  path: "/faq",
   keywords: [
     "Irvine to Las Vegas FAQ",
     "Las Vegas real estate questions",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     "relocation FAQ",
     "Dr Gene Boyle FAQ",
   ],
-};
+});
 
 const breadcrumbs = [
   { name: "Home", url: "/" },

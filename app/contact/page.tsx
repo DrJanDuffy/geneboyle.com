@@ -5,16 +5,17 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
-  description:
-    "Contact Dr. Gene Boyle for Irvine to Las Vegas relocation. Schedule on Calendly, get directions, or call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+  description: "Contact Dr. Gene Boyle for Irvine to Las Vegas relocation. Schedule on Calendly, get directions, or call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+  path: "/contact",
   keywords: [
     "contact Gene Boyle",
     "Irvine to Las Vegas relocation contact",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     "Las Vegas realtor contact",
     "schedule real estate appointment",
   ],
-};
+});
 
 const contactSchema = {
   "@context": "https://schema.org",

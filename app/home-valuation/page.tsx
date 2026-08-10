@@ -4,17 +4,17 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import CalendlyWidget from "@/components/calendly/CalendlyWidget";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
-  title:
-    "What Is Your Las Vegas Home Worth in August 2026? | Dr. Gene Boyle",
-  description:
-    "Request a pricing conversation using August 2026 comps — not a single online estimate. Call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+export const metadata: Metadata = buildPageMetadata({
+  title: "What Is Your Las Vegas Home Worth in August 2026? | Dr. Gene Boyle",
+  description: "Request a pricing conversation using August 2026 comps — not a single online estimate. Call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+  path: "/home-valuation",
   keywords: [
     "home valuation Las Vegas",
     "what is my home worth Las Vegas",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Irvine home sale before relocation",
     "Dr Gene Boyle valuation",
   ],
-};
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

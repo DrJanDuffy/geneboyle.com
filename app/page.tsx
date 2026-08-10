@@ -1,13 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import { getHeroImage } from "@/lib/guides/media";
 import { getPageDomainConfig } from "@/lib/get-domain-config";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import { answerFirst, marketAsOf, valleyAugust6 } from "@/lib/market/august-2026";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = buildPageMetadata({
+  title:
+    "Irvine to Las Vegas Relocation | Dr. Gene Boyle | BHHS Nevada partner",
+  description:
+    "Sell in Irvine and buy in Las Vegas with one coordinated timeline. Dr. Gene Boyle with partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+  path: "/",
+  keywords: [
+    "Irvine to Las Vegas relocation",
+    "Dr Gene Boyle",
+    "Las Vegas realtor",
+    "California to Nevada move",
+  ],
+});
 
 /**
  * Homepage = brand hub for SEO / GEO / AEO.

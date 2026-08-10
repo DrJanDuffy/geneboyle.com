@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
@@ -13,17 +14,17 @@ import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import { answerFirst } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "55+ Communities in Las Vegas and Henderson | Dr. Gene Boyle",
-  description:
-    "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more by eligibility, amenities, HOA, and home format. Call (702) 222-1964.",
+  description: "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more by eligibility, amenities, HOA, and home format. Call (702) 222-1964.",
+  path: "/55-plus-communities",
   keywords: [
     "55+ communities Las Vegas",
     "Sun City Summerlin",
     "active adult Henderson",
     "Del Webb Las Vegas",
   ],
-};
+});
 
 const faqs = [
   {

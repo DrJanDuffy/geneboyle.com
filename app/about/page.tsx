@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, officeInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -10,10 +11,10 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Meet Dr. Gene Boyle and Dr. Jan Duffy | Irvine to Las Vegas",
-  description:
-    "Meet Dr. Gene Boyle (California DRE #02282581) and Las Vegas partner Dr. Jan Duffy (S.0197614.LLC), BHHS Nevada Properties. Call (702) 222-1964.",
+  description: "Meet Dr. Gene Boyle (California DRE #02282581) and Las Vegas partner Dr. Jan Duffy (S.0197614.LLC), BHHS Nevada Properties. Call (702) 222-1964.",
+  path: "/about",
   keywords: [
     "Dr Gene Boyle",
     "Irvine to Las Vegas relocation",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     "Las Vegas relocation realtor",
     "BHHS Nevada Properties partner",
   ],
-};
+});
 
 const personSchema = {
   "@context": "https://schema.org",

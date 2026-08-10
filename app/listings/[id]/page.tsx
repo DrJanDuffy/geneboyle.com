@@ -4,13 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bed, Bath, Square, MapPin, Calendar } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo } from "@/lib/site-config";
-
-export const metadata: Metadata = {
-  title: "Property Details | Las Vegas Homes | Dr. Gene Boyle",
-  description:
-    "View property details for Las Vegas and Henderson listings. Call (702) 222-1964 for a private tour.",
-};
 
 async function getProperty(id: string) {
   return {
@@ -31,6 +26,18 @@ async function getProperty(id: string) {
 type PropertyPageProps = {
   params: Promise<{ id: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: PropertyPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const property = await getProperty(id);
+  return buildPageMetadata({
+    title: `${property.name} | Las Vegas Homes | Dr. Gene Boyle`,
+    description: `${property.location} — ${property.price}. Call (702) 222-1964 for a private tour.`,
+    path: `/listings/${id}`,
+  });
+}
 
 export default async function PropertyPage({ params }: PropertyPageProps) {
   const { id } = await params;

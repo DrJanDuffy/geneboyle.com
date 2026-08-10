@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
@@ -12,17 +13,17 @@ import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import { answerFirst } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Compare Las Vegas Areas by Amenities, Commute, and Home Type | Dr. Gene Boyle",
-  description:
-    "Compare Summerlin, Henderson, Green Valley, and more by commute, amenities, square footage, and dated price bands. Call (702) 222-1964.",
+  description: "Compare Summerlin, Henderson, Green Valley, and more by commute, amenities, square footage, and dated price bands. Call (702) 222-1964.",
+  path: "/neighborhoods",
   keywords: [
     "Las Vegas neighborhoods",
     "Henderson communities",
     "Summerlin real estate",
     "Irvine to Las Vegas neighborhoods",
   ],
-};
+});
 
 export default function NeighborhoodsIndexPage() {
   return (

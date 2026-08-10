@@ -4,16 +4,17 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst, valleyAugust6 } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Sell Your Las Vegas Home with Evidence | Dr. Gene Boyle",
-  description:
-    "August 2026 seller guide: comps, days on market, and listing strategy for Irvine-to-Las Vegas moves with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  description: "August 2026 seller guide: comps, days on market, and listing strategy for Irvine-to-Las Vegas moves with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  path: "/sellers",
   keywords: [
     "sell home Las Vegas",
     "sell home Irvine before relocation",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     "home valuation Las Vegas",
     "Dr Gene Boyle seller",
   ],
-};
+});
 
 const sellerSchema = {
   "@context": "https://schema.org",

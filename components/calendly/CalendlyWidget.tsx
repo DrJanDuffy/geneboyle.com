@@ -1,70 +1,106 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Script from "next/script";
+import { useEffect, useId, useRef, useState } from "react";
+import "./types";
 
-interface CalendlyWidgetProps {
+type CalendlyWidgetProps = {
   url?: string;
-  minWidth?: string;
+  className?: string;
+  /** Inline widget height (CSS length). Defaults to 700px. */
   height?: string;
+};
+
+const CALENDLY_CSS = "https://assets.calendly.com/assets/external/widget.css";
+const CALENDLY_JS = "https://assets.calendly.com/assets/external/widget.js";
+
+function ensureCalendlyStylesheet() {
+  if (document.querySelector(`link[href="${CALENDLY_CSS}"]`)) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = CALENDLY_CSS;
+  document.head.appendChild(link);
 }
 
-export default function CalendlyWidget({
-  url = "https://calendly.com/drjanduffy/showing",
-  minWidth = "320px",
+/**
+ * Loads Calendly CSS/JS only when this widget mounts (not in the global layout).
+ * Keeps third-party CSS out of the critical path for LCP/PageSpeed.
+ */
+export function CalendlyWidget({
+  url = "https://calendly.com/drjanduffy/new-phone-call",
+  className = "",
   height = "700px",
 }: CalendlyWidgetProps) {
-  const widgetRef = useRef<HTMLDivElement>(null);
-  const normalizedUrl =
-    url.startsWith("http://") || url.startsWith("https://")
-      ? url
-      : `https://calendly.com/drjanduffy/${url.replace(/^\/+/, "")}`;
+  const widgetId = useId().replace(/:/g, "");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    // Ensure Calendly script is loaded and widget is initialized
-    const initWidget = () => {
-      if (typeof window !== "undefined" && (window as any).Calendly && widgetRef.current) {
-        // Clear any existing content
-        widgetRef.current.innerHTML = "";
-        
-        // Create the widget div
-        const widgetDiv = document.createElement("div");
-        widgetDiv.className = "calendly-inline-widget";
-        widgetDiv.setAttribute("data-url", normalizedUrl);
-        widgetDiv.style.minWidth = minWidth;
-        widgetDiv.style.height = height;
-        widgetDiv.style.width = "100%";
-        
-        widgetRef.current.appendChild(widgetDiv);
-        
-        // Initialize the widget
-        (window as any).Calendly.initInlineWidget({
-          url: normalizedUrl,
-          parentElement: widgetDiv,
-        });
-      }
-    };
+    const node = containerRef.current;
+    if (!node) return;
 
-    // Try to initialize immediately if Calendly is already loaded
-    if ((window as any).Calendly) {
-      initWidget();
-    } else {
-      // Wait for the script to load
-      const checkCalendly = setInterval(() => {
-        if ((window as any).Calendly) {
-          clearInterval(checkCalendly);
-          initWidget();
-        }
-      }, 100);
-
-      // Clean up interval after 10 seconds
-      setTimeout(() => clearInterval(checkCalendly), 10000);
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
     }
-  }, [normalizedUrl, minWidth, height]);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+    ensureCalendlyStylesheet();
+  }, [shouldLoad]);
+
+  useEffect(() => {
+    if (!shouldLoad || initialized.current || !containerRef.current) return;
+    if (!window.Calendly) return;
+
+    window.Calendly.initInlineWidget({
+      url,
+      parentElement: containerRef.current,
+    });
+    initialized.current = true;
+  }, [shouldLoad, url]);
 
   return (
-    <div 
-      ref={widgetRef} 
-      style={{ minWidth, height, width: "100%" }}
-    />
+    <div className={className}>
+      {shouldLoad ? (
+        <Script
+          src={CALENDLY_JS}
+          strategy="lazyOnload"
+          onLoad={() => {
+            if (initialized.current || !containerRef.current || !window.Calendly)
+              return;
+            window.Calendly.initInlineWidget({
+              url,
+              parentElement: containerRef.current,
+            });
+            initialized.current = true;
+          }}
+        />
+      ) : null}
+      <div
+        id={`calendly-inline-${widgetId}`}
+        ref={containerRef}
+        className="calendly-inline-widget w-full"
+        data-url={url}
+        style={{ minWidth: "320px", height, minHeight: height }}
+      />
+    </div>
   );
 }
+
+export default CalendlyWidget;

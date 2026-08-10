@@ -74,9 +74,8 @@ export function generateMetadata(): Metadata {
     title,
     description: config.description,
     keywords: config.keywords,
-    alternates: {
-      canonical: "https://www.geneboyle.com",
-    },
+    // Per-page absolute canonicals are set on each route (not here).
+    // A root canonical would incorrectly make every URL canonicalize to `/`.
     robots: {
       index: true,
       follow: true,
@@ -119,22 +118,13 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${serif.variable} ${sans.variable}`}
     >
-      <head>
-        <link
-          href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
-        />
-      </head>
       <body className="font-serif">
         <GlobalHeroBanner />
         {children}
         <WebMCPProvider />
         <AIChatWidget />
         <Analytics />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="lazyOnload"
-        />
+        {/* Calendly CSS/JS load only on pages that mount CalendlyWidget (not homepage). */}
         <Script
           src="https://em.realscout.com/dist/rs-loading.js"
           strategy="lazyOnload"

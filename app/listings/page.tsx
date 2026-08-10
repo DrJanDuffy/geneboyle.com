@@ -3,6 +3,7 @@ import Footer from "@/components/layouts/Footer";
 import Link from "next/link";
 import { Phone, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
@@ -16,11 +17,10 @@ import {
   valleyAugust6,
 } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
-  title:
-    "Las Vegas Homes for Sale by Price, Size, and Area | Dr. Gene Boyle",
-  description:
-    "Search Las Vegas MLS by price, square feet, and area. August 2026 inventory context with Dr. Gene Boyle. Call (702) 222-1964.",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Las Vegas Homes for Sale by Price, Size, and Area | Dr. Gene Boyle",
+  description: "Search Las Vegas MLS by price, square feet, and area. August 2026 inventory context with Dr. Gene Boyle. Call (702) 222-1964.",
+  path: "/listings",
   keywords: [
     "Las Vegas homes for sale",
     "Henderson real estate",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "Irvine to Las Vegas homes",
     "Dr Gene Boyle listings",
   ],
-};
+});
 
 const listingsSchema = {
   "@context": "https://schema.org",

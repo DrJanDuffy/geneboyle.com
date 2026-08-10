@@ -87,3 +87,27 @@ NEXT_PUBLIC_SITE_URL=https://www.geneboyle.com
 - `/api/`, `/admin/`, `/monitoring/`, `/gsc-verify/` are disallowed in `robots.txt`.
 - Do not block `Googlebot` or `Google-Extended` if you want Search + AI surfaces.
 - Cloudflare: keep the Vercel hostname DNS-only (gray cloud) to avoid SSL conflicts.
+- Per-page **absolute** canonicals (`https://www.geneboyle.com/…`) via `lib/seo/metadata.ts` — not a single root `/` canonical.
+
+## 6. Search Central updates to use after verify (2026)
+
+Aligned with [What’s new on Google Search Central](https://developers.google.com/search/docs/appearance/whats-new) as of July–August 2026:
+
+| Feature | Why it matters for this site | Action |
+| --- | --- | --- |
+| [Platform properties](https://developers.google.com/search/blog/2026/07/search-console-social-video-platforms) (global) | Track how Instagram, TikTok, X, YouTube posts perform in Search / Discover / News | After www property works, add platform properties for any active Gene Boyle / Jan Duffy social or YouTube channels |
+| [Social & video performance guide](https://developers.google.com/search/docs/appearance/social-video) | Guidance for creators publishing off-site | Prefer first-hand relocation stories with clear titles; link back to canonical site URLs |
+| [Generative AI performance reports](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports) in Search Console | See how pages appear in AI surfaces | Enable / review Gen AI reports in GSC once available on the property |
+| Search Profiles / Gen AI controls (Q2 ’26 Search News) | Manage how site content is used in generative experiences | Review new Search Console controls after verify; do not block Googlebot unless intentional |
+| SEO for vibe-coded websites (Search Central YouTube, Apr 2026) | JS-built sites need real value, full canonicals, render testing, GSC | Done in codebase: absolute canonicals, sitemap, robots, deferred third-party JS (Calendly). Still: verify property + URL Inspection on key pages |
+| Internal search / Indexing Report (Search Off the Record, Jul 2026) | Faceted/search URLs can waste crawl | Keep `robots.txt` disallow on `/api/` etc.; avoid indexing thin filter URLs |
+
+### Upcoming event (optional)
+
+- **Search Central Deep Dive Europe 2026** — Barcelona, Sep 30–Oct 2, 2026 ([announcement](https://developers.google.com/search/blog/2026/07/search-central-deep-dive-europe-barcelona)).
+
+### Podcast / crawl hygiene reminders
+
+- Don’t leave internal site-search result pages crawlable at scale.
+- Indexing report “Excluded” rows are often intentional — inspect before panicking.
+- Markdown / `llms.txt` is optional; unique, useful HTML pages still matter more for Search.

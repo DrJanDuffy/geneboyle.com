@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import AreaGuidePage from "@/components/editorial/AreaGuidePage";
 import { neighborhoodGuides } from "@/lib/guides/neighborhoods";
 import {
@@ -10,11 +11,12 @@ import {
 
 const guide = neighborhoodGuides["north-las-vegas"];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: guide.meta.title,
   description: guide.meta.description,
+  path: "/neighborhoods/north-las-vegas",
   keywords: guide.meta.keywords,
-};
+});
 
 const pageSchemas = combineSchemas(
   generateBreadcrumbSchema(

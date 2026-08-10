@@ -4,16 +4,17 @@ import RealScoutListings from "@/components/realscout/RealScoutListings";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { agentInfo, siteConfig } from "@/lib/site-config";
 import EditorialVisualHero from "@/components/editorial/EditorialVisualHero";
 import EditorialMediaBand from "@/components/editorial/EditorialMediaBand";
 import { getMarketingImage, getSectionImage } from "@/lib/guides/media";
 import { answerFirst, buyerLeverageJuly } from "@/lib/market/august-2026";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Buy a Las Vegas Home with a Clear Plan | Dr. Gene Boyle",
-  description:
-    "August 2026 Las Vegas buyer guide: negotiating room, price bands, and Irvine-to-Las Vegas relocation planning with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  description: "August 2026 Las Vegas buyer guide: negotiating room, price bands, and Irvine-to-Las Vegas relocation planning with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  path: "/buyers",
   keywords: [
     "buy home Las Vegas",
     "Las Vegas home buyer",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     "California relocation Las Vegas",
     "Dr Gene Boyle buyer agent",
   ],
-};
+});
 
 const buyerSchema = {
   "@context": "https://schema.org",
