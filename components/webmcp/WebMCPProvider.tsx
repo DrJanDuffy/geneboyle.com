@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { registerSiteWebMCPTools } from "@/lib/webmcp/site-tools";
 
 /**
- * Registers geneboyle.com WebMCP tools once on the client.
- * No-ops in browsers without document/navigator.modelContext.
+ * Loads @mcp-b/global (polyfill + MCP bridge) then registers site tools.
+ * Safe no-op during SSR; works in browsers without native WebMCP.
  */
 export default function WebMCPProvider() {
   useEffect(() => {
@@ -14,6 +14,22 @@ export default function WebMCPProvider() {
 
     void (async () => {
       try {
+        // Side-effect import installs document.modelContext (polyfill when native missing).
+        const webmcp = await import("@mcp-b/global");
+        if (typeof webmcp.initializeWebModelContext === "function") {
+          webmcp.initializeWebModelContext({
+            transport: {
+              tabServer: {
+                allowedOrigins: [
+                  "https://www.geneboyle.com",
+                  "https://geneboyle.com",
+                  window.location.origin,
+                ],
+              },
+            },
+          });
+        }
+
         const registered = await registerSiteWebMCPTools();
         if (cancelled) {
           registered?.abort();
@@ -30,6 +46,15 @@ export default function WebMCPProvider() {
     return () => {
       cancelled = true;
       controller?.abort();
+      void import("@mcp-b/global")
+        .then((webmcp) => {
+          if (typeof webmcp.cleanupWebModelContext === "function") {
+            webmcp.cleanupWebModelContext();
+          }
+        })
+        .catch(() => {
+          /* ignore cleanup errors */
+        });
     };
   }, []);
 
