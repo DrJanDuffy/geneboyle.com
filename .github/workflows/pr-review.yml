@@ -338,7 +338,7 @@ jobs:
                   issues.push(`❌ **${file.filename}**: Missing metadata export (SEO)`);
                 }
                 
-                // Client-facing CTA must be (702) 222-1964 (not the FUB/professional line).
+                // Site phone is (702) 500-1955. 702-222-1964 is client email and text only (flag it).
                 if (content.includes('702-222-1964') || content.includes('7022221964')) {
                   issues.push(`❌ **${file.filename}**: Contains 702-222-1964, which is for client email and text only (use 702-500-1955)`);
                 }
@@ -501,7 +501,7 @@ jobs:
             - [ ] Code follows project conventions
             - [ ] Tests pass with adequate coverage (80%+)
             - [ ] SEO metadata is present and optimized
-            - [ ] Phone numbers are correct: (702) 222-1964 for client CTAs
+            - [ ] Phone numbers are correct: (702) 500-1955 (702-222-1964 is client email and text only)
             - [ ] Berkshire Hathaway branding is consistent
             - [ ] Mobile responsive design verified
             - [ ] No console errors
