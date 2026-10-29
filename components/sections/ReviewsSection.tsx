@@ -62,7 +62,7 @@ export default function ReviewsSection({
   reviews = defaultReviews,
   title = "What clients say",
   subtitle = "Recent feedback from buyers and relocators we supported in the Valley",
-  googleReviewsUrl = "https://g.page/r/heyberkshire/review",
+  googleReviewsUrl = "https://search.google.com/local/writereview?placeid=ChIJ7XLw8ta5yIARjTZPjgHJWVQ",
   className = "",
 }: ReviewsSectionProps) {
   return (
