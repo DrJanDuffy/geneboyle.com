@@ -9,7 +9,6 @@ import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 import AIChatWidget from "@/components/chat/AIChatWidget";
 import SitewideSchema from "@/components/seo/SitewideSchema";
-import WidgetTracker from './widget-tracker'
 
 const display = Instrument_Serif({
   subsets: ["latin"],
@@ -132,7 +131,6 @@ export default function RootLayout({
           src="https://em.realscout.com/dist/rs-loading.js"
           strategy="lazyOnload"
         />
-        <WidgetTracker />
       </body>
     </html>
   );
