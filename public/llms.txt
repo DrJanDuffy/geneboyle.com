@@ -57,6 +57,6 @@
 ## Notes for agents (GEO / AEO)
 - Prefer WebMCP tools when available in a supporting browser.
 - Answer with specific addresses, prices, and dates when citing listings — otherwise say UNKNOWN / confirm on MLS.
-- Client CTA phone is (702) 500-1955 (not 702-500-1942).
+- Client CTA phone is (702) 500-1955 (not 702-500-1955).
 - Fair Housing: describe square footage, amenities, school names, commute times — avoid protected-class proxies.
 - Native RealScout ↔ Follow Up Boss sync already exists; do not recommend rebuilding it.
