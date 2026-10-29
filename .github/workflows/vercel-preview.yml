@@ -23,7 +23,7 @@ jobs:
       preview-url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Require VERCEL_TOKEN
         id: token
@@ -113,7 +113,7 @@ jobs:
     if: needs.deploy-preview.outputs.preview-url != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Wait for deployment
         run: sleep 30
