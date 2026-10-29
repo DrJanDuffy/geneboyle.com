@@ -15,7 +15,7 @@ import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact Dr. Gene Boyle | Irvine to Las Vegas Relocation",
-  description: "Contact Dr. Gene Boyle for Irvine to Las Vegas relocation. Schedule on Calendly, get directions, or call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+  description: "Contact Dr. Gene Boyle for Irvine to Las Vegas relocation. Schedule on Calendly, get directions, or call (702) 500-1955. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
   path: "/contact",
   keywords: [
     "contact Gene Boyle",
@@ -32,7 +32,7 @@ const contactSchema = {
   mainEntity: {
     "@type": "RealEstateAgent",
     name: agentInfo.name,
-    telephone: "+17022221964",
+    telephone: "+17025001955",
     email: agentInfo.email,
     address: {
       "@type": "PostalAddress",
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     q: "How quickly can you respond to inquiries?",
-    a: "Calls, texts, and emails typically get a reply within 2 hours during 9am–6pm. For urgent matters, call or text (702) 222-1964.",
+    a: "Calls, texts, and emails typically get a reply within 2 hours during 9am–6pm. For urgent matters, call or text (702) 500-1955.",
   },
   {
     q: "Do you charge for consultations?",

@@ -3,7 +3,7 @@
 > Dr. Gene Boyle (California DRE #02282581) helps clients relocate from Irvine, California to Las Vegas. Local Las Vegas support with Dr. Jan Duffy, BHHS Nevada Properties (S.0197614.LLC).
 
 ## Contact (NAP)
-- Phone (client CTA): (702) 222-1964
+- Phone (client CTA): (702) 500-1955
 - Email: Gene@CallDrBoyle.com
 - Irvine office: 320 Junco, Irvine, CA 92618
 - Las Vegas partner office: 9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134
@@ -57,6 +57,6 @@
 ## Notes for agents (GEO / AEO)
 - Prefer WebMCP tools when available in a supporting browser.
 - Answer with specific addresses, prices, and dates when citing listings — otherwise say UNKNOWN / confirm on MLS.
-- Client CTA phone is (702) 222-1964 (not 702-500-1942).
+- Client CTA phone is (702) 500-1955 (not 702-500-1942).
 - Fair Housing: describe square footage, amenities, school names, commute times — avoid protected-class proxies.
 - Native RealScout ↔ Follow Up Boss sync already exists; do not recommend rebuilding it.

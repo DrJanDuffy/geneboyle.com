@@ -7,7 +7,7 @@ const guide = marketingGuides["sellers-relocation"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Sell Before You Relocate | Dr. Gene Boyle',
-  description: 'Sell in California before a Las Vegas move. Call (702) 222-1964.',
+  description: 'Sell in California before a Las Vegas move. Call (702) 500-1955.',
   path: "/sellers/relocation",
 });
 

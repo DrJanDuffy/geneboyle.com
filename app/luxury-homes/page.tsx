@@ -7,7 +7,7 @@ const guide = marketingGuides["luxury-homes"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Luxury Homes Las Vegas | Dr. Gene Boyle',
-  description: 'Luxury Las Vegas homes for relocators. Call (702) 222-1964.',
+  description: 'Luxury Las Vegas homes for relocators. Call (702) 500-1955.',
   path: "/luxury-homes",
 });
 

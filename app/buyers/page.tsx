@@ -14,7 +14,7 @@ import { answerFirst, buyerLeverageJuly } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Buy a Las Vegas Home with a Clear Plan | Dr. Gene Boyle",
-  description: "August 2026 Las Vegas buyer guide: negotiating room, price bands, and Irvine-to-Las Vegas relocation planning with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  description: "August 2026 Las Vegas buyer guide: negotiating room, price bands, and Irvine-to-Las Vegas relocation planning with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 500-1955.",
   path: "/buyers",
   keywords: [
     "buy home Las Vegas",
@@ -34,7 +34,7 @@ const buyerFaqs = [
   {
     question: "How do Irvine relocators start a Las Vegas search?",
     answer:
-      "Document price band, square footage, commute, amenities, financing, and travel schedule, then sequence the California sale with Valley tours. Call (702) 222-1964.",
+      "Document price band, square footage, commute, amenities, financing, and travel schedule, then sequence the California sale with Valley tours. Call (702) 500-1955.",
   },
   {
     question: "Do I need a pre-approval before touring?",

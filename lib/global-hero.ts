@@ -16,6 +16,6 @@ export const GLOBAL_HERO: GlobalHeroConfig = {
   src: "/images/global-hero/heyberkshire.jpg",
   alt: "Las Vegas Valley desert skyline and residential rooftops at dusk — Irvine to Las Vegas relocation with Dr. Gene Boyle",
   tagline: "geneboyle.com — Irvine to Las Vegas Relocation by Dr. Gene Boyle",
-  phoneDisplay: "(702) 222-1964",
-  phoneTel: "tel:+17022221964",
+  phoneDisplay: "(702) 500-1955",
+  phoneTel: "tel:+17025001955",
 };

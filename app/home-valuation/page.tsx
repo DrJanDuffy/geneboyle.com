@@ -14,7 +14,7 @@ import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "What Is Your Las Vegas Home Worth in August 2026? | Dr. Gene Boyle",
-  description: "Request a pricing conversation using August 2026 comps — not a single online estimate. Call (702) 222-1964. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
+  description: "Request a pricing conversation using August 2026 comps — not a single online estimate. Call (702) 500-1955. Partner support from Dr. Jan Duffy, BHHS Nevada Properties.",
   path: "/home-valuation",
   keywords: [
     "home valuation Las Vegas",

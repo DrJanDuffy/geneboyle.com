@@ -9,7 +9,7 @@ const reasons = [
   },
   {
     title: "One client phone number",
-    body: "(702) 222-1964 on every CTA — no swapped lines.",
+    body: "(702) 500-1955 on every CTA — no swapped lines.",
   },
 ] as const;
 

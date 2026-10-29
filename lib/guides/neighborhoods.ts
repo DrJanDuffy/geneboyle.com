@@ -108,7 +108,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     meta: {
       title: "Summerlin Homes for Sale | Irvine to Las Vegas | Dr. Gene Boyle",
       description:
-        "Summerlin homes, villages, and June–August 2026 market data with Dr. Gene Boyle and partner Dr. Jan Duffy. Call (702) 222-1964.",
+        "Summerlin homes, villages, and June–August 2026 market data with Dr. Gene Boyle and partner Dr. Jan Duffy. Call (702) 500-1955.",
       keywords: [
         "Summerlin homes for sale",
         "Summerlin Las Vegas real estate",
@@ -205,7 +205,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     meta: {
       title: "Henderson Homes for Sale | Irvine Relocation | Dr. Gene Boyle",
       description:
-        "Henderson homes by price, commute, and amenities with dated 2026 market panels. Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+        "Henderson homes by price, commute, and amenities with dated 2026 market panels. Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 500-1955.",
       keywords: ["Henderson homes for sale", "Henderson NV real estate", "Green Valley homes", "Irvine to Henderson"],
     },
     geo: {
@@ -258,7 +258,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     meta: {
       title: "Green Valley Homes | Henderson NV | Dr. Gene Boyle",
       description:
-        "Green Valley Henderson homes with July 2026 market data for Irvine-to-Las Vegas relocators. Call (702) 222-1964.",
+        "Green Valley Henderson homes with July 2026 market data for Irvine-to-Las Vegas relocators. Call (702) 500-1955.",
       keywords: ["Green Valley Henderson homes", "Green Valley real estate", "Henderson NV"],
     },
     geo: {
@@ -310,7 +310,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     meta: {
       title: "The Ridges Luxury Homes | Summerlin | Dr. Gene Boyle",
       description:
-        "The Ridges Summerlin luxury homes with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+        "The Ridges Summerlin luxury homes with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 500-1955.",
       keywords: ["The Ridges Summerlin", "luxury homes Las Vegas", "guard-gated Summerlin"],
     },
     geo: {
@@ -357,7 +357,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Call ${agentInfo.phoneFormatted} to align price band and tour dates.`,
     meta: {
       title: "Southern Highlands Homes | Las Vegas | Dr. Gene Boyle",
-      description: "Southern Highlands Las Vegas homes for relocators. Call (702) 222-1964.",
+      description: "Southern Highlands Las Vegas homes for relocators. Call (702) 500-1955.",
       keywords: ["Southern Highlands homes", "Southern Highlands Las Vegas"],
     },
     geo: {
@@ -404,7 +404,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Call ${agentInfo.phoneFormatted} to set square-footage and budget filters.`,
     meta: {
       title: "North Las Vegas Homes | Dr. Gene Boyle",
-      description: "North Las Vegas homes and new construction for relocators. Call (702) 222-1964.",
+      description: "North Las Vegas homes and new construction for relocators. Call (702) 500-1955.",
       keywords: ["North Las Vegas homes", "North Las Vegas new construction"],
     },
     geo: {
@@ -451,7 +451,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Book a consult at ${agentInfo.phoneFormatted}.`,
     meta: {
       title: "Skye Canyon Homes | Las Vegas | Dr. Gene Boyle",
-      description: "Skye Canyon Las Vegas homes for Irvine relocators. Call (702) 222-1964.",
+      description: "Skye Canyon Las Vegas homes for Irvine relocators. Call (702) 500-1955.",
       keywords: ["Skye Canyon homes", "Skye Canyon Las Vegas"],
     },
     geo: {
@@ -498,7 +498,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Call ${agentInfo.phoneFormatted} to set filters and tour windows.`,
     meta: {
       title: "Centennial Hills Homes | Las Vegas | Dr. Gene Boyle",
-      description: "Centennial Hills Las Vegas homes. Call (702) 222-1964.",
+      description: "Centennial Hills Las Vegas homes. Call (702) 500-1955.",
       keywords: ["Centennial Hills homes", "Centennial Hills Las Vegas"],
     },
     geo: {
@@ -545,7 +545,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Call ${agentInfo.phoneFormatted}.`,
     meta: {
       title: "Inspirada Homes | Henderson | Dr. Gene Boyle",
-      description: "Inspirada Henderson homes for relocators. Call (702) 222-1964.",
+      description: "Inspirada Henderson homes for relocators. Call (702) 500-1955.",
       keywords: ["Inspirada homes", "Inspirada Henderson"],
     },
     geo: {
@@ -592,7 +592,7 @@ export const neighborhoodGuides: Record<string, AreaGuide> = {
     ctaBody: `Call ${agentInfo.phoneFormatted} to plan tours.`,
     meta: {
       title: "Mountains Edge Homes | Las Vegas | Dr. Gene Boyle",
-      description: "Mountains Edge Las Vegas homes. Call (702) 222-1964.",
+      description: "Mountains Edge Las Vegas homes. Call (702) 500-1955.",
       keywords: ["Mountains Edge homes", "Mountains Edge Las Vegas"],
     },
     geo: {

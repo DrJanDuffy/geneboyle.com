@@ -17,7 +17,7 @@ import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "55+ Communities in Las Vegas and Henderson | Dr. Gene Boyle",
-  description: "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more by eligibility, amenities, HOA, and home format. Call (702) 222-1964.",
+  description: "Compare Sun City Summerlin, Trilogy, Sun City Anthem, and more by eligibility, amenities, HOA, and home format. Call (702) 500-1955.",
   path: "/55-plus-communities",
   keywords: [
     "55+ communities Las Vegas",

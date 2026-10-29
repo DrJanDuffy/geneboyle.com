@@ -7,7 +7,7 @@ const guide = marketingGuides["buyers-first-time"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'First-Time Buyers Las Vegas | Dr. Gene Boyle',
-  description: 'First-time buyer guidance for Las Vegas. Call (702) 222-1964.',
+  description: 'First-time buyer guidance for Las Vegas. Call (702) 500-1955.',
   path: "/buyers/first-time-buyers",
 });
 

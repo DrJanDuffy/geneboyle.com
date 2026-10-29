@@ -7,7 +7,7 @@ const guide = marketingGuides["buyers-luxury"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Luxury Home Buyers Las Vegas | Dr. Gene Boyle',
-  description: 'Luxury buyer guidance in Las Vegas. Call (702) 222-1964.',
+  description: 'Luxury buyer guidance in Las Vegas. Call (702) 500-1955.',
   path: "/buyers/luxury-homes-las-vegas",
 });
 

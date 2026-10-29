@@ -24,7 +24,7 @@ import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "A Two-Market Real Estate Process | Irvine to Las Vegas | Dr. Gene Boyle",
-  description: "Cross-state workflow from first call to closing: Irvine planning, Las Vegas tours, offers, and settlement with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  description: "Cross-state workflow from first call to closing: Irvine planning, Las Vegas tours, offers, and settlement with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 500-1955.",
   path: "/how-we-work",
   keywords: [
     "Irvine to Las Vegas relocation tools",

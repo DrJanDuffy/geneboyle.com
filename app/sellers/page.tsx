@@ -14,7 +14,7 @@ import { answerFirst, valleyAugust6 } from "@/lib/market/august-2026";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sell Your Las Vegas Home with Evidence | Dr. Gene Boyle",
-  description: "August 2026 seller guide: comps, days on market, and listing strategy for Irvine-to-Las Vegas moves with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 222-1964.",
+  description: "August 2026 seller guide: comps, days on market, and listing strategy for Irvine-to-Las Vegas moves with Dr. Gene Boyle and Dr. Jan Duffy. Call (702) 500-1955.",
   path: "/sellers",
   keywords: [
     "sell home Las Vegas",
@@ -38,7 +38,7 @@ const sellerFaqs = [
   {
     question: "Where do I start a valuation?",
     answer:
-      "Use the home valuation page or call (702) 222-1964 with address, beds, baths, square feet, upgrades, and timing.",
+      "Use the home valuation page or call (702) 500-1955 with address, beds, baths, square feet, upgrades, and timing.",
   },
 ] as const;
 

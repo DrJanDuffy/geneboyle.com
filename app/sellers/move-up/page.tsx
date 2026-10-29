@@ -7,7 +7,7 @@ const guide = marketingGuides["sellers-move-up"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Move-Up Sellers | Dr. Gene Boyle',
-  description: 'Move-up seller strategy. Call (702) 222-1964.',
+  description: 'Move-up seller strategy. Call (702) 500-1955.',
   path: "/sellers/move-up",
 });
 

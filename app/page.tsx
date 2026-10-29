@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
   title:
     "Irvine to Las Vegas Relocation | Dr. Gene Boyle | BHHS Nevada partner",
   description:
-    "Sell in Irvine and buy in Las Vegas with one coordinated timeline. Dr. Gene Boyle with partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.",
+    "Sell in Irvine and buy in Las Vegas with one coordinated timeline. Dr. Gene Boyle with partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 500-1955.",
   path: "/",
   keywords: [
     "Irvine to Las Vegas relocation",

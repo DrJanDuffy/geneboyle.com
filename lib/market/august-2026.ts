@@ -88,11 +88,11 @@ export const answerFirst = {
 
   contact: `Tell us whether you are buying, selling, relocating, or seeking a second home — plus current city, target area, price band, approximate square feet, timing, and preferred call method. We respond with a clear next step for the Irvine-to-Las Vegas loop.`,
 
-  about: `Dr. Gene Boyle (California DRE #02282581) plans Irvine and Orange County exits. Dr. Jan Duffy (S.0197614.LLC) covers Las Vegas Valley tours, offers, and closing with Berkshire Hathaway HomeServices Nevada Properties. One client phone number for the loop: (702) 222-1964.`,
+  about: `Dr. Gene Boyle (California DRE #02282581) plans Irvine and Orange County exits. Dr. Jan Duffy (S.0197614.LLC) covers Las Vegas Valley tours, offers, and closing with Berkshire Hathaway HomeServices Nevada Properties. One client phone number for the loop: (702) 500-1955.`,
 
   fiftyFive: `Compare 55+ communities by eligibility rules, home formats, amenities, HOA questions, and resale process — not lifestyle slogans. Confirm age-residency requirements, fee schedules, and listing rules for Sun City Summerlin, Sun City Anthem, Trilogy, and peer communities before you tour.`,
 
-  services: `Irvine-to-Las Vegas services cover sell timing on the California side, Valley buyer representation, listing strategy, 55+ comparisons, and closing coordination with BHHS Nevada Properties. One client phone number keeps the loop clear: (702) 222-1964.`,
+  services: `Irvine-to-Las Vegas services cover sell timing on the California side, Valley buyer representation, listing strategy, 55+ comparisons, and closing coordination with BHHS Nevada Properties. One client phone number keeps the loop clear: (702) 500-1955.`,
 
   luxury: `Luxury searches filter by lot, view, finishes, guard-gated access, and square footage — not metro medians alone. Compare The Ridges, MacDonald Highlands, and Southern Highlands product with live MLS comps before you stretch on list price.`,
 
