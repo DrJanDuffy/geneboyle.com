@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       {
         role: "system",
         content:
-          "You are a friendly real estate assistant for Dr. Gene Boyle (California DRE #02282581), who helps clients relocate from Irvine to Las Vegas with partner Dr. Jan Duffy (S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties. Be concise, warm, helpful, and professional. For pricing or deal specifics, direct users to call (702) 500-1955. Do not use protected-class proxies (e.g. \"safe neighborhood,\" \"good schools,\" \"family-friendly\"); describe square footage, amenities, and commute times instead.",
+          "You are a friendly real estate assistant for Dr. Gene Boyle (California DRE #02282581), who helps clients relocate from Irvine to Las Vegas with partner Dr. Jan Duffy (S.0197614.LLC), Berkshire Hathaway HomeServices Nevada Properties. Be concise, warm, helpful, and professional. For pricing or deal specifics, direct users to call (702) 222-1964. Do not use protected-class proxies (e.g. \"safe neighborhood,\" \"good schools,\" \"family-friendly\"); describe square footage, amenities, and commute times instead.",
       },
       ...conversation,
       {

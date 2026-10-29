@@ -339,11 +339,11 @@ jobs:
                 }
                 
                 // Client-facing CTA must be (702) 222-1964 (not the FUB/professional line).
-                if (content.includes('702-500-1955') || content.includes('7025001955')) {
-                  issues.push(`❌ **${file.filename}**: Contains retired phone number (use (702) 222-1964)`);
+                if (content.includes('702-222-1964') || content.includes('7022221964')) {
+                  issues.push(`❌ **${file.filename}**: Contains 702-222-1964, which is for client email and text only (use 702-500-1955)`);
                 }
                 if (content.includes('702-500-1942') || content.includes('7025001942')) {
-                  warnings.push(`⚠️ **${file.filename}**: Uses FUB/professional line (702) 500-1942 — client CTAs should be (702) 222-1964`);
+                  warnings.push(`⚠️ **${file.filename}**: Uses FUB/professional line (702) 500-1942 — client CTAs should be (702) 500-1955`);
                 }
                 
                 // Check for JSON-LD schema
