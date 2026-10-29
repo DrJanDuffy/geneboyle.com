@@ -35,7 +35,7 @@ export async function generateMetadata({
   const property = await getProperty(id);
   return buildPageMetadata({
     title: `${property.name} | Las Vegas Homes | Dr. Gene Boyle`,
-    description: `${property.location} — ${property.price}. Call (702) 222-1964 for a private tour.`,
+    description: `${property.location} — ${property.price}. Call (702) 500-1955 for a private tour.`,
     path: `/listings/${id}`,
   });
 }
