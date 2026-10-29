@@ -21,7 +21,7 @@ import {
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Las Vegas Homes for Sale by Price, Size, and Area | Dr. Gene Boyle",
-  description: "Search Las Vegas MLS by price, square feet, and area. August 2026 inventory context with Dr. Gene Boyle. Call (702) 222-1964.",
+  description: "Search Las Vegas MLS by price, square feet, and area. August 2026 inventory context with Dr. Gene Boyle. Call (702) 500-1955.",
   path: "/listings",
   keywords: [
     "Las Vegas homes for sale",

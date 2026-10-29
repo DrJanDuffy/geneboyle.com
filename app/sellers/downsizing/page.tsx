@@ -7,7 +7,7 @@ const guide = marketingGuides["sellers-downsizing"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Downsizing Sellers | Dr. Gene Boyle',
-  description: 'Downsizing guidance for relocating sellers. Call (702) 222-1964.',
+  description: 'Downsizing guidance for relocating sellers. Call (702) 500-1955.',
   path: "/sellers/downsizing",
 });
 

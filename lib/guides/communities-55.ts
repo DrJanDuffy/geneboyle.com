@@ -60,7 +60,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     meta: {
       title: "Sun City Summerlin Homes | 55+ | Dr. Gene Boyle",
       description:
-        "Sun City Summerlin active-adult homes for relocators. Call (702) 222-1964.",
+        "Sun City Summerlin active-adult homes for relocators. Call (702) 500-1955.",
       keywords: ["Sun City Summerlin", "55+ Summerlin", "Del Webb Las Vegas"],
     },
   },
@@ -106,7 +106,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Trilogy at Summerlin | 55+ Homes | Dr. Gene Boyle",
-      description: "Trilogy at Summerlin active-adult homes. Call (702) 222-1964.",
+      description: "Trilogy at Summerlin active-adult homes. Call (702) 500-1955.",
       keywords: ["Trilogy Summerlin", "Shea 55+ Las Vegas"],
     },
   },
@@ -152,7 +152,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Sun City Anthem Homes | Henderson 55+ | Dr. Gene Boyle",
-      description: "Sun City Anthem Henderson active-adult homes. Call (702) 222-1964.",
+      description: "Sun City Anthem Henderson active-adult homes. Call (702) 500-1955.",
       keywords: ["Sun City Anthem", "55+ Henderson", "Del Webb Anthem"],
     },
   },
@@ -198,7 +198,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Sun City Aliante | 55+ Homes | Dr. Gene Boyle",
-      description: "Sun City Aliante active-adult homes. Call (702) 222-1964.",
+      description: "Sun City Aliante active-adult homes. Call (702) 500-1955.",
       keywords: ["Sun City Aliante", "55+ North Las Vegas"],
     },
   },
@@ -243,7 +243,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Solera at Anthem | 55+ Henderson | Dr. Gene Boyle",
-      description: "Solera at Anthem active-adult homes. Call (702) 222-1964.",
+      description: "Solera at Anthem active-adult homes. Call (702) 500-1955.",
       keywords: ["Solera Anthem", "55+ Henderson"],
     },
   },
@@ -288,7 +288,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Del Webb Lake Las Vegas | 55+ | Dr. Gene Boyle",
-      description: "Del Webb at Lake Las Vegas active-adult homes. Call (702) 222-1964.",
+      description: "Del Webb at Lake Las Vegas active-adult homes. Call (702) 500-1955.",
       keywords: ["Del Webb Lake Las Vegas", "55+ Lake Las Vegas"],
     },
   },
@@ -333,7 +333,7 @@ export const community55Guides: Record<string, AreaGuide> = {
     ctaBody: baseCta,
     meta: {
       title: "Heritage at Stonebridge | 55+ | Dr. Gene Boyle",
-      description: "Heritage at Stonebridge active-adult homes. Call (702) 222-1964.",
+      description: "Heritage at Stonebridge active-adult homes. Call (702) 500-1955.",
       keywords: ["Heritage Stonebridge", "55+ Las Vegas"],
     },
   },

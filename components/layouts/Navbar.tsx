@@ -91,8 +91,8 @@ export default function Navbar() {
             >
               Book a call
             </Link>
-            <a href="tel:+17022221964" className="py-2.5 text-accent font-medium">
-              (702) 222-1964
+            <a href="tel:+17025001955" className="py-2.5 text-accent font-medium">
+              (702) 500-1955
             </a>
           </div>
         </div>

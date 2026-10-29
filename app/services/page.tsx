@@ -7,7 +7,7 @@ const guide = marketingGuides["services"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Services | Irvine to Las Vegas Relocation | Dr. Gene Boyle',
-  description: 'Relocation real estate services with Dr. Gene Boyle and partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 222-1964.',
+  description: 'Relocation real estate services with Dr. Gene Boyle and partner Dr. Jan Duffy, BHHS Nevada Properties. Call (702) 500-1955.',
   path: "/services",
 });
 

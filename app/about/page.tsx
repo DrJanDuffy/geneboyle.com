@@ -15,7 +15,7 @@ import { buildHubPageSchema } from "@/lib/seo/guide-schema";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Meet Dr. Gene Boyle and Dr. Jan Duffy | Irvine to Las Vegas",
-  description: "Meet Dr. Gene Boyle (California DRE #02282581) and Las Vegas partner Dr. Jan Duffy (S.0197614.LLC), BHHS Nevada Properties. Call (702) 222-1964.",
+  description: "Meet Dr. Gene Boyle (California DRE #02282581) and Las Vegas partner Dr. Jan Duffy (S.0197614.LLC), BHHS Nevada Properties. Call (702) 500-1955.",
   path: "/about",
   keywords: [
     "Dr Gene Boyle",
@@ -59,7 +59,7 @@ const personSchema = {
   name: agentInfo.name,
   jobTitle: agentInfo.title,
   description: siteConfig.description,
-  telephone: "+17022221964",
+  telephone: "+17025001955",
   email: agentInfo.email,
   url: `${siteConfig.url}/about`,
   address: {

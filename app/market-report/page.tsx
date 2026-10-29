@@ -7,7 +7,7 @@ const guide = marketingGuides["market-report"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Las Vegas Housing Market Report: August 2026 | Dr. Gene Boyle',
-  description: 'August 2026 Las Vegas Valley market report: median prices, inventory, months of supply, and submarket panels. Call (702) 222-1964.',
+  description: 'August 2026 Las Vegas Valley market report: median prices, inventory, months of supply, and submarket panels. Call (702) 500-1955.',
   path: "/market-report",
 });
 

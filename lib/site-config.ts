@@ -19,15 +19,15 @@ export const agentInfo = {
   title: "California DRE Salesperson — Irvine relocation planning",
   license: "02282581",
   licenseLabel: "California DRE #02282581",
-  phone: "(702) 222-1964",
-  phoneFormatted: "(702) 222-1964",
-  phoneTel: "tel:+17022221964",
+  phone: "(702) 500-1955",
+  phoneFormatted: "(702) 500-1955",
+  phoneTel: "tel:+17025001955",
   email: "Gene@CallDrBoyle.com",
   brokerage: "Berkshire Hathaway HomeServices Nevada Properties (Las Vegas partner)",
   partnerAgent: {
     name: "Dr. Jan Duffy",
     license: "S.0197614.LLC",
-    phone: "(702) 222-1964",
+    phone: "(702) 500-1955",
   },
 };
 
@@ -52,8 +52,8 @@ export const officeInfo = {
     zip: "89134",
     full: "9406 W Lake Mead Blvd, Suite 100, Las Vegas, NV 89134",
   },
-  phone: "(702) 222-1964",
-  phoneTel: "tel:+17022221964",
+  phone: "(702) 500-1955",
+  phoneTel: "tel:+17025001955",
 };
 
 /**

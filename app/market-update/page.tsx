@@ -7,7 +7,7 @@ const guide = marketingGuides["market-update"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Las Vegas Market Update | Dr. Gene Boyle',
-  description: 'Current Las Vegas housing market update for Irvine relocators. Call (702) 222-1964.',
+  description: 'Current Las Vegas housing market update for Irvine relocators. Call (702) 500-1955.',
   path: "/market-update",
 });
 

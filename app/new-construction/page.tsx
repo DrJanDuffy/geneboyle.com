@@ -7,7 +7,7 @@ const guide = marketingGuides["new-construction"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'New Construction Las Vegas | Dr. Gene Boyle',
-  description: 'New construction homes in Las Vegas and Henderson. Call (702) 222-1964.',
+  description: 'New construction homes in Las Vegas and Henderson. Call (702) 500-1955.',
   path: "/new-construction",
 });
 
