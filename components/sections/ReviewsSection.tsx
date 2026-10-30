@@ -44,8 +44,8 @@ export const defaultReviews: Review[] = [
 ];
 
 export const aggregateRating = {
-  ratingValue: 4.9,
-  reviewCount: 500,
+  ratingValue: 5.0,
+  reviewCount: 50,
   bestRating: 5,
   worstRating: 1,
 };
@@ -99,10 +99,10 @@ export default function ReviewsSection({
                 ))}
               </div>
               <span className="font-medium text-ink">
-                {aggregateRating.ratingValue}
+                {aggregateRating.ratingValue.toFixed(1)}
               </span>
               <span className="text-ink-muted">
-                ({aggregateRating.reviewCount}+ reviews)
+                ({aggregateRating.reviewCount} Realtor.com reviews)
               </span>
             </div>
           </div>
