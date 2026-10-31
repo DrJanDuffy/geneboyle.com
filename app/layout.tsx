@@ -9,6 +9,7 @@ import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 import AIChatWidget from "@/components/chat/AIChatWidget";
 import SitewideSchema from "@/components/seo/SitewideSchema";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 const display = Instrument_Serif({
   subsets: ["latin"],
@@ -131,6 +132,7 @@ export default function RootLayout({
           src="https://em.realscout.com/dist/rs-loading.js"
           strategy="lazyOnload"
         />
+        <VercelSpeedInsights />
       </body>
     </html>
   );
