@@ -9,6 +9,7 @@ import GlobalHeroBanner from "@/components/layout/GlobalHeroBanner";
 import WebMCPProvider from "@/components/webmcp/WebMCPProvider";
 import AIChatWidget from "@/components/chat/AIChatWidget";
 import SitewideSchema from "@/components/seo/SitewideSchema";
+import RealtorAnalytics from "../components/analytics/RealtorAnalytics";
 
 const display = Instrument_Serif({
   subsets: ["latin"],
@@ -131,6 +132,7 @@ export default function RootLayout({
           src="https://em.realscout.com/dist/rs-loading.js"
           strategy="lazyOnload"
         />
+        <RealtorAnalytics siteName="geneboyle.com" />
       </body>
     </html>
   );
