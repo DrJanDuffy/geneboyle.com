@@ -7,7 +7,7 @@ const guide = marketingGuides["investment-properties"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Investment Properties Las Vegas | Dr. Gene Boyle',
-  description: 'Las Vegas investment property guidance. Call (702) 500-1955.',
+  description: 'Las Vegas investment property guidance. Call (949) 638-3939.',
   path: "/investment-properties",
 });
 

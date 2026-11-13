@@ -16,7 +16,7 @@ export default function AIChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi — I can help with Irvine-to-Las Vegas relocation questions, neighborhoods, and next steps. For a call, use (702) 500-1955 or book on the Contact page.",
+        "Hi — I can help with Irvine-to-Las Vegas relocation questions, neighborhoods, and next steps. For a call, use (949) 638-3939 or book on the Contact page.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -80,7 +80,7 @@ export default function AIChatWidget() {
       const errorMessage: Message = {
         role: "assistant",
         content:
-          "I'm sorry, I'm having trouble connecting right now. Please try again or call Dr. Gene Boyle at (702) 500-1955.",
+          "I'm sorry, I'm having trouble connecting right now. Please try again or call Dr. Gene Boyle at (949) 638-3939.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -114,7 +114,7 @@ export default function AIChatWidget() {
             <div>
               <h3 className="font-display text-lg">Relocation assistant</h3>
               <p className="font-sans text-xs text-paper/60">
-                Quick answers · then call (702) 500-1955
+                Quick answers · then call (949) 638-3939
               </p>
             </div>
             <button
@@ -181,7 +181,7 @@ export default function AIChatWidget() {
               </Button>
             </div>
             <p className="font-sans text-xs text-ink-muted mt-2 text-center">
-              AI assist · Call (702) 500-1955 for licensed advice
+              AI assist · Call (949) 638-3939 for licensed advice
             </p>
           </div>
         </div>

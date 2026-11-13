@@ -7,7 +7,7 @@ const guide = marketingGuides["market-insights"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Las Vegas Market Insights | Dr. Gene Boyle',
-  description: 'Market insights for Irvine to Las Vegas relocation. Call (702) 500-1955.',
+  description: 'Market insights for Irvine to Las Vegas relocation. Call (949) 638-3939.',
   path: "/market-insights",
 });
 

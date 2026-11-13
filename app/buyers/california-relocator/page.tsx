@@ -7,7 +7,7 @@ const guide = marketingGuides["buyers-california-relocator"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'California Relocator Buyer Guide | Dr. Gene Boyle',
-  description: 'California to Las Vegas buyer guide. Call (702) 500-1955.',
+  description: 'California to Las Vegas buyer guide. Call (949) 638-3939.',
   path: "/buyers/california-relocator",
 });
 

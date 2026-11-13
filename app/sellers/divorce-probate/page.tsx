@@ -7,7 +7,7 @@ const guide = marketingGuides["sellers-divorce-probate"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Divorce & Probate Sales | Dr. Gene Boyle',
-  description: 'Divorce and probate real estate coordination. Call (702) 500-1955.',
+  description: 'Divorce and probate real estate coordination. Call (949) 638-3939.',
   path: "/sellers/divorce-probate",
 });
 

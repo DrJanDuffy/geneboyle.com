@@ -41,7 +41,7 @@ export const DOMAIN_CONFIGS: Record<string, DomainConfig> = {
     realscoutAgentId: REALSCOUT_AGENT_ID,
     ctaBadge: "Irvine → Las Vegas",
     ctaHeadline: "Start Your Las Vegas Move",
-    ctaSubheadline: "Call or text 702-500-1955 — Gene plans the move, Jan covers Las Vegas ground.",
+    ctaSubheadline: "Call or text 949-638-3939 — Gene plans the move, Jan covers Las Vegas ground.",
   },
   "consenzaestates.com": { domain: "consenzaestates.com", neighborhood: "Consenza Estates", tagline: "Luxury Living in Consenza Estates", description: "Find your dream home in Consenza Estates, Las Vegas. Expert guidance from Dr. Jan Duffy.", heroHeadline: "Consenza Estates Homes for Sale", heroSubheadline: "Exclusive properties in one of Las Vegas' most sought-after communities.", keywords: ["Consenza Estates homes", "Las Vegas luxury real estate", "Consenza Estates Las Vegas"], pageType: "luxury", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Consenza Estates Expert", ctaHeadline: "Find Your Consenza Estates Home", ctaSubheadline: "I know every listing in this community. Let me match you with the right home." },
   "aliantehomesforsale.com": { domain: "aliantehomesforsale.com", neighborhood: "Aliante", tagline: "Aliante Homes for Sale", description: "Search Aliante homes for sale in North Las Vegas. Expert real estate guidance from Dr. Jan Duffy.", heroHeadline: "Aliante Homes for Sale", heroSubheadline: "Master-planned living in the heart of North Las Vegas.", keywords: ["Aliante homes for sale", "Aliante North Las Vegas", "Aliante real estate"], pageType: "community", realscoutAgentId: REALSCOUT_AGENT_ID, ctaBadge: "Aliante Specialist", ctaHeadline: "Search Aliante Homes Today", ctaSubheadline: "Get instant access to all Aliante listings with expert guidance." },
@@ -127,7 +127,7 @@ export const DEFAULT_CONFIG: DomainConfig = {
   realscoutAgentId: REALSCOUT_AGENT_ID,
   ctaBadge: "Irvine → Las Vegas",
   ctaHeadline: "Start Your Las Vegas Move",
-  ctaSubheadline: "Call or text 702-500-1955 — Gene plans the move, Jan covers Las Vegas ground.",
+  ctaSubheadline: "Call or text 949-638-3939 — Gene plans the move, Jan covers Las Vegas ground.",
 };
 
 export function getDomainConfig(hostname: string): DomainConfig {

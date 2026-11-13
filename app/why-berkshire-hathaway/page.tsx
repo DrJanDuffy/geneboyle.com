@@ -7,7 +7,7 @@ const guide = marketingGuides["why-berkshire-hathaway"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Why Berkshire Hathaway HomeServices | Dr. Gene Boyle',
-  description: 'Why work with BHHS Nevada Properties partner coverage. Call (702) 500-1955.',
+  description: 'Why work with BHHS Nevada Properties partner coverage. Call (949) 638-3939.',
   path: "/why-berkshire-hathaway",
 });
 

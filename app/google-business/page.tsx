@@ -7,7 +7,7 @@ const guide = marketingGuides["google-business"];
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Google Business Profile | Dr. Gene Boyle',
-  description: 'NAP, hours, map, and reviews for Dr. Gene Boyle. Call (702) 500-1955.',
+  description: 'NAP, hours, map, and reviews for Dr. Gene Boyle. Call (949) 638-3939.',
   path: "/google-business",
 });
 
